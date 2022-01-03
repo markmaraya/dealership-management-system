@@ -1,0 +1,30 @@
+.container {
+  height: 100vh;
+}
+
+.header-title {
+  padding: 5px 20px;
+  height: 50px;
+  background-color: #e63513;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-title .logo {
+  border-radius: 5px;
+  height: 50px;
+  width: 50px;
+}
+
+.header-title h1 {
+  margin: 0 0 0 10px;
+}
+
+.header-title h3 {
+  margin: 0 0 0 auto;
+  justify-self: end;
+}

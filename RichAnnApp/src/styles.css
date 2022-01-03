@@ -1,0 +1,84 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+input, .mat-cell { text-transform: uppercase; }
+*::-webkit-scrollbar { width: 10px; }
+*::-webkit-scrollbar-track { background: #f1f1f1; }
+*::-webkit-scrollbar-thumb { background: #97b0b5; }
+
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(assets/fonts/MaterialIcons.woff2) format('woff2');
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+
+.text-center { text-align: center !important; }
+
+mat-form-field {
+    margin: 4px;
+    float: left;
+}
+
+.mat-header-cell {
+    background: #d7eaee;
+    font-size: 14px;
+    cursor: pointer;
+}
+  
+.mat-header-cell:first-child {
+    border-radius: 2px 0 0 2px;
+}
+
+.mat-header-cell:last-child {
+    border-radius: 0 2px 2px 0;
+}
+
+.mat-row:nth-child(even) {
+    background-color: #f8fbfc;
+}
+
+.mat-row:hover {
+    background-color: #f4f4f4;
+}
+
+.mat-cell {
+    cursor: pointer;
+}
+
+.mat-footer-row {
+    background: #deedf1;
+}
+
+.mat-paginator-sticky {
+    bottom: 0px;
+    position: sticky;
+    z-index: 10;
+    background: #deedf1;
+    border-radius: 2px;
+}
+
+.table-container {
+    overflow-y: scroll;
+}
+
+.table-container table {
+    width: 100%;
+}

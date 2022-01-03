@@ -1,0 +1,294 @@
+.header-wrapper {
+    display: flex;
+    align-items: flex-end;
+    height: 40px;
+}
+
+h2.title {
+    margin: 0;
+    height: 32px;
+    align-self: flex-end;
+}
+
+.example-container {
+    position: relative;
+    min-height: calc(100vh - 60px);
+    overflow: auto;
+}
+
+.example-loading-shade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 56px;
+    right: 0;
+    background: rgba(0, 0, 0, 0.15);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.example-card {
+    padding: 0 20px;
+}
+
+.mat-flat-button {
+    margin: 5px;
+}
+
+.mat-card-title,
+.mat-card-title h3 {
+    margin-bottom: 0px;
+}
+
+.mat-card-header {
+    min-height: 24px;
+}
+
+.sales-details-wrapper {
+    display: flex;
+    min-height: 135px;
+    padding: 0 20px;
+    justify-content: space-between;
+}
+
+.sales-img {
+    height: 110px;
+    width: 150px;
+    margin: 20px 9px 10px 9px;
+    border: solid 1px #e63513;
+    border-radius: 5px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.sales-img:hover {
+    border-color: gray;
+}
+
+.sales-img img {
+    height: 100%;
+    width: 100%;
+}
+
+.sales-img span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    color: #d8d8d8;
+}
+
+.sales-details {
+    width: 60%;
+}
+
+.sales-details .header-content .header-row {
+    display: flex;
+    align-items: flex-start;
+}
+
+.unit-code-row {
+    justify-content: space-between;
+}
+
+.unit-code-label,
+.status-label,
+.details-label {
+    display: inline-block;
+    line-height: 16px;
+}
+
+.unit-code-label,
+.details-label {
+    width: 108px;
+}
+
+.unit-code-label,
+.status-label {
+    color: #6e6e6e;
+}
+
+.unit-code-label {
+    font-size: 16px;
+}
+
+.status-label {
+    width: 80px;
+}
+
+.details-label {
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 12px;
+}
+
+.unit-code,
+.details-value {
+    text-transform: uppercase;
+    display: flex;
+    width: calc(100% - 120px);
+    line-height: 16px;
+}
+
+.details-value {
+    padding-bottom: 8px;
+}
+
+.unit-code-details-row,
+.status-details-row {
+    display: flex;
+    font-size: 18px;
+}
+
+.unit-code-details-row {
+    width: 75%;
+    min-width: 600px;
+}
+
+.status-details-row {
+    width: 20%;
+}
+
+.mat-card-content {
+    margin-left: 16px;
+    margin-bottom: 0px;
+}
+
+.actions-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-top: solid 1px #97b0b5;
+    margin-top: 8px;
+}
+
+.actions-wrapper .mat-card-actions {
+    margin: 0;
+}
+
+.expenses-label {
+    margin: 0;
+}
+
+.primary-button {
+    background-color: #e63513;
+}
+
+.primary-button:hover {
+    background-color: #b82a0f;
+}
+
+.delete-button,
+.back-button {
+    background-color: #808080;
+}
+
+.copy-icon-button mat-icon,
+.edit-icon-button mat-icon {
+    color: #e63513;
+}
+
+.delete-icon-button mat-icon {
+    color: #808080;
+}
+
+.copy-icon-button:hover mat-icon,
+.edit-icon-button:hover mat-icon,
+.delete-icon-button:hover mat-icon {
+    color: #b82a0f;
+}
+
+.expenses-table {
+    width: 100%;
+    min-height: 456px;
+}
+
+.expenses-table .amount {
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 16px;
+}
+
+.expenses-table .table-container {
+    height: calc(100vh - 274px);
+}
+
+.expenses-table .amount,
+.expenses-table .print-amount {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.87);
+    margin-left: 4px;
+}
+
+.total-amount-container {
+    position: relative;
+}
+
+.total-amount-label {
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 12px;
+    font-weight: 500;
+    position: absolute;
+    top: 0;
+    width: 200px;
+}
+
+.total-amount-value {
+    margin-top: 16px;
+}
+
+.mat-column-actions {
+    flex: 0 0 10% !important;
+    width: 10% !important;
+}
+
+.no-data-row {
+    position: relative;
+    display: flex;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+}
+
+.no-data-row>.mat-cell {
+    border: none;
+    color: #6e6e6e;
+}
+
+.print-section {
+    display: none;
+}
+
+.print-expenses-label {
+    display: inline-block;
+    margin-left: 16px;
+    margin-top: 10px;
+}
+
+.print-amount {
+    font-size: 20px;
+}
+
+.print-header-row {
+    width: 500px;
+}
+
+.print-sales-img {
+    height: 140px;
+    width: 190px;
+    margin: 0 9px;
+    border: solid 1px gray;
+}
+
+.print-table-header-row {
+    height: 30px;
+    min-height: 30px;
+}
+
+.print-header {
+    display: flex;
+    align-items: flex-end;
+}

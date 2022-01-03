@@ -1,0 +1,34 @@
+<div class="edit-expenses-container">
+    <h2 class="edit-expenses-label">Edit Expenses</h2>
+    <form [formGroup]="salesForm" (ngSubmit)="onFormSubmit()">
+        <mat-form-field class="example-full-width">
+            <mat-label>Amount</mat-label>
+            <input type="number" matInput placeholder="Amount" formControlName="amount" [errorStateMatcher]="matcher">
+            <mat-error>
+                <span *ngIf="!salesForm.get('amount').valid && salesForm.get('amount').touched">Please enter Amount</span>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Description</mat-label>
+            <input matInput placeholder="Description" formControlName="description" [errorStateMatcher]="matcher">
+            <mat-error>
+                <span *ngIf="!salesForm.get('description').valid && salesForm.get('description').touched">Please enter
+          Description</span>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Encoded By</mat-label>
+            <input matInput placeholder="Encoded By" formControlName="encodedBy" [errorStateMatcher]="matcher">
+            <mat-error>
+                <span *ngIf="!salesForm.get('encodedBy').valid && salesForm.get('encodedBy').touched">Please enter Encoded
+          By</span>
+            </mat-error>
+        </mat-form-field>
+        <div class="button-row">
+            <button class="save-button" type="submit" [disabled]="!salesForm.valid" mat-flat-button color="primary" mat-dialog-close>
+        <mat-icon>save</mat-icon> Save
+      </button>
+            <a class="back-button" mat-flat-button color="primary" mat-dialog-close>Back</a>
+        </div>
+    </form>
+</div>
