@@ -1,0 +1,31 @@
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatLegacyDialogRef as MatDialogRef, MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from "@angular/material/legacy-dialog";
+import { ApiService } from '../api.service';
+import { Gallery } from '../gallery';
+
+@Component({
+  selector: 'app-image-preview-dialog',
+  templateUrl: './image-preview-dialog.component.html',
+  styleUrls: ['./image-preview-dialog.component.css']
+})
+export class ImagePreviewDialogComponent implements OnInit {
+  _id: string;
+  gallery: Gallery = { id: '', imageUrl: '', uploaded: null, unitCode: '' };
+
+  constructor(
+    public dialogRef: MatDialogRef<ImagePreviewDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private api: ApiService,
+  ) { }
+
+  ngOnInit(): void {
+    this.getImageById(this.data._id);
+  }
+
+  getImageById(id: string): void {
+    this.api.getGalleryById(id).subscribe((data: any) => {
+      this.gallery = data;
+    });
+  }
+
+}
