@@ -1,0 +1,56 @@
+<div class="edit-unit-container">
+    <h2 class="edit-unit-label">Edit Unit</h2>
+    <form [formGroup]="salesForm" (ngSubmit)="onFormSubmit()">
+        <mat-form-field class="example-full-width">
+            <mat-label>Unit Code</mat-label>
+            <input matInput placeholder="Unit Code" formControlName="unitCode" [errorStateMatcher]="matcher" (focus)="onFocusUnitCode()">
+            <mat-error>
+                <span *ngIf="!salesForm.get('unitCode').valid && salesForm.get('unitCode').touched">Please enter Unit
+          Code</span>
+            </mat-error>
+            <mat-error *ngIf="unitCodeExist">
+                Unit Code already exist
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Make and Model</mat-label>
+            <input matInput placeholder="Make and Model" formControlName="makeAndModel" [errorStateMatcher]="matcher">
+            <mat-error>
+                <span *ngIf="!salesForm.get('makeAndModel').valid && salesForm.get('makeAndModel').touched">Please enter Make
+          and Model</span>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Body Type</mat-label>
+            <input matInput placeholder="Body Type" formControlName="bodyType" [errorStateMatcher]="matcher">
+            <mat-error>
+                <span *ngIf="!salesForm.get('bodyType').valid && salesForm.get('bodyType').touched">Please enter Body
+          Type</span>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Chasis Code</mat-label>
+            <input matInput placeholder="Chasis Code" formControlName="chasisCode" [errorStateMatcher]="matcher">
+            <mat-error>
+                <span *ngIf="!salesForm.get('chasisCode').valid && salesForm.get('chasisCode').touched">Please enter Chasis
+          Code</span>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Status</mat-label>
+            <mat-select formControlName="status" [errorStateMatcher]="matcher">
+                <mat-option value="available">Available</mat-option>
+                <mat-option value="sold">Sold</mat-option>
+            </mat-select>
+            <mat-error>
+                <span *ngIf="!salesForm.get('status').valid && salesForm.get('status').touched">Please enter Status</span>
+            </mat-error>
+        </mat-form-field>
+        <div class="button-row">
+            <button class="save-button" type="submit" [disabled]="!salesForm.valid" mat-flat-button color="primary" mat-dialog-close>
+        <mat-icon>save</mat-icon> Save
+      </button>
+            <a class="back-button" mat-flat-button color="primary" mat-dialog-close>Back</a>
+        </div>
+    </form>
+</div>

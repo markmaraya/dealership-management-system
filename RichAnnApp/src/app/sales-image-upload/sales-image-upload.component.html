@@ -1,0 +1,19 @@
+<div class="upload-image-container">
+    <h2 class="upload-image-label">Upload Image</h2>
+    <form [formGroup]="galleryForm" (ngSubmit)="onUploadFormSubmit()">
+        <mat-form-field class="example-full-width">
+            <mat-label>Select Image</mat-label>
+            <ngx-mat-file-input formControlName="imageFile" placeholder="Select Image" valuePlaceholder="No image file selected" [errorStateMatcher]="matcher"></ngx-mat-file-input>
+            <mat-icon matSuffix>folder</mat-icon>
+            <mat-error>
+                <span *ngIf="!galleryForm.get('imageFile').valid">Please select image file</span>
+            </mat-error>
+        </mat-form-field>
+        <div class="button-row">
+            <button class="upload-button" type="submit" mat-flat-button color="primary" [disabled]="!isUploadButtonActive">
+                <mat-icon>upload</mat-icon> Upload
+            </button>
+            <button class="cancel-button" mat-flat-button color="primary" [mat-dialog-close]="false">Cancel</button>
+        </div>
+    </form>
+</div>
