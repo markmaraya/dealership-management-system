@@ -51,7 +51,7 @@ export class SalesComponent implements OnInit {
     tableToogleButtonText: 'Sold Units',
     tableLabelStatus: 'Available Units'
   };
-  
+  environmentApiUrl = environment.apiUrl;
 
   constructor(
     private api: ApiService,
