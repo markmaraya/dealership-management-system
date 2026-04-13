@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require("express");
 const http = require("http");
 const socketIO = require("socket.io");
@@ -42,8 +44,10 @@ app.use("/users", usersRouter);
 app.use("/api", salesRouter);
 app.use("/gallery", galleryRouter);
 
-server.listen(4000, () => {
-  console.log("Server running on http://localhost:4000");
+const PORT = process.env.PORT || 4000;
+
+server.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
 
 module.exports = app;
