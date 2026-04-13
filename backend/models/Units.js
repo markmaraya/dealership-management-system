@@ -19,6 +19,6 @@ var UnitsSchema = new mongoose.Schema({
     uploaded: { type: Date, default: Date.now },
     unitCode: String
   }
-});
+}, { collection: 'units' });
 
 module.exports = mongoose.model('Units', UnitsSchema);
