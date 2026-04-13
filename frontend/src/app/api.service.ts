@@ -9,8 +9,8 @@ import { Gallery } from './gallery';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
-const apiUrl = 'http://localhost:3000/api';
-const galleryUrl = 'http://localhost:3000/gallery';
+const apiUrl = 'http://localhost:4000/api';
+const galleryUrl = 'http://localhost:4000/gallery';
 
 @Injectable({
   providedIn: 'root'
