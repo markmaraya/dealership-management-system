@@ -5,11 +5,11 @@ import { Router } from '@angular/router';
 import { io } from "socket.io-client";
 import { ApiService } from '../api.service';
 import { Units } from '../units';
-import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
-import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { MatLegacyDialog as MatDialog } from "@angular/material/legacy-dialog";
+import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 import { AddSalesComponent } from '../add-sales/add-sales.component';
 

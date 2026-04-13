@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { io } from "socket.io-client";
 import { ActivatedRoute, Router } from '@angular/router';
-import { MatLegacyDialog as MatDialog } from "@angular/material/legacy-dialog";
+import { MatDialog } from "@angular/material/dialog";
 import { Clipboard } from "@angular/cdk/clipboard";
 import { DatePipe } from '@angular/common';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';

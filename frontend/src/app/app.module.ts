@@ -11,18 +11,19 @@ import { EditSalesComponent } from './edit-sales/edit-sales.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
-import { MatLegacyPaginatorModule as MatPaginatorModule } from '@angular/material/legacy-paginator';
-import { MatLegacyProgressSpinnerModule as MatProgressSpinnerModule } from '@angular/material/legacy-progress-spinner';
+import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSortModule } from '@angular/material/sort';
-import { MatLegacyTableModule as MatTableModule } from '@angular/material/legacy-table';
 import { MatIconModule } from '@angular/material/icon';
-import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
-import { MatLegacyCardModule as MatCardModule } from '@angular/material/legacy-card';
-import { MatLegacyFormFieldModule as MatFormFieldModule } from '@angular/material/legacy-form-field';
-import { MatLegacyDialogModule as MatDialogModule } from "@angular/material/legacy-dialog";
-import { MatLegacySelectModule as MatSelectModule } from "@angular/material/legacy-select";
-import { MatLegacyTooltipModule as MatTooltipModule } from "@angular/material/legacy-tooltip";
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { NgxPrintModule } from 'ngx-print';
@@ -46,7 +47,7 @@ import { ImagePreviewDialogComponent } from './image-preview-dialog/image-previe
     EditExpensesComponent,
     ConfirmationDialogComponent,
     SalesImageUploadComponent,
-    ImagePreviewDialogComponent
+    ImagePreviewDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,7 +71,10 @@ import { ImagePreviewDialogComponent } from './image-preview-dialog/image-previe
     ClipboardModule,
     NgxPrintModule,
   ],
-  providers: [DatePipe],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher },
+    DatePipe,
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

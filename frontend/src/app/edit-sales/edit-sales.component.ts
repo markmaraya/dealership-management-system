@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from '../api.service';
 import { UntypedFormControl, FormGroupDirective, UntypedFormBuilder, UntypedFormGroup, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { MatLegacyDialogRef as MatDialogRef, MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from "@angular/material/legacy-dialog";
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
