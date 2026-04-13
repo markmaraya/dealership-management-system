@@ -1,3 +1,4 @@
+import { environment } from '../../environments/environment';
 import { Component, OnInit } from '@angular/core';
 import { io } from "socket.io-client";
 import { ActivatedRoute, Router } from '@angular/router';
@@ -22,7 +23,7 @@ import { EditExpensesComponent } from '../edit-expenses/edit-expenses.component'
   styleUrls: ['./sales-details.component.css']
 })
 export class SalesDetailsComponent implements OnInit {
-  socket = io('http://localhost:4000');
+  socket = io(environment.apiUrl);
 
   _id: any;
   gallery: Gallery = { id: '', imageUrl: '', uploaded: null, unitCode: '' };

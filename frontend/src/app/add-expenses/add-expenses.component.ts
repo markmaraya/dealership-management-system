@@ -1,3 +1,4 @@
+import { environment } from '../../environments/environment';
 import { Component, OnInit, Inject } from '@angular/core';
 import { io } from "socket.io-client";
 import { Router } from '@angular/router';
@@ -20,7 +21,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./add-expenses.component.css']
 })
 export class AddExpensesComponent implements OnInit {
-  socket = io('http://localhost:4000');
+  socket = io(environment.apiUrl);
 
   salesForm: UntypedFormGroup;
   _id = '';

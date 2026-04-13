@@ -1,3 +1,4 @@
+import { environment } from '../../environments/environment';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UntypedFormControl, FormGroupDirective, UntypedFormBuilder, UntypedFormGroup, NgForm, Validators } from '@angular/forms';
 import { UpperCasePipe, Location } from '@angular/common';
@@ -28,7 +29,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   providers: [UpperCasePipe]
 })
 export class SalesComponent implements OnInit {
-  socket = io('http://localhost:4000');
+  socket = io(environment.apiUrl);
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
