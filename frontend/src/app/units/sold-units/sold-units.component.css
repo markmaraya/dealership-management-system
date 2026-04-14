@@ -1,0 +1,168 @@
+.example-container {
+  position: relative;
+  height: calc(100vh - 64px);
+}
+
+.example-container .home-header {
+  height: 90px;
+}
+
+.example-container .home-header .button-row {
+  height: 100%;
+  padding: 0 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sales-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 100%;
+
+  :is(mat-form-field) {
+    transform: translateY(0.6em);
+  }
+
+  .mat-mdc-button-base {
+    min-height: 40px;
+    line-height: 40px;
+  }
+
+  ::ng-deep .mat-mdc-form-field .mat-mdc-text-field-wrapper {
+    min-height: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+  }
+
+  ::ng-deep .mat-mdc-input-element {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 8px;
+  }
+
+  ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+    margin-top: 0;
+    min-height: 0;
+  }
+
+  ::ng-deep .mat-mdc-form-field .mdc-floating-label {
+    top: 20px;
+  }
+}
+
+.search-button {
+  float: left;
+  margin: 15px 5px;
+  color: #ffffff;
+  background-color: #e63513;
+}
+
+.clear-button {
+  float: left;
+  color: #e63513;
+}
+
+.buttons-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.add-unit {
+  margin: 15px 0;
+  background-color: #e63513;
+}
+
+.search-button:not(:disabled):hover,
+.add-unit:hover,
+.submit-button:hover {
+  background-color: #b82a0f;
+}
+
+.clear-button:not(:disabled):hover {
+  background-color: #e63513;
+  color: #fff;
+}
+
+.example-loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 56px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-rate-limit-reached {
+  color: #980000;
+  max-width: 360px;
+  text-align: center;
+}
+
+/* Column Widths */
+
+.mat-column-number,
+.mat-column-state {
+  max-width: 64px;
+}
+
+.mat-column-created {
+  max-width: 124px;
+}
+
+.top-charts {
+  margin: 20px;
+  padding: 20px;
+}
+
+.table-label {
+  margin: 0 20px;
+  display: inline-block;
+  width: calc(100% - 40px);
+}
+
+.table-container {
+  height: calc(100vh - 200px);
+  margin: 0 40px 8px 40px;
+}
+
+.image-column {
+  display: flex;
+  justify-content: center;
+}
+
+.sales-img {
+  height: 80px;
+  width: 110px;
+  border-radius: 5px;
+  margin: 10px;
+  overflow: hidden;
+}
+
+.sales-img img {
+  height: 100%;
+  width: 100%;
+}
+
+.sales-img span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.no-data-row {
+  height: 40px;
+}
+
+.no-data-row > .mat-cell {
+  border: none;
+  color: #6e6e6e;
+  text-align: center;
+}
