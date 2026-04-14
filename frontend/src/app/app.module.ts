@@ -24,6 +24,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule } from '@angular/material/list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { NgxPrintModule } from 'ngx-print';
@@ -35,6 +38,7 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
 import { DatePipe } from '@angular/common';
 import { SalesImageUploadComponent } from './sales-image-upload/sales-image-upload.component';
 import { ImagePreviewDialogComponent } from './image-preview-dialog/image-preview-dialog.component';
+import { SoldUnitsComponent } from './units/sold-units/sold-units.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +52,7 @@ import { ImagePreviewDialogComponent } from './image-preview-dialog/image-previe
     ConfirmationDialogComponent,
     SalesImageUploadComponent,
     ImagePreviewDialogComponent,
+    SoldUnitsComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,6 +72,9 @@ import { ImagePreviewDialogComponent } from './image-preview-dialog/image-previe
     MatDialogModule,
     MatSelectModule,
     MatTooltipModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule,
     BrowserAnimationsModule,
     ClipboardModule,
     NgxPrintModule,

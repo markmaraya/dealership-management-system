@@ -1,7 +1,26 @@
-<div class="container">
-  <div class="header-title">
-    <img class="logo" src="assets/RichAnn-Logo.png">
-    <h1>RichAnn Motors</h1>
-  </div>
-  <router-outlet></router-outlet>
-</div>
+<mat-sidenav-container class="app-container">
+  <mat-sidenav mode="side" opened class="app-sidenav">
+    <div class="header-title">
+      <img
+        class="logo"
+        src="assets/RichAnn-Logo.png"
+        alt="RichAnn Motors Logo"
+      />
+      <span class="text-dark">RichAnn Motors</span>
+    </div>
+    <mat-nav-list class="nav-list">
+      <a class="nav-item" mat-list-item routerLink="/sales"
+        ><mat-icon>local_shipping</mat-icon><span>Available Units</span></a
+      >
+      <a class="nav-item" mat-list-item routerLink="/units/sold-units"
+        ><mat-icon class="flip-horizontal">local_shipping</mat-icon><span class="nav-text">Sold Units</span></a
+      >
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="app-content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

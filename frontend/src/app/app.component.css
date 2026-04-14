@@ -1,16 +1,5 @@
-.container {
-  height: 100vh;
-}
-
 .header-title {
-  padding: 0 30px;
-  height: 64px;
-  background-color: #e63513;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  position: sticky;
-  top: 0;
+  padding: 0.8em 1em;
 }
 
 .header-title .logo {
@@ -19,6 +8,37 @@
   width: 50px;
 }
 
-.header-title h1 {
-  margin-left: 10px;
+.header-title span {
+  font-size: larger;
+  font-weight: bold;
+}
+
+.app-container {
+  height: 100vh;
+}
+
+.app-sidenav {
+  width: 260px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo {
+  height: 40px;
+}
+
+.nav-list {
+  padding: 1em;
+}
+
+.nav-item {
+  border-radius: 0.2em;
 }

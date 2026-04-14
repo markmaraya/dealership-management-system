@@ -1,4 +1,7 @@
 @use "@angular/material" as mat;
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
+
+$font-family-jakarta: "Plus Jakarta Sans", sans-serif;
 
 $primary: mat.define-palette(mat.$red-palette, 700, 500, 900);
 $primary: map-merge(
@@ -27,6 +30,9 @@ $neutral-gray: (
   900: #212121,
 );
 
+$text-color: #2a3547;
+$text-color-light: #fdf6f4;
+
 $accent: mat.define-palette(mat.$gray-palette, 200, 300, 700);
 $warn: mat.define-palette(mat.$red-palette);
 
@@ -34,6 +40,8 @@ $warn: mat.define-palette(mat.$red-palette);
 $success: #4caf50;
 $warning: #ffc107;
 $error: #d32f2f;
+
+$neutral-dark: map-get($neutral-colors, dark);
 
 $theme: mat.define-light-theme(
   (
@@ -57,6 +65,13 @@ $theme: mat.define-light-theme(
 
 @include mat.all-component-themes($theme);
 
+html,
+body,
+.mat-typography {
+  color: $text-color;
+  font-family: $font-family-jakarta;
+}
+
 .bg-primary {
   background-color: map-get($primary, 500);
   color: white;
@@ -74,4 +89,40 @@ $theme: mat.define-light-theme(
 }
 .text-dark {
   color: map-get($neutral-colors, dark);
+}
+
+.mat-mdc-list-item:hover,
+.mat-mdc-list-item:focus {
+  background-color: mat.get-color-from-palette($primary, 500);
+  color: $text-color-light;
+  cursor: pointer;
+}
+
+.mat-mdc-list-item .mdc-list-item__content .mdc-list-item__primary-text {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  mat-icon {
+    font-size: 22px;
+  }
+
+  mat-icon.flip-horizontal {
+    transform: scaleX(-1);
+  }
+
+  .nav-text {
+    line-height: 1;
+  }
+}
+
+.mat-mdc-list-item:hover .mdc-list-item__content .mdc-list-item__primary-text,
+.mat-mdc-list-item:focus .mdc-list-item__content .mdc-list-item__primary-text {
+  color: $text-color-light;
+}
+
+.mat-mdc-list-item {
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
