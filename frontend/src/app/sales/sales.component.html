@@ -1,10 +1,10 @@
-<div class="example-container mat-elevation-z8">
+<div class="example-container">
   <div class="home-header">
     <div class="example-loading-shade" *ngIf="isLoadingResults">
       <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
     </div>
-    <div class="button-row">
-      <form [formGroup]="salesForm" (ngSubmit)="onFormSubmit()">
+    <div class="button-row bg-accent">
+      <form [formGroup]="salesForm" (ngSubmit)="onFormSubmit()" class="sales-form">
         <mat-form-field
           appearance="outline"
           [floatLabel]="floatLabelControl.value"
