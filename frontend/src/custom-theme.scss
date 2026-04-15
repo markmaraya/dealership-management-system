@@ -11,6 +11,13 @@ $primary: map-merge(
   )
 );
 
+$red-pale: (
+  500: #fdf0f0,
+  contrast: (
+    500: rgba(0, 0, 0, 0.87),
+  ),
+);
+
 $neutral-colors: (
   light: #f5f5f5,
   mid: #9e9e9e,
@@ -33,7 +40,7 @@ $neutral-gray: (
 $text-color: #2a3547;
 $text-color-light: #fffdfc;
 
-$accent: mat.define-palette(mat.$gray-palette, 200, 300, 700);
+$accent: mat.define-palette($red-pale, 500, 500, 500);
 $warn: mat.define-palette(mat.$red-palette);
 
 // Status colors

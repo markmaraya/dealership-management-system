@@ -41,7 +41,7 @@ const routes: Routes = [
     data: { title: 'Edit Expenses' },
   },
   { path: 'units/sold-units', component: SoldUnitsComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/sales', pathMatch: 'full' },
 ];
 
 @NgModule({
