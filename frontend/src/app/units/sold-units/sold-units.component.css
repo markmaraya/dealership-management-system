@@ -57,13 +57,6 @@
   }
 }
 
-.search-button,
-.clear-button {
-  width: 40px;
-  height: 40px;
-  border-radius: 0.6em !important;
-}
-
 .example-loading-shade {
   position: absolute;
   top: 0;
@@ -128,6 +121,12 @@
   ::ng-deep .mat-mdc-paginator-page-size-select {
     width: 70px;
   }
+}
+
+.square-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 0.6em !important;
 }
 
 ::ng-deep .units-sold-table.mat-mdc-header-row {

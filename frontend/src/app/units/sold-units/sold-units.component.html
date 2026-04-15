@@ -18,6 +18,29 @@
       >
         <mat-form-field
           appearance="outline"
+          [floatLabel]="floatLabelControl.value"
+        >
+          <mat-label>Search Units</mat-label>
+          <input
+            matInput
+            placeholder="Input Search Word"
+            formControlName="searchWord"
+            [errorStateMatcher]="matcher"
+            required
+          />
+          <mat-error>
+            <span
+              *ngIf="
+                !salesForm.get('searchWord').valid &&
+                salesForm.get('searchWord').touched
+              "
+              >Please enter Search Word</span
+            >
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field
+          appearance="outline"
           [hideRequiredMarker]="hideRequiredControl.value"
           [floatLabel]="floatLabelControl.value"
         >
@@ -39,30 +62,9 @@
           </mat-error>
           <mat-label>Search By</mat-label>
         </mat-form-field>
-        <mat-form-field
-          appearance="outline"
-          [floatLabel]="floatLabelControl.value"
-        >
-          <mat-label>Search Units</mat-label>
-          <input
-            matInput
-            placeholder="Input Search Word"
-            formControlName="searchWord"
-            [errorStateMatcher]="matcher"
-            required
-          />
-          <mat-error>
-            <span
-              *ngIf="
-                !salesForm.get('searchWord').valid &&
-                salesForm.get('searchWord').touched
-              "
-              >Please enter Search Word</span
-            >
-          </mat-error>
-        </mat-form-field>
+
         <button
-          class="search-button"
+          class="square-button"
           mat-fab
           color="primary"
           type="submit"
@@ -70,8 +72,9 @@
         >
           <mat-icon>search</mat-icon>
         </button>
+
         <button
-          class="clear-button"
+          class="square-button"
           mat-fab
           [disabled]="!salesForm.valid"
           (click)="clearSearch()"
