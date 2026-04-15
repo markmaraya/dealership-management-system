@@ -1,18 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SalesComponent } from './sales/sales.component';
+import { AvailableUnitsComponent } from './units/available-units/available-units.component';
+import { SoldUnitsComponent } from './units/sold-units/sold-units.component';
 import { SalesDetailsComponent } from './sales-details/sales-details.component';
 import { AddSalesComponent } from './add-sales/add-sales.component';
 import { EditSalesComponent } from './edit-sales/edit-sales.component';
 import { AddExpensesComponent } from './add-expenses/add-expenses.component';
 import { EditExpensesComponent } from './edit-expenses/edit-expenses.component';
 
-import { SoldUnitsComponent } from './units/sold-units/sold-units.component';
-
 const routes: Routes = [
   {
-    path: 'sales',
-    component: SalesComponent,
+    path: 'units/available-units',
+    component: AvailableUnitsComponent,
     data: { title: 'List of Sales' },
   },
   {
@@ -41,7 +40,7 @@ const routes: Routes = [
     data: { title: 'Edit Expenses' },
   },
   { path: 'units/sold-units', component: SoldUnitsComponent },
-  { path: '', redirectTo: '/sales', pathMatch: 'full' },
+  { path: '', redirectTo: 'units/available-units', pathMatch: 'full' },
 ];
 
 @NgModule({

@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SalesComponent } from './sales/sales.component';
+import { AvailableUnitsComponent } from './units/available-units/available-units.component';
+import { SoldUnitsComponent } from './units/sold-units/sold-units.component';
 import { SalesDetailsComponent } from './sales-details/sales-details.component';
 import { AddSalesComponent } from './add-sales/add-sales.component';
 import { EditSalesComponent } from './edit-sales/edit-sales.component';
@@ -38,12 +39,11 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
 import { DatePipe } from '@angular/common';
 import { SalesImageUploadComponent } from './sales-image-upload/sales-image-upload.component';
 import { ImagePreviewDialogComponent } from './image-preview-dialog/image-preview-dialog.component';
-import { SoldUnitsComponent } from './units/sold-units/sold-units.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SalesComponent,
+    AvailableUnitsComponent,
     SalesDetailsComponent,
     AddSalesComponent,
     EditSalesComponent,

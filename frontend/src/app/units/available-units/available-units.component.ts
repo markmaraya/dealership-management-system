@@ -1,18 +1,18 @@
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UntypedFormControl, FormGroupDirective, UntypedFormBuilder, UntypedFormGroup, NgForm, Validators } from '@angular/forms';
 import { UpperCasePipe, Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { io } from "socket.io-client";
-import { ApiService } from '../api.service';
-import { Units } from '../units';
+import { ApiService } from '../../api.service';
+import { Units } from '../../units';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
-import { AddSalesComponent } from '../add-sales/add-sales.component';
+import { ConfirmationDialogComponent } from '../../confirmation-dialog/confirmation-dialog.component';
+import { AddSalesComponent } from '../../add-sales/add-sales.component';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -23,12 +23,12 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 }
 
 @Component({
-  selector: 'app-sales',
-  templateUrl: './sales.component.html',
-  styleUrls: ['./sales.component.css'],
+  selector: 'app-available-units',
+  templateUrl: './available-units.component.html',
+  styleUrls: ['./available-units.component.css'],
   providers: [UpperCasePipe]
 })
-export class SalesComponent implements OnInit {
+export class AvailableUnitsComponent implements OnInit {
   socket = io(environment.apiUrl);
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
