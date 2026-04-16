@@ -1,0 +1,70 @@
+@use "./material" as m;
+@use "./palettes" as p;
+@use "./variables" as v;
+
+.mat-mdc-raised-button.mat-mdc-raised-button {
+  height: 40px;
+}
+
+.mat-mdc-fab.square-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 0.6em !important;
+}
+
+.mat-mdc-list-item {
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.mat-mdc-list-item.active,
+.mat-mdc-list-item:hover,
+.mat-mdc-list-item:focus {
+  background-color: m.mat-get-color-from-palette(p.$primary, 500);
+  color: v.$text-color-light;
+  cursor: pointer;
+}
+
+.mat-mdc-list-item .mdc-list-item__content .mdc-list-item__primary-text {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  mat-icon {
+    font-size: 22px;
+  }
+
+  mat-icon.flip-horizontal {
+    transform: scaleX(-1);
+  }
+
+  .nav-text {
+    line-height: 1;
+  }
+}
+
+.mat-mdc-list-item.active .mdc-list-item__content .mdc-list-item__primary-text,
+.mat-mdc-list-item:hover .mdc-list-item__content .mdc-list-item__primary-text,
+.mat-mdc-list-item:focus .mdc-list-item__content .mdc-list-item__primary-text {
+  color: v.$text-color-light;
+}
+
+.mat-mdc-row:hover {
+  background-color: m.mat-get-color-from-palette(p.$primary, 100);
+}
+
+.mat-mdc-cell {
+  cursor: pointer;
+}
+
+.mat-paginator-sticky {
+  bottom: 0px;
+  position: sticky;
+  z-index: 10;
+}
+
+.mat-mdc-paginator-page-size-select .mdc-notched-outline__leading,
+.mat-mdc-paginator-page-size-select .mdc-notched-outline__trailing {
+  border: none;
+}

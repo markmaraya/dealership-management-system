@@ -1,0 +1,13 @@
+@use "./fonts";
+@use "./overrides";
+@use "./palettes";
+@use "./theme";
+@use "./utilities";
+@use "./variables";
+
+html,
+body,
+.mat-typography {
+  color: variables.$text-color;
+  font-family: variables.$font-family-jakarta;
+}

@@ -1,0 +1,13 @@
+@use "@angular/material" as mat;
+
+$primary: mat.define-palette(mat.$red-palette, 700, 500, 900);
+$primary: map-merge(
+  $primary,
+  (
+    100: #fdf0f0,
+    500: #e63513,
+  )
+);
+
+$accent: mat.define-palette(mat.$red-palette, 100);
+$warn: mat.define-palette(mat.$red-palette);

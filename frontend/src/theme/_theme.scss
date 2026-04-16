@@ -1,0 +1,21 @@
+@use "./material" as m;
+@use "./palettes" as p;
+
+$theme: m.mat-define-light-theme(
+  (
+    color: (
+      primary: p.$primary,
+      accent: p.$accent,
+      warn: p.$warn,
+    ),
+    typography: m.mat-define-typography-config(),
+    density: -2,
+  )
+);
+
+@include m.mat-core();
+@include m.mat-form-field-theme($theme);
+@include m.mat-input-theme($theme);
+@include m.mat-button-theme($theme);
+@include m.mat-toolbar-theme($theme);
+@include m.mat-all-component-themes($theme);

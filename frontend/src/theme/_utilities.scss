@@ -1,0 +1,22 @@
+@use "./material" as m;
+@use "./palettes" as p;
+@use "./variables" as v;
+
+.bg-primary {
+  background-color: m.mat-get-color-from-palette(p.$primary);
+  color: white;
+}
+.bg-accent {
+  background-color: m.mat-get-color-from-palette(p.$accent);
+  color: white;
+}
+.bg-warn {
+  background-color: m.mat-get-color-from-palette(p.$warn);
+  color: white;
+}
+.text-neutral {
+  color: map-get(v.$neutral-colors, mid);
+}
+.text-dark {
+  color: map-get(v.$neutral-colors, dark);
+}
