@@ -129,6 +129,7 @@ body,
     color 0.2s ease;
 }
 
+.mat-mdc-list-item.active,
 .mat-mdc-list-item:hover,
 .mat-mdc-list-item:focus {
   background-color: mat.get-color-from-palette($primary);
@@ -154,6 +155,7 @@ body,
   }
 }
 
+.mat-mdc-list-item.active .mdc-list-item__content .mdc-list-item__primary-text,
 .mat-mdc-list-item:hover .mdc-list-item__content .mdc-list-item__primary-text,
 .mat-mdc-list-item:focus .mdc-list-item__content .mdc-list-item__primary-text {
   color: $text-color-light;

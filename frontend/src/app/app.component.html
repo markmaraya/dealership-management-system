@@ -10,11 +10,20 @@
     </div>
     <mat-nav-list class="nav-list">
       <span class="nav-label">Units</span>
-      <a class="nav-item" mat-list-item routerLink="/units/available-units"
+      <a
+        class="nav-item"
+        mat-list-item
+        routerLink="/units/available-units"
+        routerLinkActive="active"
         ><mat-icon>local_shipping</mat-icon><span>Available Units</span></a
       >
-      <a class="nav-item" mat-list-item routerLink="/units/sold-units"
-        ><mat-icon class="flip-horizontal">local_shipping</mat-icon><span class="nav-text">Sold Units</span></a
+      <a
+        class="nav-item"
+        mat-list-item
+        routerLink="/units/sold-units"
+        routerLinkActive="active"
+        ><mat-icon class="flip-horizontal">local_shipping</mat-icon
+        ><span class="nav-text">Sold Units</span></a
       >
     </mat-nav-list>
   </mat-sidenav>

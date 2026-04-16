@@ -1,9 +1,11 @@
 .header-title {
   padding: 0.8em 1em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .header-title .logo {
-  border-radius: 5px;
   height: 50px;
   width: 50px;
 }
@@ -20,20 +22,6 @@
 
 .app-sidenav {
   width: 260px;
-}
-
-.spacer {
-  flex: 1 1 auto;
-}
-
-.header-title {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.logo {
-  height: 40px;
 }
 
 .nav-list {
