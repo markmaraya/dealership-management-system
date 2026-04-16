@@ -1,9 +1,9 @@
-@use "./fonts";
-@use "./overrides";
+@use "./variables";
 @use "./palettes";
 @use "./theme";
+@use "./fonts";
 @use "./utilities";
-@use "./variables";
+@use "./overrides";
 
 html,
 body,
