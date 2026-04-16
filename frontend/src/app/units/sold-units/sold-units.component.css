@@ -123,19 +123,8 @@
   }
 }
 
-.square-button {
-  width: 40px;
-  height: 40px;
-  border-radius: 0.6em !important;
-}
-
 ::ng-deep .units-sold-table.mat-mdc-header-row {
   border-bottom: 2px solid #333;
-}
-
-::ng-deep .mat-mdc-paginator-page-size-select .mdc-notched-outline__leading,
-::ng-deep .mat-mdc-paginator-page-size-select .mdc-notched-outline__trailing {
-  border: none;
 }
 
 .image-column {

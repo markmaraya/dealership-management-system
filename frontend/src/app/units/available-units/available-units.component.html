@@ -3,8 +3,19 @@
     <div class="example-loading-shade" *ngIf="isLoadingResults">
       <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
     </div>
-    <div class="button-row bg-accent">
-      <form [formGroup]="salesForm" (ngSubmit)="onFormSubmit()" class="sales-form">
+
+    <div class="header-row"></div>
+
+    <div class="section-label bg-accent text-dark">Available Units</div>
+  </div>
+
+  <div class="table-container">
+    <div class="button-row">
+      <form
+        [formGroup]="salesForm"
+        (ngSubmit)="onFormSubmit()"
+        class="sales-form"
+      >
         <mat-form-field
           appearance="outline"
           [floatLabel]="floatLabelControl.value"
@@ -51,16 +62,17 @@
           <mat-label>Search By</mat-label>
         </mat-form-field>
         <button
-          class="search-button"
-          mat-flat-button
+          class="square-button"
+          mat-fab
+          color="primary"
           type="submit"
           [disabled]="!salesForm.valid"
         >
-          <mat-icon>search</mat-icon> Search
+          <mat-icon>search</mat-icon>
         </button>
         <button
-          class="clear-button"
-          mat-stroked-button
+          class="square-button"
+          mat-fab
           [disabled]="!salesForm.valid"
           (click)="clearSearch()"
         >
@@ -69,117 +81,120 @@
       </form>
       <div class="buttons-wrapper">
         <a
-          class="sold-units"
-          mat-flat-button
-          color="primary"
-          (click)="getUnits(tableState.isSold)"
-        >
-          <mat-icon>local_shipping</mat-icon>
-          {{ tableState.tableToogleButtonText }}
-        </a>
-        <a
           class="add-unit"
-          mat-flat-button
+          mat-raised-button
           color="primary"
           (click)="encodeNewUnit()"
         >
-          <mat-icon>add</mat-icon> Encode New Unit
+          <mat-icon>add</mat-icon> Add New Unit
         </a>
       </div>
     </div>
-  </div>
-  <h2 class="table-label">{{ tableState.tableLabelStatus }}</h2>
-  <div class="table-container">
-    <table
-      mat-table
-      [dataSource]="data"
-      class="example-table"
-      matSort
-      matSortActive="unitCode"
-      matSortDisableClear
-      matSortDirection="asc"
-    >
-      <ng-container matColumnDef="unitCode">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Unit Code</th>
-        <td mat-cell *matCellDef="let row">{{ row.unitCode }}</td>
-      </ng-container>
 
-      <ng-container matColumnDef="image">
-        <th mat-header-cell *matHeaderCellDef class="text-center">Image</th>
-        <td mat-cell *matCellDef="let row" class="image-column">
-          <div class="sales-img">
-            <img
-              *ngIf="row.imageFile.imageUrl?.length > 0"
-              [src]="environmentApiUrl + row.imageFile.imageUrl"
-              alt="{{ row.imageFile.id }}"
-            />
-            <span *ngIf="row.imageFile.imageUrl?.length <= 0">No Image</span>
-          </div>
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="makeAndModel">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          Make and Model
-        </th>
-        <td mat-cell *matCellDef="let row">{{ row.makeAndModel }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="bodyType">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Body Type</th>
-        <td mat-cell *matCellDef="let row">{{ row.bodyType }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="chasisCode">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Chasis Code</th>
-        <td mat-cell *matCellDef="let row">{{ row.chasisCode }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="actions">
-        <th
-          mat-header-cell
-          *matHeaderCellDef
-          [hidden]="tableState.isTableColumnHidden"
-          class="text-center"
+    <div class="table-wrapper">
+      <div class="table-scroll-wrapper">
+        <table
+          mat-table
+          [dataSource]="data"
+          class="example-table"
+          matSort
+          matSortActive="unitCode"
+          matSortDisableClear
+          matSortDirection="asc"
         >
-          Actions
-        </th>
-        <td
-          mat-cell
-          *matCellDef="let row"
-          [hidden]="tableState.isTableColumnHidden"
-          class="actions-column"
-        >
-          <button
-            class="sold-button"
-            mat-stroked-button
-            color="primary"
-            (click)="
-              openDialog(row._id, row.unitCode); $event.stopPropagation()
-            "
-          >
-            Mark as Sold
-          </button>
-        </td>
-      </ng-container>
+          <ng-container matColumnDef="unitCode">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Unit Code</th>
+            <td mat-cell *matCellDef="let row">{{ row.unitCode }}</td>
+          </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-      <tr
-        mat-row
-        *matRowDef="let row; columns: displayedColumns"
-        [routerLink]="['/sales-details/', row._id]"
-      ></tr>
-      <tr class="mat-row no-data-row" *matNoDataRow>
-        <td class="mat-cell" [colSpan]="tableState.isTableColumnHidden ? 5 : 6">
-          No units found
-        </td>
-      </tr>
-    </table>
-    <mat-paginator
-      [pageSize]="10"
-      [pageSizeOptions]="[10, 50, 100]"
-      class="mat-paginator-sticky"
-      showFirstLastButtons
-    ></mat-paginator>
+          <ng-container matColumnDef="image">
+            <th mat-header-cell *matHeaderCellDef class="text-center">Image</th>
+            <td mat-cell *matCellDef="let row" class="image-column">
+              <div class="sales-img">
+                <img
+                  *ngIf="row.imageFile.imageUrl?.length > 0"
+                  [src]="environmentApiUrl + row.imageFile.imageUrl"
+                  alt="{{ row.imageFile.id }}"
+                />
+                <span *ngIf="row.imageFile.imageUrl?.length <= 0"
+                  >No Image</span
+                >
+              </div>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="makeAndModel">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Make and Model
+            </th>
+            <td mat-cell *matCellDef="let row">{{ row.makeAndModel }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="bodyType">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Body Type</th>
+            <td mat-cell *matCellDef="let row">{{ row.bodyType }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="chasisCode">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Chasis Code
+            </th>
+            <td mat-cell *matCellDef="let row">{{ row.chasisCode }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <th
+              mat-header-cell
+              *matHeaderCellDef
+              [hidden]="tableState.isTableColumnHidden"
+              class="text-center"
+            >
+              Actions
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let row"
+              [hidden]="tableState.isTableColumnHidden"
+              class="actions-column"
+            >
+              <button
+                class="sold-button"
+                mat-stroked-button
+                color="primary"
+                (click)="
+                  openDialog(row._id, row.unitCode); $event.stopPropagation()
+                "
+              >
+                Mark as Sold
+              </button>
+            </td>
+          </ng-container>
+
+          <tr
+            mat-header-row
+            *matHeaderRowDef="displayedColumns; sticky: true"
+          ></tr>
+          <tr
+            mat-row
+            *matRowDef="let row; columns: displayedColumns"
+            [routerLink]="['/sales-details/', row._id]"
+          ></tr>
+          <tr class="mat-row no-data-row" *matNoDataRow>
+            <td
+              class="mat-cell"
+              [colSpan]="tableState.isTableColumnHidden ? 5 : 6"
+            >
+              No units found
+            </td>
+          </tr>
+        </table>
+        <mat-paginator
+          [pageSize]="10"
+          [pageSizeOptions]="[10, 50, 100]"
+          class="mat-paginator-sticky"
+          showFirstLastButtons
+        ></mat-paginator>
+      </div>
+    </div>
   </div>
 </div>
