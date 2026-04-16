@@ -211,7 +211,7 @@ export class AvailableUnitsComponent implements OnInit {
     });
   }
 
-  encodeNewUnit() {
+  addNewUnit() {
     this.dialog.open(AddSalesComponent);
   }
 

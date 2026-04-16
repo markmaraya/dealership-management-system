@@ -1,42 +1,93 @@
 <div class="add-unit-container">
-    <h2 class="add-unit-label">Add New Unit</h2>
+  <h2 mat-dialog-title>Add New Unit</h2>
+  <mat-dialog-content>
     <form [formGroup]="salesForm" (ngSubmit)="onFormSubmit()">
-        <mat-form-field class="example-full-width">
-            <mat-label>Unit Code</mat-label>
-            <input matInput placeholder="Unit Code" formControlName="unitCode" [errorStateMatcher]="matcher" (focus)="onFocusUnitCode()">
-            <mat-error>
-                <span *ngIf="!salesForm.get('unitCode').valid && salesForm.get('unitCode').touched">Please enter Unit Code</span>
-            </mat-error>
-            <mat-error *ngIf="unitCodeExist">
-                Unit Code already exist
-            </mat-error>
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-            <mat-label>Make and Model</mat-label>
-            <input matInput placeholder="Make and Model" formControlName="makeAndModel" [errorStateMatcher]="matcher">
-            <mat-error>
-                <span *ngIf="!salesForm.get('makeAndModel').valid && salesForm.get('makeAndModel').touched">Please enter Make and Model</span>
-            </mat-error>
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-            <mat-label>Body Type</mat-label>
-            <input matInput placeholder="Body Type" formControlName="bodyType" [errorStateMatcher]="matcher">
-            <mat-error>
-                <span *ngIf="!salesForm.get('bodyType').valid && salesForm.get('bodyType').touched">Please enter Body Type</span>
-            </mat-error>
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-            <mat-label>Chasis Code</mat-label>
-            <input matInput placeholder="Chasis Code" formControlName="chasisCode" [errorStateMatcher]="matcher">
-            <mat-error>
-                <span *ngIf="!salesForm.get('chasisCode').valid && salesForm.get('chasisCode').touched">Please enter Chasis Code</span>
-            </mat-error>
-        </mat-form-field>
-        <div class="button-row">
-            <button class="save-button" type="submit" [disabled]="!salesForm.valid" mat-flat-button color="primary" mat-dialog-close>
-          <mat-icon>save</mat-icon> Save
-        </button>
-            <a class="back-button" mat-flat-button color="primary" mat-dialog-close>Back</a>
-        </div>
+      <mat-form-field class="full-width pt-16 mb-16" appearance="outline">
+        <mat-label>Unit Code</mat-label>
+        <input
+          matInput
+          placeholder="Unit Code"
+          formControlName="unitCode"
+          [errorStateMatcher]="matcher"
+          (focus)="onFocusUnitCode()"
+        />
+        <mat-error>
+          <span
+            *ngIf="
+              !salesForm.get('unitCode').valid &&
+              salesForm.get('unitCode').touched
+            "
+            >Please enter Unit Code</span
+          >
+        </mat-error>
+        <mat-error *ngIf="unitCodeExist"> Unit Code already exist </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width mb-16" appearance="outline">
+        <mat-label>Make and Model</mat-label>
+        <input
+          matInput
+          placeholder="Make and Model"
+          formControlName="makeAndModel"
+          [errorStateMatcher]="matcher"
+        />
+        <mat-error>
+          <span
+            *ngIf="
+              !salesForm.get('makeAndModel').valid &&
+              salesForm.get('makeAndModel').touched
+            "
+            >Please enter Make and Model</span
+          >
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width mb-16" appearance="outline">
+        <mat-label>Body Type</mat-label>
+        <input
+          matInput
+          placeholder="Body Type"
+          formControlName="bodyType"
+          [errorStateMatcher]="matcher"
+        />
+        <mat-error>
+          <span
+            *ngIf="
+              !salesForm.get('bodyType').valid &&
+              salesForm.get('bodyType').touched
+            "
+            >Please enter Body Type</span
+          >
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Chasis Code</mat-label>
+        <input
+          matInput
+          placeholder="Chasis Code"
+          formControlName="chasisCode"
+          [errorStateMatcher]="matcher"
+        />
+        <mat-error>
+          <span
+            *ngIf="
+              !salesForm.get('chasisCode').valid &&
+              salesForm.get('chasisCode').touched
+            "
+            >Please enter Chasis Code</span
+          >
+        </mat-error>
+      </mat-form-field>
     </form>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close>Back</button>
+    <button
+      type="submit"
+      [disabled]="!salesForm.valid"
+      mat-flat-button
+      color="primary"
+      mat-dialog-close
+    >
+      <mat-icon>save</mat-icon> Save
+    </button>
+  </mat-dialog-actions>
 </div>

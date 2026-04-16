@@ -19,7 +19,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 @Component({
   selector: 'app-add-sales',
   templateUrl: './add-sales.component.html',
-  styleUrls: ['./add-sales.component.css']
+  styleUrls: ['./add-sales.component.scss']
 })
 export class AddSalesComponent implements OnInit {
   socket = io(environment.apiUrl);
@@ -31,7 +31,7 @@ export class AddSalesComponent implements OnInit {
   chasisCode = '';
   expenses: Expenses = new Expenses;
   imageFile: Gallery = new Gallery;
-  unitCodeExist;
+  unitCodeExist: boolean = false;
   isLoadingResults = false;
   matcher = new MyErrorStateMatcher();
 
