@@ -8,10 +8,6 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-input,
-.mat-cell {
-  text-transform: uppercase;
-}
 *::-webkit-scrollbar {
   width: 10px;
 }
@@ -21,52 +17,4 @@ input,
 *::-webkit-scrollbar-thumb {
   background: #97b0b5;
   border-radius: 0.6em;
-}
-
-@font-face {
-  font-family: "Material Icons";
-  font-style: normal;
-  font-weight: 400;
-  src: url(assets/fonts/MaterialIcons.woff2) format("woff2");
-}
-
-.material-icons {
-  font-family: "Material Icons";
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;
-  line-height: 1;
-  letter-spacing: normal;
-  text-transform: none;
-  display: inline-block;
-  white-space: nowrap;
-  word-wrap: normal;
-  direction: ltr;
-  -webkit-font-feature-settings: "liga";
-  -webkit-font-smoothing: antialiased;
-}
-
-.mat-mdc-row:hover {
-  background-color: #f4f4f4;
-}
-
-.mat-mdc-cell {
-  cursor: pointer;
-}
-
-.mat-paginator-sticky {
-  bottom: 0px;
-  position: sticky;
-  z-index: 10;
-}
-
-.mat-mdc-paginator-page-size-select .mdc-notched-outline__leading,
-.mat-mdc-paginator-page-size-select .mdc-notched-outline__trailing {
-  border: none;
-}
-
-.mat-mdc-fab.square-button {
-  width: 40px;
-  height: 40px;
-  border-radius: 0.6em !important;
 }
