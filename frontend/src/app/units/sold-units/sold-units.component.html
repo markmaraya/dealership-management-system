@@ -102,16 +102,19 @@
 
           <ng-container matColumnDef="image">
             <th mat-header-cell *matHeaderCellDef class="text-center">Image</th>
-            <td mat-cell *matCellDef="let row" class="image-column">
+            <td mat-cell *matCellDef="let row">
               <div class="sales-img">
                 <img
                   *ngIf="row.imageFile.imageUrl?.length > 0"
                   [src]="environmentApiUrl + row.imageFile.imageUrl"
                   alt="{{ row.imageFile.id }}"
                 />
-                <span *ngIf="row.imageFile.imageUrl?.length <= 0"
-                  >No Image</span
+                <div
+                  class="image-placeholder"
+                  *ngIf="row.imageFile.imageUrl?.length <= 0"
                 >
+                  No Image
+                </div>
               </div>
             </td>
           </ng-container>

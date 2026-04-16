@@ -127,9 +127,15 @@
   border-bottom: 2px solid #333;
 }
 
-.image-column {
+.image-placeholder {
+  width: 110px;
+  height: 80px;
+  background-color: #e0e0e0;
   display: flex;
+  align-items: center;
   justify-content: center;
+  color: #2a3547;
+  font-size: 12px;
 }
 
 .sales-img {
