@@ -39,7 +39,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 @Component({
   selector: 'app-available-units',
   templateUrl: './available-units.component.html',
-  styleUrls: ['./available-units.component.css'],
+  styleUrls: ['./available-units.component.scss'],
   providers: [UpperCasePipe],
 })
 export class AvailableUnitsComponent implements OnInit {

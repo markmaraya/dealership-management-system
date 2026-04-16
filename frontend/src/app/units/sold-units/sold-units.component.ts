@@ -37,7 +37,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 @Component({
   selector: 'app-sold-units',
   templateUrl: './sold-units.component.html',
-  styleUrls: ['./sold-units.component.css'],
+  styleUrls: ['./sold-units.component.scss'],
 })
 export class SoldUnitsComponent {
   socket = io(environment.apiUrl);
