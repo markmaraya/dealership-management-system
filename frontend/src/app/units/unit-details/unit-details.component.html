@@ -257,7 +257,7 @@
         <div class="sales-img print-sales-img">
           <img
             *ngIf="units.imageFile.imageUrl?.length > 0"
-            src="{{ units.imageFile.imageUrl }}"
+            [src]="environmentApiUrl + units.imageFile.imageUrl"
             (click)="openImagePreviewDialog(units.imageFile._id)"
             alt="{{ units.imageFile.id }}"
           />

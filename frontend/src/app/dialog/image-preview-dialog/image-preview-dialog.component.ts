@@ -1,3 +1,4 @@
+import { environment } from '../../../environments/environment';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ApiService } from '../../api.service';
@@ -9,8 +10,9 @@ import { Gallery } from '../../models/gallery';
   styleUrls: ['./image-preview-dialog.component.scss']
 })
 export class ImagePreviewDialogComponent implements OnInit {
-  _id: string;
+  _id!: string;
   gallery: Gallery = { id: '', imageUrl: '', uploaded: null, unitCode: '' };
+  environmentApiUrl = environment.apiUrl;
 
   constructor(
     public dialogRef: MatDialogRef<ImagePreviewDialogComponent>,

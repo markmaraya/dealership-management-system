@@ -1,3 +1,4 @@
+import { environment } from '../environments/environment';
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams, HttpRequest } from '@angular/common/http';
@@ -10,7 +11,7 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 const apiUrl = 'http://localhost:4000/api';
-const galleryUrl = 'http://localhost:4000/gallery';
+const galleryUrl = `${environment.apiUrl}/gallery`;;
 
 @Injectable({
   providedIn: 'root'

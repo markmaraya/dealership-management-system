@@ -1,6 +1,10 @@
 <div class="image-preview-wrapper">
-    <button class="close-button" mat-flat-button mat-stroked-button [mat-dialog-close]="false">
-        <mat-icon>close</mat-icon>
-    </button>
-    <img *ngIf="(gallery.imageUrl)?.length > 0" src="{{gallery.imageUrl}}" alt="{{gallery.id}}">
+  <button class="close-button" mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+  <img
+    *ngIf="gallery.imageUrl?.length > 0"
+    [src]="environmentApiUrl + gallery.imageUrl"
+    alt="{{ gallery.id }}"
+  />
 </div>

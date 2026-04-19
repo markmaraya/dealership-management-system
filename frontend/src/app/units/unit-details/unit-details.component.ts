@@ -59,7 +59,6 @@ export class UnitDetailsComponent implements OnInit {
     this.api.getUnitsById(id)
       .subscribe((data: any) => {
         this.units = data;
-        console.log(this.units);
         this.getExpenses(id);
         this.isLoadingResults = false;
       });
