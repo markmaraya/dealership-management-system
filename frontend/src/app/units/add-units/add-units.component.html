@@ -2,7 +2,7 @@
   <h2 mat-dialog-title>Add New Unit</h2>
   <mat-dialog-content>
     <form [formGroup]="salesForm" (ngSubmit)="onFormSubmit()">
-      <mat-form-field class="full-width pt-16 mb-16" appearance="outline">
+      <mat-form-field class="full-width pt-16 mb-16" appearance="fill" floatLabel="always">
         <mat-label>Unit Code</mat-label>
         <input
           matInput
@@ -22,7 +22,7 @@
         </mat-error>
         <mat-error *ngIf="unitCodeExist"> Unit Code already exist </mat-error>
       </mat-form-field>
-      <mat-form-field class="full-width mb-16" appearance="outline">
+      <mat-form-field class="full-width mb-16" appearance="fill" floatLabel="always">
         <mat-label>Make and Model</mat-label>
         <input
           matInput
@@ -40,7 +40,7 @@
           >
         </mat-error>
       </mat-form-field>
-      <mat-form-field class="full-width mb-16" appearance="outline">
+      <mat-form-field class="full-width mb-16" appearance="fill" floatLabel="always">
         <mat-label>Body Type</mat-label>
         <input
           matInput
@@ -58,7 +58,7 @@
           >
         </mat-error>
       </mat-form-field>
-      <mat-form-field class="full-width" appearance="outline">
+      <mat-form-field class="full-width" appearance="fill" floatLabel="always">
         <mat-label>Chasis Code</mat-label>
         <input
           matInput

@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AvailableUnitsComponent } from './units/available-units/available-units.component';
 import { SoldUnitsComponent } from './units/sold-units/sold-units.component';
 import { SalesDetailsComponent } from './sales-details/sales-details.component';
-import { AddSalesComponent } from './add-sales/add-sales.component';
+import { AddUnitsComponent } from './units/add-units/add-units.component';
 import { EditSalesComponent } from './edit-sales/edit-sales.component';
 import { AddExpensesComponent } from './add-expenses/add-expenses.component';
 import { EditExpensesComponent } from './edit-expenses/edit-expenses.component';
@@ -12,7 +12,12 @@ const routes: Routes = [
   {
     path: 'units/available-units',
     component: AvailableUnitsComponent,
-    data: { title: 'List of Sales' },
+    data: { title: 'Available Units' },
+  },
+  {
+    path: 'units/sold-units',
+    component: SoldUnitsComponent,
+    data: { title: 'Sold Units' },
   },
   {
     path: 'sales-details/:id',
@@ -20,9 +25,9 @@ const routes: Routes = [
     data: { title: 'Sales Details' },
   },
   {
-    path: 'add-sales',
-    component: AddSalesComponent,
-    data: { title: 'Add Sales' },
+    path: 'add-units',
+    component: AddUnitsComponent,
+    data: { title: 'Add Units' },
   },
   {
     path: 'edit-sales/:id',
@@ -39,7 +44,6 @@ const routes: Routes = [
     component: EditExpensesComponent,
     data: { title: 'Edit Expenses' },
   },
-  { path: 'units/sold-units', component: SoldUnitsComponent },
   { path: '', redirectTo: 'units/available-units', pathMatch: 'full' },
 ];
 

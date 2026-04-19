@@ -19,7 +19,7 @@ import { MatSort } from '@angular/material/sort';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from '../../confirmation-dialog/confirmation-dialog.component';
-import { AddSalesComponent } from '../../add-sales/add-sales.component';
+import { AddUnitsComponent } from '../add-units/add-units.component';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -212,7 +212,7 @@ export class AvailableUnitsComponent implements OnInit {
   }
 
   addNewUnit() {
-    this.dialog.open(AddSalesComponent);
+    this.dialog.open(AddUnitsComponent);
   }
 
   private setStatusToSold(id: string): void {

@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { AvailableUnitsComponent } from './units/available-units/available-units.component';
 import { SoldUnitsComponent } from './units/sold-units/sold-units.component';
 import { SalesDetailsComponent } from './sales-details/sales-details.component';
-import { AddSalesComponent } from './add-sales/add-sales.component';
+import { AddUnitsComponent } from './units/add-units/add-units.component';
 import { EditSalesComponent } from './edit-sales/edit-sales.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -45,7 +45,7 @@ import { ImagePreviewDialogComponent } from './image-preview-dialog/image-previe
     AppComponent,
     AvailableUnitsComponent,
     SalesDetailsComponent,
-    AddSalesComponent,
+    AddUnitsComponent,
     EditSalesComponent,
     AddExpensesComponent,
     EditExpensesComponent,

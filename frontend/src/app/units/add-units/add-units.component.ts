@@ -1,12 +1,12 @@
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { Component, OnInit } from '@angular/core';
 import { io } from "socket.io-client";
 import { Router } from '@angular/router';
-import { ApiService } from '../api.service';
+import { ApiService } from '../../api.service';
 import { UntypedFormControl, FormGroupDirective, UntypedFormBuilder, UntypedFormGroup, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { Expenses } from '../expenses';
-import { Gallery } from '../gallery';
+import { Expenses } from '../../expenses';
+import { Gallery } from '../../gallery';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -17,11 +17,11 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 }
 
 @Component({
-  selector: 'app-add-sales',
-  templateUrl: './add-sales.component.html',
-  styleUrls: ['./add-sales.component.scss']
+  selector: 'app-add-units',
+  templateUrl: './add-units.component.html',
+  styleUrls: ['./add-units.component.scss']
 })
-export class AddSalesComponent implements OnInit {
+export class AddUnitsComponent implements OnInit {
   socket = io(environment.apiUrl);
 
   salesForm: UntypedFormGroup;
