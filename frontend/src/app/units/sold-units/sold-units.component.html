@@ -145,7 +145,7 @@
           <tr
             mat-row
             *matRowDef="let row; columns: displayedColumns"
-            [routerLink]="['/sales-details/', row._id]"
+            [routerLink]="['/unit-details/', row._id]"
           ></tr>
           <tr class="mat-row no-data-row" *matNoDataRow>
             <td class="mat-cell" [colSpan]="5">No units found</td>

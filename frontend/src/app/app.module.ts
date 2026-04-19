@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AvailableUnitsComponent } from './units/available-units/available-units.component';
 import { SoldUnitsComponent } from './units/sold-units/sold-units.component';
-import { SalesDetailsComponent } from './sales-details/sales-details.component';
+import { UnitDetailsComponent } from './units/unit-details/unit-details.component';
 import { AddUnitsComponent } from './units/add-units/add-units.component';
 import { EditSalesComponent } from './edit-sales/edit-sales.component';
 
@@ -44,15 +44,15 @@ import { ImagePreviewDialogComponent } from './image-preview-dialog/image-previe
   declarations: [
     AppComponent,
     AvailableUnitsComponent,
-    SalesDetailsComponent,
+    SoldUnitsComponent,
+    UnitDetailsComponent,
     AddUnitsComponent,
     EditSalesComponent,
     AddExpensesComponent,
     EditExpensesComponent,
     ConfirmationDialogComponent,
     SalesImageUploadComponent,
-    ImagePreviewDialogComponent,
-    SoldUnitsComponent,
+    ImagePreviewDialogComponent,    
   ],
   imports: [
     BrowserModule,

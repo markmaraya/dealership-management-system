@@ -1,4 +1,4 @@
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { Component, OnInit } from '@angular/core';
 import { io } from "socket.io-client";
 import { ActivatedRoute, Router } from '@angular/router';
@@ -6,23 +6,23 @@ import { MatDialog } from "@angular/material/dialog";
 import { Clipboard } from "@angular/cdk/clipboard";
 import { DatePipe } from '@angular/common';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { ApiService } from '../api.service';
-import { Units } from './../models/units';
-import { Gallery } from '../models/gallery';
-import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
-import { SalesImageUploadComponent } from '../sales-image-upload/sales-image-upload.component';
-import { ImagePreviewDialogComponent } from '../image-preview-dialog/image-preview-dialog.component';
-import { AddExpensesComponent } from '../add-expenses/add-expenses.component';
-import { EditSalesComponent } from '../edit-sales/edit-sales.component';
-import { EditExpensesComponent } from '../edit-expenses/edit-expenses.component';
+import { ApiService } from '../../api.service';
+import { Units } from '../../models/units';
+import { Gallery } from '../../models/gallery';
+import { ConfirmationDialogComponent } from '../../confirmation-dialog/confirmation-dialog.component';
+import { SalesImageUploadComponent } from '../../sales-image-upload/sales-image-upload.component';
+import { ImagePreviewDialogComponent } from '../../image-preview-dialog/image-preview-dialog.component';
+import { AddExpensesComponent } from '../../add-expenses/add-expenses.component';
+import { EditSalesComponent } from '../../edit-sales/edit-sales.component';
+import { EditExpensesComponent } from '../../edit-expenses/edit-expenses.component';
 
 
 @Component({
-  selector: 'app-sales-details',
-  templateUrl: './sales-details.component.html',
-  styleUrls: ['./sales-details.component.css']
+  selector: 'app-unit-details',
+  templateUrl: './unit-details.component.html',
+  styleUrls: ['./unit-details.component.scss']
 })
-export class SalesDetailsComponent implements OnInit {
+export class UnitDetailsComponent implements OnInit {
   socket = io(environment.apiUrl);
 
   _id: any;

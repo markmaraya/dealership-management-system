@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AvailableUnitsComponent } from './units/available-units/available-units.component';
 import { SoldUnitsComponent } from './units/sold-units/sold-units.component';
-import { SalesDetailsComponent } from './sales-details/sales-details.component';
+import { UnitDetailsComponent } from './units/unit-details/unit-details.component';
 import { AddUnitsComponent } from './units/add-units/add-units.component';
 import { EditSalesComponent } from './edit-sales/edit-sales.component';
 import { AddExpensesComponent } from './add-expenses/add-expenses.component';
@@ -20,9 +20,9 @@ const routes: Routes = [
     data: { title: 'Sold Units' },
   },
   {
-    path: 'sales-details/:id',
-    component: SalesDetailsComponent,
-    data: { title: 'Sales Details' },
+    path: 'unit-details/:id',
+    component: UnitDetailsComponent,
+    data: { title: 'Unit Details' },
   },
   {
     path: 'add-units',
