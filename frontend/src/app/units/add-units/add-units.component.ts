@@ -15,8 +15,8 @@ import {
 } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Expenses } from '../../expenses';
-import { Gallery } from '../../gallery';
+import { Expenses } from '../../models/expenses';
+import { Gallery } from '../../models/gallery';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {

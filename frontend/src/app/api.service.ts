@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams, HttpRequest } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
-import { Units } from './units';
-import { Expenses } from './expenses';
-import { Gallery } from './gallery';
+import { Units } from './models/units';
+import { Expenses } from './models/expenses';
+import { Gallery } from './models/gallery';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })

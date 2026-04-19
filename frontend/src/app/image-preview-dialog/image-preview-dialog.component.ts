@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ApiService } from '../api.service';
-import { Gallery } from '../gallery';
+import { Gallery } from '../models/gallery';
 
 @Component({
   selector: 'app-image-preview-dialog',

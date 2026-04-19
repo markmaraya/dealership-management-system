@@ -12,7 +12,7 @@ import { UpperCasePipe, Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { io } from 'socket.io-client';
 import { ApiService } from '../../api.service';
-import { Units } from '../../units';
+import { Units } from '../../models/units';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
