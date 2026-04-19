@@ -201,7 +201,7 @@ export class AvailableUnitsComponent implements OnInit {
     const confirmDialog = this.dialog.open(ConfirmationDialogComponent, {
       data: {
         title: 'Mark Unit as Sold',
-        message: `Confirm unit "${this.uppercasePipe.transform(unit)}" as sold`,
+        message: `Confirm unit "${this.uppercasePipe.transform(unit)}" as sold?`,
       },
     });
     confirmDialog.afterClosed().subscribe((result) => {
