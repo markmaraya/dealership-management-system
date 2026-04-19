@@ -34,6 +34,7 @@ export class UnitDetailsComponent implements OnInit {
   showExpenses = 0;
   total = 0;
   salesForm: UntypedFormGroup;
+  environmentApiUrl = environment.apiUrl;
 
   constructor(
     private route: ActivatedRoute,
