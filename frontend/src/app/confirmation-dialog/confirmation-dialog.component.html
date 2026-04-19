@@ -1,9 +1,9 @@
-<h1 mat-dialog-title>{{data.title}}</h1>
-<div mat-dialog-content>
-    {{data.message}}
-</div>
+<h1 mat-dialog-title>{{ data.title }}</h1>
+<mat-dialog-content>
+  {{ data.message }}
+</mat-dialog-content>
 
-<div class="button-row">
-    <a class="confirm-button" mat-flat-button [mat-dialog-close]="true">Confirm</a>
-    <a class="cancel-button" mat-flat-button [mat-dialog-close]="false">Cancel</a>
-</div>
+<mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="false">Cancel</button>
+  <button mat-flat-button color="primary" [mat-dialog-close]="true">Confirm</button>
+</mat-dialog-actions>
