@@ -1,12 +1,12 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ApiService } from '../api.service';
-import { Gallery } from '../models/gallery';
+import { ApiService } from '../../api.service';
+import { Gallery } from '../../models/gallery';
 
 @Component({
   selector: 'app-image-preview-dialog',
   templateUrl: './image-preview-dialog.component.html',
-  styleUrls: ['./image-preview-dialog.component.css']
+  styleUrls: ['./image-preview-dialog.component.scss']
 })
 export class ImagePreviewDialogComponent implements OnInit {
   _id: string;

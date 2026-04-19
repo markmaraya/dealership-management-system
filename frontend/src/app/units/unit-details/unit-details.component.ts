@@ -9,9 +9,9 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 import { ApiService } from '../../api.service';
 import { Units } from '../../models/units';
 import { Gallery } from '../../models/gallery';
-import { ConfirmationDialogComponent } from '../../confirmation-dialog/confirmation-dialog.component';
+import { ConfirmationDialogComponent } from '../../dialog/confirmation-dialog/confirmation-dialog.component';
 import { SalesImageUploadComponent } from '../../sales-image-upload/sales-image-upload.component';
-import { ImagePreviewDialogComponent } from '../../image-preview-dialog/image-preview-dialog.component';
+import { ImagePreviewDialogComponent } from '../../dialog/image-preview-dialog/image-preview-dialog.component';
 import { AddExpensesComponent } from '../../add-expenses/add-expenses.component';
 import { EditSalesComponent } from '../../edit-sales/edit-sales.component';
 import { EditExpensesComponent } from '../../edit-expenses/edit-expenses.component';
