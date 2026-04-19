@@ -66,10 +66,6 @@ export class AvailableUnitsComponent implements OnInit {
   formOptions: UntypedFormGroup;
   hideRequiredControl = new UntypedFormControl(false);
   floatLabelControl = new UntypedFormControl('auto');
-  tableState: any = {
-    isSold: true,
-    isTableColumnHidden: false,
-  };
   environmentApiUrl = environment.apiUrl;
 
   constructor(
@@ -87,8 +83,7 @@ export class AvailableUnitsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let status = history.state.status == 'sold' ? true : false;
-    this.getUnits(status);
+    this.getUnits();
 
     this.socket.on(
       'update-data',
@@ -100,25 +95,10 @@ export class AvailableUnitsComponent implements OnInit {
     this.initForm();
   }
 
-  getUnits(isSold?: boolean) {
+  getUnits() {
     this.api.getUnits().subscribe(
       (res: any) => {
-        let getFilteredUnits = (res) => {
-          if (isSold) {
-            this.tableState = {
-              isSold: false,
-              isTableColumnHidden: true,
-            };
-            return res.status == 'sold';
-          } else {
-            this.tableState = {
-              isSold: true,
-              isTableColumnHidden: false,
-            };
-            return res.status != 'sold';
-          }
-        };
-
+        let getFilteredUnits = (res) => res.status == 'available';
         let filteredRes: Units[] = res.filter(getFilteredUnits);
 
         this.data = new MatTableDataSource<Units>(filteredRes);
@@ -130,7 +110,7 @@ export class AvailableUnitsComponent implements OnInit {
             this.salesForm.value.searchBy,
           );
         }
-        console.log(this.data);
+
         this.isLoadingResults = false;
       },
       (err) => {
@@ -194,10 +174,10 @@ export class AvailableUnitsComponent implements OnInit {
       searchBy: new UntypedFormControl(0),
     });
     this.salesForm.reset();
-    this.getUnits(!this.tableState.isSold);
+    this.getUnits();
   }
 
-  openDialog(id: any, unit: string) {
+  openMarkAsSoldDialog(id: any, unit: string) {
     const confirmDialog = this.dialog.open(ConfirmationDialogComponent, {
       data: {
         title: 'Mark Unit as Sold',
@@ -233,6 +213,7 @@ export class AvailableUnitsComponent implements OnInit {
         (res: any) => {
           this.isLoadingResults = false;
           this.socket.emit('updatedata', res);
+          this.getUnits();
           this.router.navigate(['/']);
         },
         (err: any) => {

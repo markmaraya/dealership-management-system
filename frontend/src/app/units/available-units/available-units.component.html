@@ -146,26 +146,16 @@
           </ng-container>
 
           <ng-container matColumnDef="actions">
-            <th
-              mat-header-cell
-              *matHeaderCellDef
-              [hidden]="tableState.isTableColumnHidden"
-              class="text-center"
-            >
+            <th mat-header-cell *matHeaderCellDef class="text-center">
               Actions
             </th>
-            <td
-              mat-cell
-              *matCellDef="let row"
-              [hidden]="tableState.isTableColumnHidden"
-              class="actions-column"
-            >
+            <td mat-cell *matCellDef="let row" class="actions-column">
               <button
                 class="sold-button"
                 mat-stroked-button
                 color="primary"
                 (click)="
-                  openDialog(row._id, row.unitCode); $event.stopPropagation()
+                  openMarkAsSoldDialog(row._id, row.unitCode); $event.stopPropagation()
                 "
               >
                 Mark as Sold
@@ -183,12 +173,7 @@
             [routerLink]="['/sales-details/', row._id]"
           ></tr>
           <tr class="mat-row no-data-row" *matNoDataRow>
-            <td
-              class="mat-cell"
-              [colSpan]="tableState.isTableColumnHidden ? 5 : 6"
-            >
-              No units found
-            </td>
+            <td class="mat-cell" [colSpan]="6">No units found</td>
           </tr>
         </table>
         <mat-paginator
