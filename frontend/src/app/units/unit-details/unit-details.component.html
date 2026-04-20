@@ -2,8 +2,8 @@
   <div class="header-row"></div>
 
   <div class="unit-details-card">
-    <mat-card class="br-6">
-      <div class="unit-details-container">
+    <mat-card>
+      <div class="unit-details-container bg-gray-200">
         <div class="unit-details">
           <mat-card-title>Unit Details</mat-card-title>
 
@@ -41,7 +41,7 @@
             (click)="openImagePreviewDialog(units.imageFile._id)"
             alt="{{ units.imageFile.id }}"
           />
-          <span *ngIf="units.imageFile.imageUrl?.length <= 0">No Image</span>
+          <div class="image-placeholder" *ngIf="units.imageFile.imageUrl?.length <= 0">No Image</div>
         </div>
       </div>
     </mat-card>
