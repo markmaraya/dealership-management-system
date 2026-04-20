@@ -1,3 +1,5 @@
+@use "../../../theme/variables" as v;
+
 .example-container {
   position: relative;
   min-height: calc(100vh - 64px);
@@ -21,7 +23,12 @@
 }
 
 .unit-details-card {
-  margin: 1em 10em;
+  margin: 1em 12em;
+
+  & > mat-card {
+    border-radius: 0.6em;
+    background-color: map-get(v.$neutral-gray, 200);
+  }
 
   .unit-details-container {
     display: flex;
@@ -75,94 +82,61 @@
   }
 }
 
+.spacer {
+  flex: 1 1 auto;
+}
+
+.table-container {
+  margin: 0 190px;
+  border: solid 1px #eeeeee;
+  border-radius: 0.6em;
+
+  .button-row {
+    height: 100%;
+    padding: 0.4em 0;
+
+    mat-toolbar {
+      gap: 8px;
+    }
+  }
+
+  .expenses-table {
+    height: calc(100vh - 420px);
+    margin: 0 1em 1em;
+    border: solid 1px #e0e0e0;
+    border-radius: 0.6em;
+    overflow: hidden;
+
+    .table-scroll-wrapper {
+      height: inherit;
+      overflow-y: scroll;
+    }
+
+    .mat-column-actions {
+      flex: 0 0 12% !important;
+    }
+
+    .total-amount-label {
+      color: map-get(v.$neutral-colors, mid);
+      font-size: 12px;
+      position: absolute;
+      top: 0;
+    }
+
+    .total-amount-value {
+      margin-top: 16px;
+    }
+
+    .amount {
+      color: map-get(v.$neutral-colors, dark);
+      font-size: 16px;
+      font-weight: 600;
+      margin-left: 4px;
+    }
+  }
+}
+
 // -----
-
-.actions-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  border-top: solid 1px #97b0b5;
-  margin-top: 8px;
-}
-
-.actions-wrapper .mat-card-actions {
-  margin: 0;
-}
-
-.expenses-label {
-  margin: 0;
-}
-
-.primary-button {
-  background-color: #e63513;
-}
-
-.primary-button:hover {
-  background-color: #b82a0f;
-}
-
-.delete-button,
-.back-button {
-  background-color: #808080;
-}
-
-.copy-icon-button mat-icon,
-.edit-icon-button mat-icon {
-  color: #e63513;
-}
-
-.delete-icon-button mat-icon {
-  color: #808080;
-}
-
-.copy-icon-button:hover mat-icon,
-.edit-icon-button:hover mat-icon,
-.delete-icon-button:hover mat-icon {
-  color: #b82a0f;
-}
-
-.expenses-table {
-  width: 100%;
-  min-height: 456px;
-}
-
-.expenses-table .amount {
-  color: rgba(0, 0, 0, 0.54);
-  font-size: 16px;
-}
-
-.expenses-table .table-container {
-  height: calc(100vh - 274px);
-}
-
-.expenses-table .amount,
-.expenses-table .print-amount {
-  font-weight: 600;
-  color: rgba(0, 0, 0, 0.87);
-  margin-left: 4px;
-}
-
-.total-amount-container {
-  position: relative;
-}
-
-.total-amount-label {
-  color: rgba(0, 0, 0, 0.54);
-  font-size: 12px;
-  font-weight: 500;
-  position: absolute;
-  top: 0;
-  width: 200px;
-}
-
-.total-amount-value {
-  margin-top: 16px;
-}
-
-.mat-column-actions {
-  flex: 0 0 10% !important;
-  width: 10% !important;
-}
 
 .no-data-row {
   position: relative;
@@ -189,6 +163,9 @@
 
 .print-amount {
   font-size: 20px;
+  font-weight: 600;
+  color: map-get(v.$neutral-colors, dark);
+  margin-left: 4px;
 }
 
 .print-header-row {

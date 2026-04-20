@@ -3,7 +3,7 @@
 
   <div class="unit-details-card">
     <mat-card>
-      <div class="unit-details-container bg-gray-200">
+      <div class="unit-details-container">
         <div class="unit-details">
           <mat-card-title>Unit Details</mat-card-title>
 
@@ -41,7 +41,12 @@
             (click)="openImagePreviewDialog(units.imageFile._id)"
             alt="{{ units.imageFile.id }}"
           />
-          <div class="image-placeholder" *ngIf="units.imageFile.imageUrl?.length <= 0">No Image</div>
+          <div
+            class="image-placeholder"
+            *ngIf="units.imageFile.imageUrl?.length <= 0"
+          >
+            No Image
+          </div>
         </div>
       </div>
     </mat-card>
@@ -50,66 +55,71 @@
   <div class="example-loading-shade" *ngIf="isLoadingResults">
     <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
   </div>
-  <mat-card>
-    <div class="actions-wrapper">
-      <h2 class="expenses-label">Expenses</h2>
-      <mat-card-actions>
-        <div class="button-row">
-          <a
-            class="add-button primary-button"
-            mat-flat-button
-            color="primary"
-            (click)="openAddExpensesDialog(_id, units.unitCode)"
-          >
-            <mat-icon>add</mat-icon> Add Expenses
-          </a>
-          <button
-            class="print-button primary-button"
-            mat-flat-button
-            color="primary"
-            [useExistingCss]="true"
-            printSectionId="print-section"
-            ngxPrint
-          >
-            <mat-icon>print</mat-icon> Print Expenses
-          </button>
-          <a
-            class="upload-button primary-button"
-            mat-flat-button
-            color="primary"
-            (click)="openUploadDialog(_id)"
-          >
-            <mat-icon>upload</mat-icon> Upload Image
-          </a>
-          <a
-            class="edit-button primary-button"
-            mat-flat-button
-            color="primary"
-            (click)="openEditUnitDialog(_id)"
-          >
-            <mat-icon>edit</mat-icon> Edit Unit
-          </a>
-          <a
-            class="delete-button"
-            mat-flat-button
-            color="warn"
-            (click)="openDeleteUnitDialog(_id)"
-          >
-            <mat-icon>delete</mat-icon> Delete Unit
-          </a>
-          <a
-            class="back-button"
-            mat-flat-button
-            color="primary"
-            [routerLink]="['/home']"
-            [state]="{ status: units.status }"
-            >Back</a
-          >
-        </div>
-      </mat-card-actions>
+
+  <div class="table-container">
+    <div class="button-row">
+      <mat-toolbar>
+        <span>Expenses</span>
+
+        <span class="spacer"></span>
+
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="openAddExpensesDialog(_id, units.unitCode)"
+        >
+          <mat-icon>add</mat-icon> Add Expenses
+        </button>
+        <button
+          mat-icon-button
+          color="primary"
+          [useExistingCss]="true"
+          printSectionId="print-section"
+          ngxPrint
+          matTooltip="Print Expenses"
+        >
+          <mat-icon>print</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          color="primary"
+          (click)="openUploadDialog(_id)"
+          matTooltip="Upload Image"
+        >
+          <mat-icon>upload</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          color="primary"
+          (click)="openEditUnitDialog(_id)"
+          matTooltip="Edit Unit"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          color="warn"
+          (click)="openDeleteUnitDialog(_id)"
+          matTooltip="Delete Unit"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button
+          mat-button
+          [routerLink]="
+            units.status === 'sold'
+              ? ['/units/sold-units']
+              : ['/units/available-units']
+          "
+          [state]="{ status: units.status }"
+        >
+          Back
+        </button>
+      </mat-toolbar>
     </div>
+
     <div class="expenses-table">
-      <div class="table-container">
+      <div class="table-scroll-wrapper">
         <mat-table
           mat-table
           [dataSource]="units.expenses"
@@ -232,7 +242,8 @@
         </mat-table>
       </div>
     </div>
-  </mat-card>
+  </div>
+
   <div class="print-section">
     <mat-card id="print-section">
       <div class="sales-details-wrapper">
