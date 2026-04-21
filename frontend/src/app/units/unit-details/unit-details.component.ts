@@ -16,9 +16,9 @@ import { Gallery } from '../../models/gallery';
 import { ConfirmationDialogComponent } from '../../dialog/confirmation-dialog/confirmation-dialog.component';
 import { UnitImageUploadComponent } from '../unit-image-upload/unit-image-upload.component';
 import { ImagePreviewDialogComponent } from '../../dialog/image-preview-dialog/image-preview-dialog.component';
-import { AddExpensesComponent } from '../../add-expenses/add-expenses.component';
 import { EditUnitDetailsComponent } from '../edit-unit-details/edit-unit-details.component';
-import { EditExpensesComponent } from '../../edit-expenses/edit-expenses.component';
+import { AddExpensesComponent } from '../../expenses/add-expenses/add-expenses.component';
+import { EditExpensesComponent } from '../../expenses/edit-expenses/edit-expenses.component';
 
 @Component({
   selector: 'app-unit-details',

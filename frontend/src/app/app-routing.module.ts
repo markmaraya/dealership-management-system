@@ -5,8 +5,8 @@ import { SoldUnitsComponent } from './units/sold-units/sold-units.component';
 import { UnitDetailsComponent } from './units/unit-details/unit-details.component';
 import { AddUnitsComponent } from './units/add-units/add-units.component';
 import { EditUnitDetailsComponent } from './units/edit-unit-details/edit-unit-details.component';
-import { AddExpensesComponent } from './add-expenses/add-expenses.component';
-import { EditExpensesComponent } from './edit-expenses/edit-expenses.component';
+import { AddExpensesComponent } from './expenses/add-expenses/add-expenses.component';
+import { EditExpensesComponent } from './expenses/edit-expenses/edit-expenses.component';
 
 const routes: Routes = [
   {
@@ -32,7 +32,7 @@ const routes: Routes = [
   {
     path: 'edit-unit-details/:id',
     component: EditUnitDetailsComponent,
-    data: { title: 'Edit Sales' },
+    data: { title: 'Edit Unit Details' },
   },
   {
     path: 'add-expenses/:id/:unitCode',

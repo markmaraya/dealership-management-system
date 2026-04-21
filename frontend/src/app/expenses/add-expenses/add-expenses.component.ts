@@ -1,8 +1,8 @@
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { Component, OnInit, Inject } from '@angular/core';
 import { io } from "socket.io-client";
 import { Router } from '@angular/router';
-import { ApiService } from '../api.service';
+import { ApiService } from '../../api.service';
 import { UntypedFormControl, FormGroupDirective, UntypedFormBuilder, UntypedFormGroup, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';

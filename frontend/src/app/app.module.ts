@@ -38,8 +38,8 @@ import { AddUnitsComponent } from './units/add-units/add-units.component';
 import { EditUnitDetailsComponent } from './units/edit-unit-details/edit-unit-details.component';
 import { UnitImageUploadComponent } from './units/unit-image-upload/unit-image-upload.component';
 
-import { AddExpensesComponent } from './add-expenses/add-expenses.component';
-import { EditExpensesComponent } from './edit-expenses/edit-expenses.component';
+import { AddExpensesComponent } from './expenses/add-expenses/add-expenses.component';
+import { EditExpensesComponent } from './expenses/edit-expenses/edit-expenses.component';
 
 import { ConfirmationDialogComponent } from './dialog/confirmation-dialog/confirmation-dialog.component';
 import { ImagePreviewDialogComponent } from './dialog/image-preview-dialog/image-preview-dialog.component';
