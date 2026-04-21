@@ -166,7 +166,7 @@ export class UnitDetailsComponent implements OnInit {
     const confirmDialog = this.dialog.open(ConfirmationDialogComponent, {
       data: {
         title: 'Confirm Remove Unit',
-        message: `Are you sure, you want to remove unit ${this.units.unitCode}?`,
+        message: `Are you sure you want to remove unit ${this.units.unitCode}?`,
       },
     });
     confirmDialog.afterClosed().subscribe((result) => {
@@ -189,7 +189,7 @@ export class UnitDetailsComponent implements OnInit {
     const confirmDialog = this.dialog.open(ConfirmationDialogComponent, {
       data: {
         title: 'Confirm Remove Expenses',
-        message: 'Are you sure, you want to remove expenses',
+        message: 'Are you sure you want to remove this expense?',
       },
     });
     confirmDialog.afterClosed().subscribe((result) => {

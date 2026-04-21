@@ -18,7 +18,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 @Component({
   selector: 'app-add-expenses',
   templateUrl: './add-expenses.component.html',
-  styleUrls: ['./add-expenses.component.css']
+  styleUrls: ['./add-expenses.component.scss']
 })
 export class AddExpensesComponent implements OnInit {
   socket = io(environment.apiUrl);

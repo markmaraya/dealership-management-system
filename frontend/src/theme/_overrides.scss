@@ -2,6 +2,11 @@
 @use "./palettes" as p;
 @use "./variables" as v;
 
+input.hide-spin::-webkit-outer-spin-button,
+input.hide-spin::-webkit-inner-spin-button {
+  display: none;
+}
+
 .mat-mdc-raised-button.mat-mdc-button-base {
   height: 40px;
 }
