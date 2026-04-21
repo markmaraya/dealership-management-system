@@ -17,7 +17,7 @@ import { ConfirmationDialogComponent } from '../../dialog/confirmation-dialog/co
 import { SalesImageUploadComponent } from '../../sales-image-upload/sales-image-upload.component';
 import { ImagePreviewDialogComponent } from '../../dialog/image-preview-dialog/image-preview-dialog.component';
 import { AddExpensesComponent } from '../../add-expenses/add-expenses.component';
-import { EditSalesComponent } from '../../edit-sales/edit-sales.component';
+import { EditUnitDetailsComponent } from '../edit-unit-details/edit-unit-details.component';
 import { EditExpensesComponent } from '../../edit-expenses/edit-expenses.component';
 
 @Component({
@@ -153,7 +153,7 @@ export class UnitDetailsComponent implements OnInit {
   }
 
   openEditUnitDialog(id: string) {
-    this.dialog.open(EditSalesComponent, {
+    this.dialog.open(EditUnitDetailsComponent, {
       data: { _id: id },
     });
   }

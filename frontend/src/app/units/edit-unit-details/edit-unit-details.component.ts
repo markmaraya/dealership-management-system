@@ -1,8 +1,8 @@
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { Component, OnInit, Inject } from '@angular/core';
 import { io } from "socket.io-client";
 import { Router, ActivatedRoute } from '@angular/router';
-import { ApiService } from '../api.service';
+import { ApiService } from '../../api.service';
 import { UntypedFormControl, FormGroupDirective, UntypedFormBuilder, UntypedFormGroup, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -16,11 +16,11 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 }
 
 @Component({
-  selector: 'app-edit-sales',
-  templateUrl: './edit-sales.component.html',
-  styleUrls: ['./edit-sales.component.css']
+  selector: 'app-edit-unit-details',
+  templateUrl: './edit-unit-details.component.html',
+  styleUrls: ['./edit-unit-details.component.scss']
 })
-export class EditSalesComponent implements OnInit {
+export class EditUnitDetailsComponent implements OnInit {
   socket = io(environment.apiUrl);
 
   salesForm: UntypedFormGroup;
@@ -40,7 +40,7 @@ export class EditSalesComponent implements OnInit {
     private route: ActivatedRoute,
     private api: ApiService,
     private formBuilder: UntypedFormBuilder,
-    public dialogRef: MatDialogRef<EditSalesComponent>,
+    public dialogRef: MatDialogRef<EditUnitDetailsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {

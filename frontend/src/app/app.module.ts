@@ -35,7 +35,7 @@ import { AvailableUnitsComponent } from './units/available-units/available-units
 import { SoldUnitsComponent } from './units/sold-units/sold-units.component';
 import { UnitDetailsComponent } from './units/unit-details/unit-details.component';
 import { AddUnitsComponent } from './units/add-units/add-units.component';
-import { EditSalesComponent } from './edit-sales/edit-sales.component';
+import { EditUnitDetailsComponent } from './units/edit-unit-details/edit-unit-details.component';
 
 import { AddExpensesComponent } from './add-expenses/add-expenses.component';
 import { EditExpensesComponent } from './edit-expenses/edit-expenses.component';
@@ -50,7 +50,7 @@ import { ImagePreviewDialogComponent } from './dialog/image-preview-dialog/image
     SoldUnitsComponent,
     UnitDetailsComponent,
     AddUnitsComponent,
-    EditSalesComponent,
+    EditUnitDetailsComponent,
     AddExpensesComponent,
     EditExpensesComponent,
     ConfirmationDialogComponent,
