@@ -71,7 +71,12 @@ export class UnitDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this._id = this.route.snapshot.params.id;
-    this.getUnitsDetails(this._id);
+
+    this.route.queryParams.subscribe((params) => {
+      const imgId = params['imgId'];
+
+      this.getUnitsDetails(this._id, imgId);
+    });
 
     this.socket.on(
       'update-data',
@@ -81,8 +86,8 @@ export class UnitDetailsComponent implements OnInit {
     );
   }
 
-  getUnitsDetails(id: string) {
-    this.api.getUnitsById(id).subscribe((data: any) => {
+  getUnitsDetails(id: string, imgId?: string) {
+    this.api.getUnitsById(id, imgId).subscribe((data: any) => {
       this.units = data;
       this.getExpenses(id);
       this.isLoadingResults = false;
