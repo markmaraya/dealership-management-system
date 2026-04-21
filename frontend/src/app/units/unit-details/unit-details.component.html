@@ -183,8 +183,7 @@
               >Actions</mat-header-cell
             >
             <mat-cell mat-cell *matCellDef="let row">
-              <a
-                class="copy-icon-button"
+              <button
                 mat-icon-button
                 color="primary"
                 matTooltip="Copy"
@@ -199,9 +198,8 @@
                 "
               >
                 <mat-icon>file_copy</mat-icon>
-              </a>
-              <a
-                class="edit-icon-button"
+              </button>
+              <button
                 mat-icon-button
                 color="primary"
                 matTooltip="Edit"
@@ -209,17 +207,16 @@
                 (click)="openEditExpensesDialog(_id, row._id)"
               >
                 <mat-icon>edit</mat-icon>
-              </a>
-              <a
-                class="delete-icon-button"
+              </button>
+              <button
                 mat-icon-button
-                color="primary"
+                color="warn"
                 matTooltip="Delete"
                 matTooltipPosition="above"
                 (click)="openDialogDeleteExpenses(row._id)"
               >
                 <mat-icon>delete</mat-icon>
-              </a>
+              </button>
             </mat-cell>
             <mat-footer-cell *matFooterCellDef></mat-footer-cell>
           </ng-container>

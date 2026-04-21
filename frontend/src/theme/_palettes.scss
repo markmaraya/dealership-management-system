@@ -10,4 +10,4 @@ $primary: map-merge(
 );
 
 $accent: mat.define-palette(mat.$red-palette, 100);
-$warn: mat.define-palette(mat.$red-palette);
+$warn: mat.define-palette(mat.$orange-palette, 900);
