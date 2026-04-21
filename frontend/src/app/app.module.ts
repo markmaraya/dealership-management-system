@@ -36,10 +36,11 @@ import { SoldUnitsComponent } from './units/sold-units/sold-units.component';
 import { UnitDetailsComponent } from './units/unit-details/unit-details.component';
 import { AddUnitsComponent } from './units/add-units/add-units.component';
 import { EditUnitDetailsComponent } from './units/edit-unit-details/edit-unit-details.component';
+import { UnitImageUploadComponent } from './units/unit-image-upload/unit-image-upload.component';
 
 import { AddExpensesComponent } from './add-expenses/add-expenses.component';
 import { EditExpensesComponent } from './edit-expenses/edit-expenses.component';
-import { SalesImageUploadComponent } from './sales-image-upload/sales-image-upload.component';
+
 import { ConfirmationDialogComponent } from './dialog/confirmation-dialog/confirmation-dialog.component';
 import { ImagePreviewDialogComponent } from './dialog/image-preview-dialog/image-preview-dialog.component';
 
@@ -54,7 +55,7 @@ import { ImagePreviewDialogComponent } from './dialog/image-preview-dialog/image
     AddExpensesComponent,
     EditExpensesComponent,
     ConfirmationDialogComponent,
-    SalesImageUploadComponent,
+    UnitImageUploadComponent,
     ImagePreviewDialogComponent,
   ],
   imports: [

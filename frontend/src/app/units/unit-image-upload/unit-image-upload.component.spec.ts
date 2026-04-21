@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SalesImageUploadComponent } from './sales-image-upload.component';
+import { UnitImageUploadComponent } from './unit-image-upload.component';
 
-describe('SalesImageUploadComponent', () => {
-  let component: SalesImageUploadComponent;
-  let fixture: ComponentFixture<SalesImageUploadComponent>;
+describe('UnitImageUploadComponent', () => {
+  let component: UnitImageUploadComponent;
+  let fixture: ComponentFixture<UnitImageUploadComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SalesImageUploadComponent ]
+      declarations: [ UnitImageUploadComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SalesImageUploadComponent);
+    fixture = TestBed.createComponent(UnitImageUploadComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

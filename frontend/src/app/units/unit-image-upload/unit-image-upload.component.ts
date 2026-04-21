@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { ApiService } from '../api.service';
+import { ApiService } from '../../api.service';
 import { Router } from '@angular/router';
 import { UntypedFormControl, FormGroupDirective, UntypedFormBuilder, UntypedFormGroup, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
@@ -14,11 +14,11 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 }
 
 @Component({
-  selector: 'app-sales-image-upload',
-  templateUrl: './sales-image-upload.component.html',
-  styleUrls: ['./sales-image-upload.component.css']
+  selector: 'app-unit-image-upload',
+  templateUrl: './unit-image-upload.component.html',
+  styleUrls: ['./unit-image-upload.component.scss']
 })
-export class SalesImageUploadComponent implements OnInit {
+export class UnitImageUploadComponent implements OnInit {
 
   _id: string;
   galleryForm: UntypedFormGroup;
@@ -31,7 +31,7 @@ export class SalesImageUploadComponent implements OnInit {
     private api: ApiService,
     private formBuilder: UntypedFormBuilder,
     private router: Router,
-    public dialogRef: MatDialogRef<SalesImageUploadComponent>,
+    public dialogRef: MatDialogRef<UnitImageUploadComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
 

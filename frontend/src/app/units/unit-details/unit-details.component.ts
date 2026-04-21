@@ -14,7 +14,7 @@ import { ApiService } from '../../api.service';
 import { Units } from '../../models/units';
 import { Gallery } from '../../models/gallery';
 import { ConfirmationDialogComponent } from '../../dialog/confirmation-dialog/confirmation-dialog.component';
-import { SalesImageUploadComponent } from '../../sales-image-upload/sales-image-upload.component';
+import { UnitImageUploadComponent } from '../unit-image-upload/unit-image-upload.component';
 import { ImagePreviewDialogComponent } from '../../dialog/image-preview-dialog/image-preview-dialog.component';
 import { AddExpensesComponent } from '../../add-expenses/add-expenses.component';
 import { EditUnitDetailsComponent } from '../edit-unit-details/edit-unit-details.component';
@@ -132,7 +132,7 @@ export class UnitDetailsComponent implements OnInit {
   }
 
   openUploadDialog(id: any) {
-    const uploadDialog = this.dialog.open(SalesImageUploadComponent, {
+    const uploadDialog = this.dialog.open(UnitImageUploadComponent, {
       data: { _id: id },
     });
     uploadDialog.afterClosed().subscribe((result) => {
