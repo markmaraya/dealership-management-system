@@ -113,7 +113,6 @@ export class UnitDetailsComponent implements OnInit {
         this.units.expenses = res;
         this.showExpenses = this.units.expenses.length;
         this.calculateTotal();
-        console.log(this.units.expenses);
       },
       (err) => {
         console.log(err);

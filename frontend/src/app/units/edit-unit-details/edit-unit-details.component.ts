@@ -1,24 +1,38 @@
 import { environment } from '../../../environments/environment';
 import { Component, OnInit, Inject } from '@angular/core';
-import { io } from "socket.io-client";
+import { io } from 'socket.io-client';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from '../../api.service';
-import { UntypedFormControl, FormGroupDirective, UntypedFormBuilder, UntypedFormGroup, NgForm, Validators } from '@angular/forms';
+import {
+  UntypedFormControl,
+  FormGroupDirective,
+  UntypedFormBuilder,
+  UntypedFormGroup,
+  NgForm,
+  Validators,
+} from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: UntypedFormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+  isErrorState(
+    control: UntypedFormControl | null,
+    form: FormGroupDirective | NgForm | null,
+  ): boolean {
     const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+    return !!(
+      control &&
+      control.invalid &&
+      (control.dirty || control.touched || isSubmitted)
+    );
   }
 }
 
 @Component({
   selector: 'app-edit-unit-details',
   templateUrl: './edit-unit-details.component.html',
-  styleUrls: ['./edit-unit-details.component.scss']
+  styleUrls: ['./edit-unit-details.component.scss'],
 })
 export class EditUnitDetailsComponent implements OnInit {
   socket = io(environment.apiUrl);
@@ -41,7 +55,8 @@ export class EditUnitDetailsComponent implements OnInit {
     private api: ApiService,
     private formBuilder: UntypedFormBuilder,
     public dialogRef: MatDialogRef<EditUnitDetailsComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+    @Inject(MAT_DIALOG_DATA) public data: any,
+  ) {}
 
   ngOnInit(): void {
     this._id = this.data._id;
@@ -52,7 +67,7 @@ export class EditUnitDetailsComponent implements OnInit {
       bodyType: [null, Validators.required],
       chasisCode: [null, Validators.required],
       status: [null, Validators.required],
-      expenses: null
+      expenses: null,
     });
   }
 
@@ -65,7 +80,7 @@ export class EditUnitDetailsComponent implements OnInit {
         bodyType: data.bodyType,
         chasisCode: data.chasisCode,
         status: data.status || null,
-        expenses: null
+        expenses: null,
       });
     });
   }
@@ -78,29 +93,31 @@ export class EditUnitDetailsComponent implements OnInit {
       bodyType: this.salesForm.value.bodyType.toLowerCase(),
       chasisCode: this.salesForm.value.chasisCode.toLowerCase(),
       status: this.salesForm.value.status.toLowerCase(),
-      expenses: this.salesForm.value.expenses
+      expenses: this.salesForm.value.expenses,
     });
     this.checkUnitCode(this.salesForm.value.unitCode);
-  }
-
-  unitsDetails() {
-    this.router.navigate(['/sales-details', this._id]);
   }
 
   private checkUnitCode(unitCode: string) {
     this.api.getUnitsByUnitCode(unitCode).subscribe((result: any) => {
       // *Unit Code can be edited currently
       // if (result.length == 0) {
-        this.api.updateUnits(this._id, this.salesForm.value)
-          .subscribe((res: any) => {
-            this.isLoadingResults = false;
-            this.socket.emit('updatedata', res);
-            this.router.navigate(['/sales-details', this._id]);
-          }, (err: any) => {
-            console.log(err);
-            this.isLoadingResults = false;
-          }
-          );
+      this.api.updateUnits(this._id, this.salesForm.value).subscribe(
+        (res: any) => {
+          this.isLoadingResults = false;
+          this.socket.emit('updatedata', res);
+          this.dialogRef.close();
+          this.router
+            .navigateByUrl('/', { skipLocationChange: true })
+            .then(() => {
+              this.router.navigate(['/unit-details', this._id]);
+            });
+        },
+        (err: any) => {
+          console.log(err);
+          this.isLoadingResults = false;
+        },
+      );
       // } else {
       //   this.isLoadingResults = false;
       //   this.salesForm = this.formBuilder.group({
@@ -121,5 +138,4 @@ export class EditUnitDetailsComponent implements OnInit {
   onFocusUnitCode() {
     this.unitCodeExist = false;
   }
-
 }
