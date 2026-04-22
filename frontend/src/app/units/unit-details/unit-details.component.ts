@@ -210,8 +210,12 @@ export class UnitDetailsComponent implements OnInit {
     this.api.deleteExpenses(id).subscribe(
       (res) => {
         this.isLoadingResults = false;
-        this.router.navigate(['/sales-details', this._id]);
         this.socket.emit('updatedata', res);
+        this.router
+          .navigateByUrl('/', { skipLocationChange: true })
+          .then(() => {
+            this.router.navigate(['/unit-details', this._id]);
+          });
       },
       (err) => {
         console.log(err);

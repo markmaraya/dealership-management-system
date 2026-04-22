@@ -1,24 +1,38 @@
 import { environment } from '../../../environments/environment';
 import { Component, OnInit, Inject } from '@angular/core';
-import { io } from "socket.io-client";
+import { io } from 'socket.io-client';
 import { Router } from '@angular/router';
 import { ApiService } from '../../api.service';
-import { UntypedFormControl, FormGroupDirective, UntypedFormBuilder, UntypedFormGroup, NgForm, Validators } from '@angular/forms';
+import {
+  UntypedFormControl,
+  FormGroupDirective,
+  UntypedFormBuilder,
+  UntypedFormGroup,
+  NgForm,
+  Validators,
+} from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: UntypedFormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+  isErrorState(
+    control: UntypedFormControl | null,
+    form: FormGroupDirective | NgForm | null,
+  ): boolean {
     const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+    return !!(
+      control &&
+      control.invalid &&
+      (control.dirty || control.touched || isSubmitted)
+    );
   }
 }
 
 @Component({
   selector: 'app-add-expenses',
   templateUrl: './add-expenses.component.html',
-  styleUrls: ['./add-expenses.component.scss']
+  styleUrls: ['./add-expenses.component.scss'],
 })
 export class AddExpensesComponent implements OnInit {
   socket = io(environment.apiUrl);
@@ -38,8 +52,8 @@ export class AddExpensesComponent implements OnInit {
     private api: ApiService,
     private formBuilder: UntypedFormBuilder,
     public dialogRef: MatDialogRef<AddExpensesComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
-    ) { }
+    @Inject(MAT_DIALOG_DATA) public data: any,
+  ) {}
 
   ngOnInit(): void {
     this._id = this.data._id;
@@ -47,31 +61,38 @@ export class AddExpensesComponent implements OnInit {
     this.salesForm = this.formBuilder.group({
       amount: [null, Validators.required],
       description: [null, Validators.required],
-      encodedBy: [null, Validators.required]
+      encodedBy: [null, Validators.required],
     });
   }
 
   onFormSubmit() {
-    this.isLoadingResults = true;    
+    this.isLoadingResults = true;
 
     this.salesForm.setValue({
-      amount : this.salesForm.value.amount,
-      description : this.salesForm.value.description.toLowerCase(),
-      encodedBy : this.salesForm.value.encodedBy.toLowerCase()
+      amount: this.salesForm.value.amount,
+      description: this.salesForm.value.description.toLowerCase(),
+      encodedBy: this.salesForm.value.encodedBy.toLowerCase(),
     });
 
     this.salesForm.value.unitCode = this._id;
     this.salesForm.value.dateEncoded = Date.now();
-    
-    this.api.addExpenses(this.salesForm.value)
-      .subscribe((res: any) => {
+
+    this.api.addExpenses(this.salesForm.value).subscribe(
+      (res: any) => {
         const id = res._id;
         this.isLoadingResults = false;
         this.socket.emit('updatedata', res);
-        this.router.navigate(['/sales-details', this._id]);
-      }, (err: any) => {
+        this.dialogRef.close();
+        this.router
+          .navigateByUrl('/', { skipLocationChange: true })
+          .then(() => {
+            this.router.navigate(['/unit-details', this._id]);
+          });
+      },
+      (err: any) => {
         console.log(err);
         this.isLoadingResults = false;
-      });
+      },
+    );
   }
 }
