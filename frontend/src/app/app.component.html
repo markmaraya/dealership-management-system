@@ -1,5 +1,5 @@
 <mat-sidenav-container class="app-container">
-  <mat-sidenav mode="side" opened class="app-sidenav">
+  <mat-sidenav #sidenav mode="side" opened class="app-sidenav">
     <div class="header-title">
       <img
         class="logo"
@@ -30,6 +30,11 @@
 
   <mat-sidenav-content>
     <div class="app-content">
+      <div class="header-row">
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
       <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>

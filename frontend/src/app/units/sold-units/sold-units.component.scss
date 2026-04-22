@@ -1,14 +1,10 @@
 .example-container {
   position: relative;
-  height: calc(100vh - 64px);
+  height: calc(100vh - 84px);
 }
 
 .example-container .home-header {
-  height: 200px;
-}
-
-.example-container .home-header .header-row {
-  height: 64px;
+  height: 120px;
 }
 
 .example-container .home-header .section-label {
@@ -98,7 +94,7 @@
   border-radius: 0.6em;
 
   .table-wrapper {
-    height: calc(100vh - 300px);
+    height: calc(100vh - 310px);
     margin: 0 1em 1em;
     border: solid 1px #e0e0e0;
     border-radius: 0.6em;
@@ -106,7 +102,7 @@
 
     .table-scroll-wrapper {
       height: inherit;
-      overflow-y: scroll;
+      overflow-y: auto;
     }
   }
 

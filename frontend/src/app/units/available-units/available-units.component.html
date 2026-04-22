@@ -3,9 +3,6 @@
     <div class="example-loading-shade" *ngIf="isLoadingResults">
       <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
     </div>
-
-    <div class="header-row"></div>
-
     <div class="section-label bg-accent text-dark">Available Units</div>
   </div>
 
@@ -155,7 +152,8 @@
                 mat-stroked-button
                 color="primary"
                 (click)="
-                  openMarkAsSoldDialog(row._id, row.unitCode); $event.stopPropagation()
+                  openMarkAsSoldDialog(row._id, row.unitCode);
+                  $event.stopPropagation()
                 "
               >
                 Mark as Sold
