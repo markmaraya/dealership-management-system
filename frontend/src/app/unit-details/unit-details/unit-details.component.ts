@@ -14,9 +14,9 @@ import { ApiService } from 'app/api.service';
 import { Units } from 'app/models/units';
 import { Gallery } from 'app/models/gallery';
 import { ConfirmationDialogComponent } from 'app/dialog/confirmation-dialog/confirmation-dialog.component';
-import { UnitImageUploadComponent } from 'app/units/unit-image-upload/unit-image-upload.component';
+import { UnitImageUploadComponent } from 'app/unit-details/unit-image-upload/unit-image-upload.component';
 import { ImagePreviewDialogComponent } from 'app/dialog/image-preview-dialog/image-preview-dialog.component';
-import { EditUnitDetailsComponent } from 'app/units/edit-unit-details/edit-unit-details.component';
+import { EditUnitDetailsComponent } from 'app/unit-details/edit-unit-details/edit-unit-details.component';
 import { AddExpensesComponent } from 'app/expenses/add-expenses/add-expenses.component';
 import { EditExpensesComponent } from 'app/expenses/edit-expenses/edit-expenses.component';
 

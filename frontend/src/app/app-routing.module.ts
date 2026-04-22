@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AvailableUnitsComponent } from './units/available-units/available-units.component';
 import { SoldUnitsComponent } from './units/sold-units/sold-units.component';
-import { UnitDetailsComponent } from './units/unit-details/unit-details.component';
-import { AddUnitsComponent } from './units/add-units/add-units.component';
-import { EditUnitDetailsComponent } from './units/edit-unit-details/edit-unit-details.component';
+import { UnitDetailsComponent } from './unit-details/unit-details/unit-details.component';
+import { AddUnitsComponent } from './unit-details/add-units/add-units.component';
+import { EditUnitDetailsComponent } from './unit-details/edit-unit-details/edit-unit-details.component';
 import { AddExpensesComponent } from './expenses/add-expenses/add-expenses.component';
 import { EditExpensesComponent } from './expenses/edit-expenses/edit-expenses.component';
 

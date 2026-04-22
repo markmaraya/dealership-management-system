@@ -19,7 +19,7 @@ import { MatSort } from '@angular/material/sort';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from 'app/dialog/confirmation-dialog/confirmation-dialog.component';
-import { AddUnitsComponent } from 'app/units/add-units/add-units.component';
+import { AddUnitsComponent } from 'app/unit-details/add-units/add-units.component';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
