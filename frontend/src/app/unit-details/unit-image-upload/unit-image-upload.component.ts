@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { ApiService } from 'app/api.service';
+import { ApiService } from '../../api.service';
 import { Router } from '@angular/router';
 import {
   UntypedFormControl,

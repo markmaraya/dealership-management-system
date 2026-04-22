@@ -1,8 +1,8 @@
-import { environment } from 'environments/environment';
+import { environment } from '../../../environments/environment';
 import { Component, OnInit, Inject } from '@angular/core';
 import { io } from 'socket.io-client';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ApiService } from 'app/api.service';
+import { ApiService } from '../../api.service';
 import {
   UntypedFormControl,
   FormGroupDirective,

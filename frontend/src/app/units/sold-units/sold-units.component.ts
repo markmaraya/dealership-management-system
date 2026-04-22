@@ -1,4 +1,4 @@
-import { environment } from 'environments/environment';
+import { environment } from '../../../environments/environment';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {
   UntypedFormControl,
@@ -11,8 +11,8 @@ import {
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { io } from 'socket.io-client';
-import { ApiService } from 'app/api.service';
-import { Units } from 'app/models/units';
+import { ApiService } from '../../api.service';
+import { Units } from '../../models/units';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';

@@ -1,8 +1,8 @@
-import { environment } from 'environments/environment';
+import { environment } from '../../../environments/environment';
 import { Component, OnInit } from '@angular/core';
 import { io } from 'socket.io-client';
 import { Router } from '@angular/router';
-import { ApiService } from 'app/api.service';
+import { ApiService } from '../../api.service';
 import {
   UntypedFormControl,
   FormGroupDirective,
@@ -15,8 +15,8 @@ import {
 } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Expenses } from 'app/models/expenses';
-import { Gallery } from 'app/models/gallery';
+import { Expenses } from '../../models/expenses';
+import { Gallery } from '../../models/gallery';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {

@@ -1,4 +1,4 @@
-import { environment } from 'environments/environment';
+import { environment } from '../../../environments/environment';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {
   UntypedFormControl,
@@ -11,15 +11,15 @@ import {
 import { UpperCasePipe, Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { io } from 'socket.io-client';
-import { ApiService } from 'app/api.service';
-import { Units } from 'app/models/units';
+import { ApiService } from '../../api.service';
+import { Units } from '../../models/units';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ConfirmationDialogComponent } from 'app/dialog/confirmation-dialog/confirmation-dialog.component';
-import { AddUnitsComponent } from 'app/unit-details/add-units/add-units.component';
+import { ConfirmationDialogComponent } from '../../dialog/confirmation-dialog/confirmation-dialog.component';
+import { AddUnitsComponent } from '../../unit-details/add-units/add-units.component';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
