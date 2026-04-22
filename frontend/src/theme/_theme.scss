@@ -9,7 +9,7 @@ $theme: m.mat-define-light-theme(
       warn: p.$warn,
     ),
     typography: m.mat-define-typography-config(),
-    density: -2,
+    density: 0,
   )
 );
 

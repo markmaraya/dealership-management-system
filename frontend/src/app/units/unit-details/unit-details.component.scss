@@ -101,7 +101,7 @@
   }
 
   .expenses-table {
-    height: calc(100vh - 420px);
+    height: calc(100vh - 430px);
     margin: 0 1em 1em;
     border: solid 1px #e0e0e0;
     border-radius: 0.6em;
@@ -113,7 +113,7 @@
     }
 
     .mat-column-actions {
-      flex: 0 0 12% !important;
+      flex: 0 0 15%;
     }
 
     .total-amount-label {

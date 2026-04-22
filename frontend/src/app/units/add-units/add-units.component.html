@@ -2,15 +2,10 @@
   <h2 mat-dialog-title>Add New Unit</h2>
   <form [formGroup]="salesForm" (ngSubmit)="onFormSubmit()">
     <mat-dialog-content>
-      <mat-form-field
-        class="full-width mb-16"
-        appearance="fill"
-        floatLabel="always"
-      >
+      <mat-form-field class="full-width mb-16" appearance="fill">
         <mat-label>Unit Code</mat-label>
         <input
           matInput
-          placeholder="Unit Code"
           formControlName="unitCode"
           [errorStateMatcher]="matcher"
         />
@@ -23,15 +18,10 @@
           Unit Code already exists
         </mat-error>
       </mat-form-field>
-      <mat-form-field
-        class="full-width mb-16"
-        appearance="fill"
-        floatLabel="always"
-      >
+      <mat-form-field class="full-width mb-16" appearance="fill">
         <mat-label>Make and Model</mat-label>
         <input
           matInput
-          placeholder="Make and Model"
           formControlName="makeAndModel"
           [errorStateMatcher]="matcher"
         />
@@ -45,15 +35,10 @@
           >
         </mat-error>
       </mat-form-field>
-      <mat-form-field
-        class="full-width mb-16"
-        appearance="fill"
-        floatLabel="always"
-      >
+      <mat-form-field class="full-width mb-16" appearance="fill">
         <mat-label>Body Type</mat-label>
         <input
           matInput
-          placeholder="Body Type"
           formControlName="bodyType"
           [errorStateMatcher]="matcher"
         />
@@ -67,11 +52,10 @@
           >
         </mat-error>
       </mat-form-field>
-      <mat-form-field class="full-width" appearance="fill" floatLabel="always">
+      <mat-form-field class="full-width" appearance="fill">
         <mat-label>Chasis Code</mat-label>
         <input
           matInput
-          placeholder="Chasis Code"
           formControlName="chasisCode"
           [errorStateMatcher]="matcher"
         />
