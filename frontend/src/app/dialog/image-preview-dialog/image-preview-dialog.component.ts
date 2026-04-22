@@ -1,8 +1,8 @@
-import { environment } from '../../../environments/environment';
+import { environment } from 'environments/environment';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ApiService } from '../../api.service';
-import { Gallery } from '../../models/gallery';
+import { ApiService } from 'app/api.service';
+import { Gallery } from 'app/models/gallery';
 
 @Component({
   selector: 'app-image-preview-dialog',

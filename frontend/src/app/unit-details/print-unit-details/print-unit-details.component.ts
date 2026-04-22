@@ -1,6 +1,6 @@
-import { environment } from '../../../environments/environment';
+import { environment } from 'environments/environment';
 import { Component, Input } from '@angular/core';
-import { Units } from '../../models/units';
+import { Units } from 'app/models/units';
 
 @Component({
   selector: 'app-print-unit-details',
