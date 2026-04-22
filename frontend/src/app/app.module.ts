@@ -37,6 +37,7 @@ import { UnitDetailsComponent } from './units/unit-details/unit-details.componen
 import { AddUnitsComponent } from './units/add-units/add-units.component';
 import { EditUnitDetailsComponent } from './units/edit-unit-details/edit-unit-details.component';
 import { UnitImageUploadComponent } from './units/unit-image-upload/unit-image-upload.component';
+import { PrintUnitDetailsComponent } from './unit-details/print-unit-details/print-unit-details.component';
 
 import { AddExpensesComponent } from './expenses/add-expenses/add-expenses.component';
 import { EditExpensesComponent } from './expenses/edit-expenses/edit-expenses.component';
@@ -57,6 +58,7 @@ import { ImagePreviewDialogComponent } from './dialog/image-preview-dialog/image
     ConfirmationDialogComponent,
     UnitImageUploadComponent,
     ImagePreviewDialogComponent,
+    PrintUnitDetailsComponent,
   ],
   imports: [
     BrowserModule,

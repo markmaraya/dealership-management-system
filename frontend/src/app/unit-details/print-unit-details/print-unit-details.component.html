@@ -1,0 +1,99 @@
+<div class="print-section" id="print-section">
+  <mat-card>
+    <div class="unit-details-wrapper">
+      <mat-card-content>
+        <div class="mb-16">
+          <span>Unit Code: </span><strong>{{ units.unitCode }}</strong>
+        </div>
+        <div class="mb-16">
+          <span>Make and Model: </span><strong>{{ units.makeAndModel }}</strong>
+        </div>
+        <div class="mb-16">
+          <span>Body Type: </span><strong>{{ units.bodyType }}</strong>
+        </div>
+        <div>
+          <span>Chasis Code: </span><strong>{{ units.chasisCode }}</strong>
+        </div>
+      </mat-card-content>
+      <div class="print-unit-img">
+        <img
+          *ngIf="units.imageFile.imageUrl?.length > 0"
+          [src]="environmentApiUrl + units.imageFile.imageUrl"
+          (click)="openImagePreviewDialog(units.imageFile._id)"
+          alt="{{ units.imageFile.id }}"
+        />
+        <span *ngIf="units.imageFile.imageUrl?.length <= 0">No Image</span>
+      </div>
+    </div>
+    <div *ngIf="showExpenses > 0">
+      <h3 class="print-expenses-label">Expenses</h3>
+      <mat-table
+        mat-table
+        [dataSource]="units?.expenses"
+        matSort
+        matSortActive="dateEncoded"
+        matSortDisableClear
+        matSortDirection="asc"
+      >
+        <ng-container matColumnDef="amount">
+          <mat-header-cell mat-header-cell *matHeaderCellDef
+            >Amount</mat-header-cell
+          >
+          <mat-cell mat-cell *matCellDef="let row"
+            >&#8369; {{ row.amount | number: "1.2-2" }}</mat-cell
+          >
+          <mat-footer-cell *matFooterCellDef>
+            <div>
+              <label>Total Amount</label>
+              <div>
+                &#8369;<span class="print-amount">{{
+                  total | number: "1.2-2"
+                }}</span>
+              </div>
+            </div>
+          </mat-footer-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+          <mat-header-cell mat-header-cell *matHeaderCellDef
+            >Description</mat-header-cell
+          >
+          <mat-cell mat-cell *matCellDef="let row">{{
+            row.description
+          }}</mat-cell>
+          <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="encodedBy">
+          <mat-header-cell mat-header-cell *matHeaderCellDef
+            >Encoded By</mat-header-cell
+          >
+          <mat-cell mat-cell *matCellDef="let row">{{
+            row.encodedBy
+          }}</mat-cell>
+          <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="dateEncoded">
+          <mat-header-cell mat-header-cell *matHeaderCellDef
+            >Date Encoded</mat-header-cell
+          >
+          <mat-cell mat-cell *matCellDef="let row">{{
+            row.dateEncoded | date: "medium"
+          }}</mat-cell>
+          <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+        </ng-container>
+
+        <mat-header-row
+          mat-header-row
+          *matHeaderRowDef="printDisplayedColumns"
+        ></mat-header-row>
+        <mat-row mat-row *matRowDef="let row; columns: printDisplayedColumns">
+        </mat-row>
+        <mat-footer-row
+          *matFooterRowDef="printDisplayedColumns"
+        ></mat-footer-row>
+      </mat-table>
+    </div>
+  </mat-card>
+</div>

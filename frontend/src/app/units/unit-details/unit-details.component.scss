@@ -97,6 +97,7 @@
 
     mat-toolbar {
       gap: 8px;
+      background-color: #fff;
     }
   }
 
@@ -136,55 +137,10 @@
   }
 }
 
-// -----
-
 .no-data-row {
-  position: relative;
   display: flex;
-  height: 40px;
+  height: 64px;
   align-items: center;
   justify-content: center;
-}
-
-.no-data-row > .mat-cell {
-  border: none;
-  color: #6e6e6e;
-}
-
-.print-section {
-  display: none;
-}
-
-.print-expenses-label {
-  display: inline-block;
-  margin-left: 16px;
-  margin-top: 10px;
-}
-
-.print-amount {
-  font-size: 20px;
-  font-weight: 600;
-  color: map-get(v.$neutral-colors, dark);
-  margin-left: 4px;
-}
-
-.print-header-row {
-  width: 500px;
-}
-
-.print-sales-img {
-  height: 140px;
-  width: 190px;
-  margin: 0 9px;
-  border: solid 1px gray;
-}
-
-.print-table-header-row {
-  height: 30px;
-  min-height: 30px;
-}
-
-.print-header {
-  display: flex;
-  align-items: flex-end;
+  color: map-get(v.$neutral-colors, mid);
 }
