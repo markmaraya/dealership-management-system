@@ -1,4 +1,32 @@
 <mat-sidenav-container class="app-container">
+  <mat-sidenav mode="side" [opened]="!sidenav.opened" class="mini-sidenav">
+    <div class="header-title">
+      <img
+        class="logo"
+        src="assets/RichAnn-Logo.png"
+        alt="RichAnn Motors Logo"
+      />
+    </div>
+    <mat-nav-list>
+      <a
+        mat-list-item
+        routerLink="/units/available-units"
+        routerLinkActive="active"
+        matTooltip="Available Units"
+        matTooltipPosition="right"
+        ><mat-icon>local_shipping</mat-icon></a
+      >
+      <a
+        mat-list-item
+        routerLink="/units/sold-units"
+        routerLinkActive="active"
+        matTooltip="Sold Units"
+        matTooltipPosition="right"
+        ><mat-icon class="flip-horizontal">local_shipping</mat-icon></a
+      >
+    </mat-nav-list>
+  </mat-sidenav>
+
   <mat-sidenav #sidenav mode="side" opened class="app-sidenav">
     <div class="header-title">
       <img
@@ -29,9 +57,16 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <div class="app-content">
+    <div class="app-content" [ngClass]="{ 'sidenav-closed': !sidenav.opened }">
       <div class="header-row">
-        <button mat-icon-button (click)="sidenav.toggle()">
+        <button
+          mat-icon-button
+          (click)="sidenav.toggle()"
+          [matTooltip]="
+            sidenav.opened ? 'Shrink Menu' : 'Expand Menu'
+          "
+          disableRipple
+        >
           <mat-icon>menu</mat-icon>
         </button>
       </div>
