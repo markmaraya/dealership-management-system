@@ -1,7 +1,7 @@
 export class Expenses {
-    id!: string;
-    description!: string;
-    encodedBy!: string;
-    dateEncoded!: Date;
-    unitCode!: string;
+  id!: string;
+  description!: string;
+  encodedBy!: string;
+  dateEncoded!: Date;
+  unitCode!: string;
 }
