@@ -10,6 +10,7 @@ import {
   UntypedFormGroup,
   NgForm,
   Validators,
+  AbstractControl,
 } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -70,6 +71,7 @@ export class EditUnitDetailsComponent implements OnInit {
       chasisCode: [null, Validators.required],
       status: [null, Validators.required],
       expenses: null,
+      imageFile: [null, [this.imageFileValidator]],
     });
   }
 
@@ -83,32 +85,53 @@ export class EditUnitDetailsComponent implements OnInit {
         chasisCode: data.chasisCode,
         status: data.status || null,
         expenses: null,
+        imageFile: null,
       });
     });
   }
 
   onFormSubmit() {
     this.isLoadingResults = true;
-    this.salesForm.setValue({
+    const payload: any = {
       unitCode: this.salesForm.value.unitCode.toLowerCase(),
       makeAndModel: this.salesForm.value.makeAndModel.toLowerCase(),
       bodyType: this.salesForm.value.bodyType.toLowerCase(),
       chasisCode: this.salesForm.value.chasisCode.toLowerCase(),
       status: this.salesForm.value.status.toLowerCase(),
       expenses: this.salesForm.value.expenses,
-    });
-    this.checkUnitCode(this.salesForm.value.unitCode);
+      imageFile: this.salesForm.value.imageFile ?? null,
+    };
+
+    if (payload.imageFile === null) {
+      delete payload.imageFile;
+    }
+
+    this.checkUnitCode(payload);
   }
 
-  private checkUnitCode(unitCode: string) {
-    this.api.getUnitsByUnitCode(unitCode).subscribe((result: any) => {
+  private checkUnitCode(payload: any) {
+    this.api.getUnitsByUnitCode(payload.unitCode).subscribe((result: any) => {
       // *Unit Code can be edited currently
       // if (result.length == 0) {
-      this.api.updateUnits(this._id, this.salesForm.value).subscribe(
+      this.api.updateUnits(this._id, payload).subscribe(
         (res: any) => {
+          const id = res._id;
+
+          if (
+            payload.imageFile &&
+            typeof payload.imageFile === 'object' &&
+            'name' in payload.imageFile &&
+            'size' in payload.imageFile &&
+            'type' in payload.imageFile
+          ) {
+            this.saveImageFile(id);
+          }
+
           this.isLoadingResults = false;
           this.socket.emit('updatedata', res);
-          this.snackBar.open('Unit details updated successfully', 'Close', { duration: 5000 });
+          this.snackBar.open('Unit details updated successfully', 'Close', {
+            duration: 5000,
+          });
           this.dialogRef.close();
           this.router
             .navigateByUrl('/', { skipLocationChange: true })
@@ -119,7 +142,9 @@ export class EditUnitDetailsComponent implements OnInit {
         (err: any) => {
           console.log(err);
           this.isLoadingResults = false;
-          this.snackBar.open('Error updating unit details', 'Close', { duration: 3000 });
+          this.snackBar.open('Error updating unit details', 'Close', {
+            duration: 3000,
+          });
         },
       );
       // } else {
@@ -141,5 +166,47 @@ export class EditUnitDetailsComponent implements OnInit {
 
   onFocusUnitCode() {
     this.unitCodeExist = false;
+  }
+
+  onFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const file = input.files?.[0];
+
+    this.salesForm.patchValue({ imageFile: file ?? null });
+    this.salesForm.get('imageFile')?.markAsDirty();
+  }
+
+  private imageFileValidator(control: AbstractControl) {
+    const file: File = control.value;
+    if (!file) return null;
+
+    if (!['image/png', 'image/jpeg'].includes(file.type)) {
+      return { invalidFileType: true };
+    }
+    return null;
+  }
+
+  private saveImageFile(unitId: string) {
+    this.api
+      .addGallery(
+        this.salesForm.value.imageFile,
+        this.salesForm.get('imageFile')?.value,
+        unitId,
+      )
+      .subscribe(
+        (res: any) => {
+          this.isLoadingResults = false;
+          if (res.body) {
+            this.router.navigate(['/unit-details', unitId], {
+              queryParams: { imgId: res.body._id },
+            });
+            this.dialogRef.close();
+          }
+        },
+        (err: any) => {
+          console.log(err);
+          this.isLoadingResults = false;
+        },
+      );
   }
 }

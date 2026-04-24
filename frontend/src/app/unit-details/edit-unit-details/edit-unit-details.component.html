@@ -88,13 +88,23 @@
           >
         </mat-error>
       </mat-form-field>
+      <mat-form-field class="full-width" floatLabel="always">
+        <mat-label>Select Image</mat-label>
+        <input
+          type="file"
+          matInput
+          (change)="onFileSelected($event)"
+          accept="image/png, image/jpeg, image/jpg"
+        />
+        <mat-icon matSuffix>folder</mat-icon>
+      </mat-form-field>
     </mat-dialog-content>
 
     <mat-dialog-actions>
       <button mat-button mat-dialog-close>Back</button>
       <button
         type="submit"
-        [disabled]="!salesForm.valid"
+        [disabled]="salesForm.pristine || salesForm.invalid"
         mat-flat-button
         color="primary"
       >
