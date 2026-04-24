@@ -15,6 +15,7 @@ import {
 } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Expenses } from '../../models/expenses';
 import { Gallery } from '../../models/gallery';
 
@@ -56,6 +57,7 @@ export class AddUnitsComponent implements OnInit {
     private api: ApiService,
     private formBuilder: UntypedFormBuilder,
     private dialogRef: MatDialogRef<AddUnitsComponent>,
+    private snackBar: MatSnackBar,
   ) {}
 
   ngOnInit(): void {
@@ -92,12 +94,14 @@ export class AddUnitsComponent implements OnInit {
             const id = res._id;
             this.isLoadingResults = false;
             this.socket.emit('updatedata', res);
+            this.snackBar.open(`Unit ${unitCode} added successfully`, 'Close', { duration: 5000 });
             this.dialogRef.close();
             this.router.navigate(['/sales-details', id]);
           },
           (err: any) => {
             console.log(err);
             this.isLoadingResults = false;
+            this.snackBar.open('Error adding unit', 'Close', { duration: 3000 });
           },
         );
       } else {

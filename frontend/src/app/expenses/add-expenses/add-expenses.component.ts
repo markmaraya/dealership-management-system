@@ -13,6 +13,7 @@ import {
 } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -52,6 +53,7 @@ export class AddExpensesComponent implements OnInit {
     private api: ApiService,
     private formBuilder: UntypedFormBuilder,
     public dialogRef: MatDialogRef<AddExpensesComponent>,
+    public snackBar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {}
 
@@ -83,6 +85,7 @@ export class AddExpensesComponent implements OnInit {
         this.isLoadingResults = false;
         this.socket.emit('updatedata', res);
         this.dialogRef.close();
+        this.snackBar.open('Expenses added successfully', 'Close', { duration: 5000 });
         this.router
           .navigateByUrl('/', { skipLocationChange: true })
           .then(() => {
@@ -92,6 +95,7 @@ export class AddExpensesComponent implements OnInit {
       (err: any) => {
         console.log(err);
         this.isLoadingResults = false;
+        this.snackBar.open('Error adding expenses', 'Close', { duration: 3000 });
       },
     );
   }

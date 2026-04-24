@@ -13,6 +13,7 @@ import {
 } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -55,6 +56,7 @@ export class EditUnitDetailsComponent implements OnInit {
     private api: ApiService,
     private formBuilder: UntypedFormBuilder,
     public dialogRef: MatDialogRef<EditUnitDetailsComponent>,
+    public snackBar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {}
 
@@ -106,6 +108,7 @@ export class EditUnitDetailsComponent implements OnInit {
         (res: any) => {
           this.isLoadingResults = false;
           this.socket.emit('updatedata', res);
+          this.snackBar.open('Unit details updated successfully', 'Close', { duration: 5000 });
           this.dialogRef.close();
           this.router
             .navigateByUrl('/', { skipLocationChange: true })
@@ -116,6 +119,7 @@ export class EditUnitDetailsComponent implements OnInit {
         (err: any) => {
           console.log(err);
           this.isLoadingResults = false;
+          this.snackBar.open('Error updating unit details', 'Close', { duration: 3000 });
         },
       );
       // } else {

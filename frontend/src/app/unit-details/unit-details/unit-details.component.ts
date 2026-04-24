@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { io } from 'socket.io-client';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { DatePipe } from '@angular/common';
 import {
@@ -67,6 +68,7 @@ export class UnitDetailsComponent implements OnInit {
     private clipboard: Clipboard,
     private datePipe: DatePipe,
     private formBuilder: UntypedFormBuilder,
+    public snackBar: MatSnackBar,
   ) {}
 
   ngOnInit(): void {
@@ -99,6 +101,7 @@ export class UnitDetailsComponent implements OnInit {
     this.api.deleteUnits(id).subscribe(
       (res) => {
         this.isLoadingResults = false;
+        this.snackBar.open('Unit removed successfully', 'Close', { duration: 5000 });
         this.router.navigate(
           res.status === 'sold'
             ? ['/units/sold-units']
@@ -108,6 +111,7 @@ export class UnitDetailsComponent implements OnInit {
       (err) => {
         console.log(err);
         this.isLoadingResults = false;
+        this.snackBar.open('Error removing unit', 'Close', { duration: 3000 });
       },
     );
   }
@@ -211,6 +215,7 @@ export class UnitDetailsComponent implements OnInit {
       (res) => {
         this.isLoadingResults = false;
         this.socket.emit('updatedata', res);
+        this.snackBar.open('Expenses removed successfully', 'Close', { duration: 5000 });
         this.router
           .navigateByUrl('/', { skipLocationChange: true })
           .then(() => {
@@ -220,6 +225,7 @@ export class UnitDetailsComponent implements OnInit {
       (err) => {
         console.log(err);
         this.isLoadingResults = false;
+        this.snackBar.open('Error removing expenses', 'Close', { duration: 3000 });
       },
     );
   }

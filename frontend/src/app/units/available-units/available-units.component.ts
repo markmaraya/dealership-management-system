@@ -18,6 +18,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmationDialogComponent } from '../../dialog/confirmation-dialog/confirmation-dialog.component';
 import { AddUnitsComponent } from '../../unit-details/add-units/add-units.component';
 
@@ -75,6 +76,7 @@ export class AvailableUnitsComponent implements OnInit {
     public dialog: MatDialog,
     private location: Location,
     private uppercasePipe: UpperCasePipe,
+    public snackBar: MatSnackBar,
   ) {
     this.formOptions = fb.group({
       hideRequired: this.hideRequiredControl,
@@ -213,12 +215,14 @@ export class AvailableUnitsComponent implements OnInit {
         (res: any) => {
           this.isLoadingResults = false;
           this.socket.emit('updatedata', res);
+          this.snackBar.open(`Unit ${result.unitCode} marked as sold successfully`, 'Close', { duration: 5000 });
           this.getUnits();
           this.router.navigate(['/']);
         },
         (err: any) => {
           console.log(err);
           this.isLoadingResults = false;
+          this.snackBar.open('Error marking unit as sold', 'Close', { duration: 3000 });
         },
       );
     });
