@@ -68,7 +68,7 @@ export class AddUnitsComponent implements OnInit {
       chasisCode: [null, Validators.required],
       status: null,
       expenses: null,
-      imageFile: null,
+      imageFile: [null, [this.imageFileValidator]],
     });
   }
 
@@ -81,9 +81,16 @@ export class AddUnitsComponent implements OnInit {
       chasisCode: this.salesForm.value.chasisCode.toLowerCase(),
       status: 'available',
       expenses: this.expenses,
-      imageFile: this.imageFile,
+      imageFile: this.salesForm.value.imageFile ?? this.imageFile,
     });
     this.checkUnitCode(this.salesForm.value.unitCode);
+  }
+
+  onFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const file = input.files?.[0];
+    
+    this.salesForm.patchValue({ imageFile: file ?? null });
   }
 
   private checkUnitCode(unitCode: string) {
@@ -92,16 +99,31 @@ export class AddUnitsComponent implements OnInit {
         this.api.addUnits(this.salesForm.value).subscribe(
           (res: any) => {
             const id = res._id;
+
+            if (
+              this.salesForm.value.imageFile &&
+              typeof this.salesForm.value.imageFile === 'object' &&
+              'name' in this.salesForm.value.imageFile &&
+              'size' in this.salesForm.value.imageFile &&
+              'type' in this.salesForm.value.imageFile
+            ) {
+              this.saveImageFile(id);
+            }
+
             this.isLoadingResults = false;
             this.socket.emit('updatedata', res);
-            this.snackBar.open(`Unit ${unitCode} added successfully`, 'Close', { duration: 5000 });
+            this.snackBar.open(`Unit ${unitCode} added successfully`, 'Close', {
+              duration: 5000,
+            });
             this.dialogRef.close();
-            this.router.navigate(['/sales-details', id]);
+            this.router.navigate(['/unit-details', id]);
           },
           (err: any) => {
             console.log(err);
             this.isLoadingResults = false;
-            this.snackBar.open('Error adding unit', 'Close', { duration: 3000 });
+            this.snackBar.open('Error adding unit', 'Close', {
+              duration: 3000,
+            });
           },
         );
       } else {
@@ -142,5 +164,39 @@ export class AddUnitsComponent implements OnInit {
       }
       return existingCodes.includes(value) ? { unitCodeExists: true } : null;
     };
+  }
+
+  private imageFileValidator(control: AbstractControl) {
+    const file: File = control.value;
+    if (!file) return null;
+
+    if (!['image/png', 'image/jpeg'].includes(file.type)) {
+      return { invalidFileType: true };
+    }
+    return null;
+  }
+
+  private saveImageFile(unitId: string) {
+    this.api
+      .addGallery(
+        this.salesForm.value.imageFile,
+        this.salesForm.get('imageFile')?.value,
+        unitId,
+      )
+      .subscribe(
+        (res: any) => {
+          this.isLoadingResults = false;
+          if (res.body) {
+            this.router.navigate(['/unit-details', unitId], {
+              queryParams: { imgId: res.body._id },
+            });
+            this.dialogRef.close();
+          }
+        },
+        (err: any) => {
+          console.log(err);
+          this.isLoadingResults = false;
+        },
+      );
   }
 }

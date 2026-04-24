@@ -52,7 +52,7 @@
           >
         </mat-error>
       </mat-form-field>
-      <mat-form-field class="full-width" appearance="fill">
+      <mat-form-field class="full-width mb-16" appearance="fill">
         <mat-label>Chasis Code</mat-label>
         <input
           matInput
@@ -68,6 +68,16 @@
             >Please enter Chasis Code</span
           >
         </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width" floatLabel="always">
+        <mat-label>Select Image</mat-label>
+        <input
+          type="file"
+          matInput
+          (change)="onFileSelected($event)"
+          accept="image/png, image/jpeg, image/jpg"
+        />
+        <mat-icon matSuffix>folder</mat-icon>
       </mat-form-field>
     </mat-dialog-content>
     <mat-dialog-actions>

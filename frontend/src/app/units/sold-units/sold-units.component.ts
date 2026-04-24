@@ -105,7 +105,6 @@ export class SoldUnitsComponent {
             this.salesForm.value.searchBy,
           );
         }
-        console.log(this.data);
         this.isLoadingResults = false;
       },
       (err) => {

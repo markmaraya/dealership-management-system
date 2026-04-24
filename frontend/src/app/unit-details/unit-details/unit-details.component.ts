@@ -101,7 +101,7 @@ export class UnitDetailsComponent implements OnInit {
     this.api.deleteUnits(id).subscribe(
       (res) => {
         this.isLoadingResults = false;
-        this.snackBar.open('Unit removed successfully', 'Close', { duration: 5000 });
+        this.snackBar.open(`Unit ${res.unitCode} removed successfully`, 'Close', { duration: 5000 });
         this.router.navigate(
           res.status === 'sold'
             ? ['/units/sold-units']
