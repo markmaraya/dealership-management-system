@@ -37,7 +37,6 @@ import { SoldUnitsComponent } from './units/sold-units/sold-units.component';
 import { UnitDetailsComponent } from './unit-details/unit-details/unit-details.component';
 import { AddUnitsComponent } from './unit-details/add-units/add-units.component';
 import { EditUnitDetailsComponent } from './unit-details/edit-unit-details/edit-unit-details.component';
-import { UnitImageUploadComponent } from './unit-details/unit-image-upload/unit-image-upload.component';
 import { PrintUnitDetailsComponent } from './unit-details/print-unit-details/print-unit-details.component';
 
 import { AddExpensesComponent } from './expenses/add-expenses/add-expenses.component';
@@ -57,7 +56,6 @@ import { ImagePreviewDialogComponent } from './dialog/image-preview-dialog/image
     AddExpensesComponent,
     EditExpensesComponent,
     ConfirmationDialogComponent,
-    UnitImageUploadComponent,
     ImagePreviewDialogComponent,
     PrintUnitDetailsComponent,
   ],

@@ -6,16 +6,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { DatePipe } from '@angular/common';
-import {
-  UntypedFormBuilder,
-  UntypedFormGroup,
-  Validators,
-} from '@angular/forms';
 import { ApiService } from '../../api.service';
 import { Units } from '../../models/units';
 import { Gallery } from '../../models/gallery';
 import { EditUnitDetailsComponent } from '../edit-unit-details/edit-unit-details.component';
-import { UnitImageUploadComponent } from '../unit-image-upload/unit-image-upload.component';
 import { ConfirmationDialogComponent } from '../../dialog/confirmation-dialog/confirmation-dialog.component';
 import { ImagePreviewDialogComponent } from '../../dialog/image-preview-dialog/image-preview-dialog.component';
 import { AddExpensesComponent } from '../../expenses/add-expenses/add-expenses.component';
@@ -57,7 +51,6 @@ export class UnitDetailsComponent implements OnInit {
   isLoadingResults = true;
   showExpenses = 0;
   total = 0;
-  salesForm: UntypedFormGroup;
   environmentApiUrl = environment.apiUrl;
 
   constructor(
@@ -67,7 +60,6 @@ export class UnitDetailsComponent implements OnInit {
     public dialog: MatDialog,
     private clipboard: Clipboard,
     private datePipe: DatePipe,
-    private formBuilder: UntypedFormBuilder,
     public snackBar: MatSnackBar,
   ) {}
 
@@ -101,7 +93,11 @@ export class UnitDetailsComponent implements OnInit {
     this.api.deleteUnits(id).subscribe(
       (res) => {
         this.isLoadingResults = false;
-        this.snackBar.open(`Unit ${res.unitCode} removed successfully`, 'Close', { duration: 5000 });
+        this.snackBar.open(
+          `Unit ${res.unitCode} removed successfully`,
+          'Close',
+          { duration: 5000 },
+        );
         this.router.navigate(
           res.status === 'sold'
             ? ['/units/sold-units']
@@ -137,26 +133,6 @@ export class UnitDetailsComponent implements OnInit {
         _id: id,
         unitCode: unitCode,
       },
-    });
-  }
-
-  openUploadDialog(id: any) {
-    const uploadDialog = this.dialog.open(UnitImageUploadComponent, {
-      data: { _id: id },
-    });
-    uploadDialog.afterClosed().subscribe((result) => {
-      if (this.route.snapshot.params.imgId) {
-        this.isLoadingResults = true;
-        this.salesForm = this.formBuilder.group({
-          unitCode: [null, Validators.required],
-          makeAndModel: [null, Validators.required],
-          bodyType: [null, Validators.required],
-          chasisCode: [null, Validators.required],
-          expenses: null,
-          imageFile: [null, Validators.required],
-        });
-        this.updateUnitAddImage(id, this.route.snapshot.params.imgId);
-      }
     });
   }
 
@@ -215,7 +191,9 @@ export class UnitDetailsComponent implements OnInit {
       (res) => {
         this.isLoadingResults = false;
         this.socket.emit('updatedata', res);
-        this.snackBar.open('Expenses removed successfully', 'Close', { duration: 5000 });
+        this.snackBar.open('Expenses removed successfully', 'Close', {
+          duration: 5000,
+        });
         this.router
           .navigateByUrl('/', { skipLocationChange: true })
           .then(() => {
@@ -225,7 +203,9 @@ export class UnitDetailsComponent implements OnInit {
       (err) => {
         console.log(err);
         this.isLoadingResults = false;
-        this.snackBar.open('Error removing expenses', 'Close', { duration: 3000 });
+        this.snackBar.open('Error removing expenses', 'Close', {
+          duration: 3000,
+        });
       },
     );
   }
@@ -241,43 +221,10 @@ export class UnitDetailsComponent implements OnInit {
     );
   }
 
-  updateUnitAddImage(id: string, imgId: string): void {
-    this.api.getGalleryById(imgId).subscribe((data: any) => {
-      this.isLoadingResults = false;
-      this.checkUnitCode(id, data);
-    });
-  }
-
   private calculateTotal() {
     var amounts = this.units.expenses.map((x) => {
       return Number(x.amount);
     });
     this.total = amounts.reduce((accum, curr) => accum + curr, 0);
-  }
-
-  private checkUnitCode(id: string, gallery: Gallery) {
-    this.api.getUnitsById(id).subscribe((result: any) => {
-      this.isLoadingResults = false;
-      this.salesForm.setValue({
-        unitCode: result.unitCode,
-        makeAndModel: result.makeAndModel,
-        bodyType: result.bodyType,
-        chasisCode: result.chasisCode,
-        expenses: result.expenses,
-        imageFile: gallery,
-      });
-
-      this.api.updateUnits(id, this.salesForm.value).subscribe(
-        (res: any) => {
-          this.isLoadingResults = false;
-          this.socket.emit('updatedata', res);
-          this.router.navigate(['/sales-details', id]);
-        },
-        (err: any) => {
-          console.log(err);
-          this.isLoadingResults = false;
-        },
-      );
-    });
   }
 }
