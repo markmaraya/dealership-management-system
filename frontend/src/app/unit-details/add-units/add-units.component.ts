@@ -75,10 +75,10 @@ export class AddUnitsComponent implements OnInit {
   onFormSubmit() {
     this.isLoadingResults = true;
     this.salesForm.setValue({
-      unitCode: this.salesForm.value.unitCode.toLowerCase(),
-      makeAndModel: this.salesForm.value.makeAndModel.toLowerCase(),
-      bodyType: this.salesForm.value.bodyType.toLowerCase(),
-      chasisCode: this.salesForm.value.chasisCode.toLowerCase(),
+      unitCode: this.salesForm.value.unitCode,
+      makeAndModel: this.salesForm.value.makeAndModel,
+      bodyType: this.salesForm.value.bodyType,
+      chasisCode: this.salesForm.value.chasisCode,
       status: 'available',
       expenses: this.expenses,
       imageFile: this.salesForm.value.imageFile ?? this.imageFile,

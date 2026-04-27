@@ -72,8 +72,8 @@ export class AddExpensesComponent implements OnInit {
 
     this.salesForm.setValue({
       amount: this.salesForm.value.amount,
-      description: this.salesForm.value.description.toLowerCase(),
-      encodedBy: this.salesForm.value.encodedBy.toLowerCase(),
+      description: this.salesForm.value.description,
+      encodedBy: this.salesForm.value.encodedBy,
     });
 
     this.salesForm.value.unitCode = this._id;

@@ -93,11 +93,11 @@ export class EditUnitDetailsComponent implements OnInit {
   onFormSubmit() {
     this.isLoadingResults = true;
     const payload: any = {
-      unitCode: this.salesForm.value.unitCode.toLowerCase(),
-      makeAndModel: this.salesForm.value.makeAndModel.toLowerCase(),
-      bodyType: this.salesForm.value.bodyType.toLowerCase(),
-      chasisCode: this.salesForm.value.chasisCode.toLowerCase(),
-      status: this.salesForm.value.status.toLowerCase(),
+      unitCode: this.salesForm.value.unitCode,
+      makeAndModel: this.salesForm.value.makeAndModel,
+      bodyType: this.salesForm.value.bodyType,
+      chasisCode: this.salesForm.value.chasisCode,
+      status: this.salesForm.value.status,
       expenses: this.salesForm.value.expenses,
       imageFile: this.salesForm.value.imageFile ?? null,
     };

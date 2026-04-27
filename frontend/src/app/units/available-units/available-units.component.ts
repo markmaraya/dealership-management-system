@@ -100,7 +100,7 @@ export class AvailableUnitsComponent implements OnInit {
   getUnits() {
     this.api.getUnits().subscribe(
       (res: any) => {
-        let getFilteredUnits = (res) => res.status == 'available';
+        let getFilteredUnits = (res) => res.status.toLowerCase() == 'available';
         let filteredRes: Units[] = res.filter(getFilteredUnits);
 
         this.data = new MatTableDataSource<Units>(filteredRes);
@@ -199,7 +199,7 @@ export class AvailableUnitsComponent implements OnInit {
 
   private setStatusToSold(id: string): void {
     this.api.getUnitsById(id).subscribe((result: any) => {
-      const status = 'sold';
+      const status = 'Sold';
       this.isLoadingResults = false;
       this.unitsForm = this.fb.group({
         unitCode: result.unitCode,

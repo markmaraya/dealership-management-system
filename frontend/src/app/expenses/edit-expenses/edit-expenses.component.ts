@@ -87,8 +87,8 @@ export class EditExpensesComponent implements OnInit {
     this.isLoadingResults = true;
     this.salesForm.setValue({
       amount: this.salesForm.value.amount,
-      description: this.salesForm.value.description.toLowerCase(),
-      encodedBy: this.salesForm.value.encodedBy.toLowerCase(),
+      description: this.salesForm.value.description,
+      encodedBy: this.salesForm.value.encodedBy,
     });
     this.api.updateExpenses(this.expensesId, this.salesForm.value).subscribe(
       (res: any) => {

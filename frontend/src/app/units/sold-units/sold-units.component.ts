@@ -93,7 +93,7 @@ export class SoldUnitsComponent {
   getUnits() {
     this.api.getUnits().subscribe(
       (res: any) => {
-        let getFilteredUnits = (res) => res.status == 'sold';
+        let getFilteredUnits = (res) => res.status.toLowerCase() == 'sold';
         let filteredRes: Units[] = res.filter(getFilteredUnits);
 
         this.data = new MatTableDataSource<Units>(filteredRes);
