@@ -1,16 +1,34 @@
+@use "../theme/palettes" as p;
+
 .app-container {
   height: 100vh;
   background-color: #ffffff;
 }
 
-.header-title .logo {
-  height: 50px;
-  width: 50px;
-}
+.header-title {
+  .logo {
+    height: 50px;
+    width: 50px;
+  }
 
-.header-title span {
-  font-size: larger;
-  font-weight: bold;
+  .logo-placeholder {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background-color: map-get(p.$primary, 500);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  span {
+    font-size: larger;
+    font-weight: bold;
+  }
 }
 
 .app-sidenav {

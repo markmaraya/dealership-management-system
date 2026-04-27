@@ -8,4 +8,5 @@ import { appConfig } from '../config/appConfig';
 })
 export class AppComponent {
   title = appConfig.APP_TITLE;
+  logoPath = appConfig.LOGO_PATH;
 }

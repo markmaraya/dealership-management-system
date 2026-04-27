@@ -2,9 +2,10 @@
   <mat-sidenav mode="side" [opened]="!sidenav.opened" class="mini-sidenav">
     <div class="header-title">
       <img
+        *ngIf="logoPath; else placeholder"
         class="logo"
-        src="assets/RichAnn-Logo.png"
-        alt="RichAnn Motors Logo"
+        [src]="logoPath"
+        [alt]="title + ' Logo'"
       />
     </div>
     <mat-nav-list>
@@ -30,10 +31,16 @@
   <mat-sidenav #sidenav mode="side" opened class="app-sidenav">
     <div class="header-title">
       <img
+        *ngIf="logoPath; else placeholder"
         class="logo"
-        src="assets/RichAnn-Logo.png"
-        alt="RichAnn Motors Logo"
+        [src]="logoPath"
+        [alt]="title + ' Logo'"
       />
+      <ng-template #placeholder>
+        <div class="logo-placeholder">
+          {{ title.charAt(0) }}
+        </div>
+      </ng-template>
       <span class="text-dark">{{ title }}</span>
     </div>
     <mat-nav-list class="nav-list">
@@ -62,9 +69,7 @@
         <button
           mat-icon-button
           (click)="sidenav.toggle()"
-          [matTooltip]="
-            sidenav.opened ? 'Shrink Menu' : 'Expand Menu'
-          "
+          [matTooltip]="sidenav.opened ? 'Shrink Menu' : 'Expand Menu'"
           disableRipple
         >
           <mat-icon>menu</mat-icon>
