@@ -98,7 +98,7 @@
         <button
           mat-button
           [routerLink]="
-            units.status === 'sold'
+            units.status?.toLowerCase() === 'sold'
               ? ['/units/sold-units']
               : ['/units/available-units']
           "

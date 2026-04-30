@@ -99,7 +99,7 @@ export class UnitDetailsComponent implements OnInit {
           { duration: 5000 },
         );
         this.router.navigate(
-          res.status === 'sold'
+          res.status?.toLocaleLowerCase() === 'sold'
             ? ['/units/sold-units']
             : ['/units/available-units'],
         );
