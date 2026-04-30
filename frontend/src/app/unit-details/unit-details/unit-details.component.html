@@ -35,7 +35,7 @@
         <div class="unit-image">
           <img
             *ngIf="units.imageFile.imageUrl?.length > 0"
-            [src]="environmentApiUrl + units.imageFile.imageUrl"
+            [src]="'assets/mock-images/' + units.imageFile.imageUrl"
             (click)="openImagePreviewDialog(units.imageFile._id)"
             alt="{{ units.imageFile.id }}"
           />

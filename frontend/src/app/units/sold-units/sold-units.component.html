@@ -103,7 +103,7 @@
               <div class="sales-img">
                 <img
                   *ngIf="row.imageFile.imageUrl?.length > 0"
-                  [src]="environmentApiUrl + row.imageFile.imageUrl"
+                  [src]="'assets/mock-images/' + row.imageFile.imageUrl"
                   alt="{{ row.imageFile.id }}"
                 />
                 <div

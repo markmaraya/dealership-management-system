@@ -18,7 +18,8 @@ const httpOptions = {
 };
 // const apiUrl = 'http://localhost:4000/api';
 const apiUrl = 'api';
-const galleryUrl = `${environment.apiUrl}/gallery`;
+// const galleryUrl = `${environment.apiUrl}/gallery`;
+const galleryUrl = `api/gallery`;
 
 @Injectable({
   providedIn: 'root',

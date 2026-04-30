@@ -4,7 +4,7 @@
   </button>
   <img
     *ngIf="gallery.imageUrl?.length > 0"
-    [src]="environmentApiUrl + gallery.imageUrl"
+    [src]="'assets/mock-images/' + gallery.imageUrl"
     alt="{{ gallery.id }}"
   />
 </div>

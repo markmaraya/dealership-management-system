@@ -16,8 +16,9 @@ export class MockDataService implements InMemoryDbService {
         chasisCode: 'NPZ57Z-5363265',
         status: 'Available',
         imageFile: {
-          url: 'assets/mock-images/mock-image1.jpg',
-          alt: 'Isuzu Elf Car Carrier',
+          _id: '1',
+          id: '1',
+          imageUrl: 'mock-image1.jpg',
         },
       },
       {
@@ -30,8 +31,9 @@ export class MockDataService implements InMemoryDbService {
         chasisCode: 'NPX57P-6365701',
         status: 'Available',
         imageFile: {
-          url: 'assets/mock-images/mock-image2.jpg',
-          alt: 'Isuzu Elf Car Carrier',
+          _id: '2',
+          id: '2',
+          imageUrl: 'mock-image2.jpg',
         },
       },
       {
@@ -44,8 +46,9 @@ export class MockDataService implements InMemoryDbService {
         chasisCode: 'NPZ57X-7317289',
         status: 'Available',
         imageFile: {
-          url: 'assets/mock-images/mock-image3.jpg',
-          alt: 'Isuzu Elf Car Carrier',
+          _id: '3',
+          id: '3',
+          imageUrl: 'mock-image3.jpg',
         },
       },
       {
@@ -58,8 +61,9 @@ export class MockDataService implements InMemoryDbService {
         chasisCode: 'NPX57P-1354165',
         status: 'Available',
         imageFile: {
-          url: 'assets/mock-images/mock-image4.jpg',
-          alt: 'Isuzu Elf Car Carrier',
+          _id: '4',
+          id: '4',
+          imageUrl: 'mock-image4.jpg',
         },
       },
       {
@@ -72,8 +76,9 @@ export class MockDataService implements InMemoryDbService {
         chasisCode: 'NPZ57X-6486578',
         status: 'Available',
         imageFile: {
-          url: 'assets/mock-images/mock-image5.jpg',
-          alt: 'Isuzu Elf Car Carrier',
+          _id: '5',
+          id: '5',
+          imageUrl: 'mock-image5.jpg',
         },
       },
       {
@@ -86,8 +91,9 @@ export class MockDataService implements InMemoryDbService {
         chasisCode: 'NPZ57P-4643265',
         status: 'Sold',
         imageFile: {
-          url: 'assets/mock-images/mock-image6.jpg',
-          alt: 'Isuzu Giga Car Carrier',
+          _id: '6',
+          id: '6',
+          imageUrl: 'mock-image6.jpg',
         },
       },
       {
@@ -100,8 +106,9 @@ export class MockDataService implements InMemoryDbService {
         chasisCode: 'NPX57Z-3325701',
         status: 'Sold',
         imageFile: {
-          url: 'assets/mock-images/mock-image7.jpg',
-          alt: 'Isuzu Elf Car Carrier',
+          _id: '7',
+          id: '7',
+          imageUrl: 'mock-image7.jpg',
         },
       },
       {
@@ -114,8 +121,9 @@ export class MockDataService implements InMemoryDbService {
         chasisCode: 'NPZ57X-2467289',
         status: 'Sold',
         imageFile: {
-          url: 'assets/mock-images/mock-image8.jpg',
-          alt: 'Isuzu Elf Car Carrier',
+          _id: '8',
+          id: '8',
+          imageUrl: 'mock-image8.jpg',
         },
       },
       {
@@ -128,8 +136,9 @@ export class MockDataService implements InMemoryDbService {
         chasisCode: 'NPX56Z-2134165',
         status: 'Sold',
         imageFile: {
-          url: 'assets/mock-images/mock-image9.jpg',
-          alt: 'Isuzu Elf Car Carrier',
+          _id: '9',
+          id: '9',
+          imageUrl: 'mock-image9.jpg',
         },
       },
       {
@@ -142,8 +151,9 @@ export class MockDataService implements InMemoryDbService {
         chasisCode: 'NPZ59X-3326578',
         status: 'Sold',
         imageFile: {
-          url: 'assets/mock-images/mock-image10.jpg',
-          alt: 'Isuzu Elf Car Carrier',
+          _id: '10',
+          id: '10',
+          imageUrl: 'mock-image10.jpg',
         },
       },
     ];
@@ -232,7 +242,60 @@ export class MockDataService implements InMemoryDbService {
       },
     ];
 
-    return { units, expenses };
+    const gallery = [
+      {
+        _id: '1',
+        id: '1',
+        imageUrl: 'mock-image1.jpg',
+      },
+      {
+        _id: '2',
+        id: '2',
+        imageUrl: 'mock-image2.jpg',
+      },
+      {
+        _id: '3',
+        id: '3',
+        imageUrl: 'mock-image3.jpg',
+      },
+      {
+        _id: '4',
+        id: '4',
+        imageUrl: 'mock-image4.jpg',
+      },
+      {
+        _id: '5',
+        id: '5',
+        imageUrl: 'mock-image5.jpg',
+      },
+      {
+        _id: '6',
+        id: '6',
+        imageUrl: 'mock-image6.jpg',
+      },
+      {
+        _id: '7',
+        id: '7',
+        imageUrl: 'mock-image7.jpg',
+      },
+      {
+        _id: '8',
+        id: '8',
+        imageUrl: 'mock-image8.jpg',
+      },
+      {
+        _id: '9',
+        id: '9',
+        imageUrl: 'mock-image9.jpg',
+      },
+      {
+        _id: '10',
+        id: '10',
+        imageUrl: 'mock-image10.jpg',
+      },
+    ];
+
+    return { units, expenses, gallery };
   }
 
   parseRequestUrl(url: string, utils: RequestInfoUtilities) {
