@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { DatePipe } from '@angular/common';
 
 import {
@@ -32,6 +33,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { NgxPrintModule } from 'ngx-print';
+
+import { MockDataService } from './mocks/mock-data.service';
 
 import { AvailableUnitsComponent } from './units/available-units/available-units.component';
 import { SoldUnitsComponent } from './units/sold-units/sold-units.component';
@@ -66,6 +69,7 @@ import { ImagePreviewDialogComponent } from './dialog/image-preview-dialog/image
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
+    HttpClientInMemoryWebApiModule.forRoot(MockDataService),
     MatInputModule,
     MatPaginatorModule,
     MatProgressSpinnerModule,

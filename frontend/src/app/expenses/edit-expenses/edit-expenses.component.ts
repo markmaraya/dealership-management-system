@@ -40,7 +40,8 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./edit-expenses.component.scss'],
 })
 export class EditExpensesComponent implements OnInit {
-  socket = io(environment.apiUrl);
+  // socket = io(environment.apiUrl);
+  socket = { on: () => {}, emit: () => {} } as any;
 
   salesForm: UntypedFormGroup;
   unitId: '';
@@ -75,11 +76,13 @@ export class EditExpensesComponent implements OnInit {
 
   getExpensesById(id: any) {
     this.api.getExpensesById(id).subscribe((data: any) => {
-      this.salesForm.setValue({
-        amount: data.amount,
-        description: data.description,
-        encodedBy: data.encodedBy,
-      });
+      if (data) {
+        this.salesForm.setValue({
+          amount: data.amount,
+          description: data.description,
+          encodedBy: data.encodedBy,
+        });
+      }
     });
   }
 
@@ -96,7 +99,9 @@ export class EditExpensesComponent implements OnInit {
         this.isLoadingResults = false;
         this.socket.emit('updatedata', res);
         this.dialogRef.close();
-        this.snackBar.open('Expenses updated successfully', 'Close', { duration: 5000 });
+        this.snackBar.open('Expenses updated successfully', 'Close', {
+          duration: 5000,
+        });
         this.router
           .navigateByUrl('/', { skipLocationChange: true })
           .then(() => {
@@ -106,7 +111,9 @@ export class EditExpensesComponent implements OnInit {
       (err: any) => {
         console.log(err);
         this.isLoadingResults = false;
-        this.snackBar.open('Error updating expenses', 'Close', { duration: 3000 });
+        this.snackBar.open('Error updating expenses', 'Close', {
+          duration: 3000,
+        });
       },
     );
   }

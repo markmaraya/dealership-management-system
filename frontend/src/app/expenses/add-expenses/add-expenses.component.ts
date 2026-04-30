@@ -36,7 +36,8 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./add-expenses.component.scss'],
 })
 export class AddExpensesComponent implements OnInit {
-  socket = io(environment.apiUrl);
+  // socket = io(environment.apiUrl);
+  socket = { on: () => {}, emit: () => {} } as any;
 
   salesForm: UntypedFormGroup;
   _id = '';

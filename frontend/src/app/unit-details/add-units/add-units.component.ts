@@ -40,7 +40,8 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./add-units.component.scss'],
 })
 export class AddUnitsComponent implements OnInit {
-  socket = io(environment.apiUrl);
+  // socket = io(environment.apiUrl);
+  socket = { on: () => {}, emit: () => {} } as any;
 
   salesForm: UntypedFormGroup;
   unitCode = '';

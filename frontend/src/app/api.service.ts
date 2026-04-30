@@ -16,7 +16,8 @@ import { Gallery } from './models/gallery';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
-const apiUrl = 'http://localhost:4000/api';
+// const apiUrl = 'http://localhost:4000/api';
+const apiUrl = 'api';
 const galleryUrl = `${environment.apiUrl}/gallery`;
 
 @Injectable({
@@ -49,14 +50,14 @@ export class ApiService {
 
   getUnits(): Observable<Units[]> {
     console.log('API Get Units');
-    return this.http.get<Units[]>(`${apiUrl}`).pipe(
+    return this.http.get<Units[]>(`${apiUrl}/units`).pipe(
       tap((units) => console.log('Fetched Units')),
       catchError(this.handleError('getUnits', [])),
     );
   }
 
   getUnitsById(id: string, imgId?: string): Observable<Units> {
-    let url = `${apiUrl}/${id}`;
+    let url = `${apiUrl}/units/${id}`;
 
     if (imgId) {
       url += `?imgId=${imgId}`;
@@ -103,12 +104,12 @@ export class ApiService {
 
   // Expenses
 
-  getExpensesByUnitCode(unitCode: string): Observable<Expenses> {
-    const url = `${apiUrl}/expenses/${unitCode}`;
-    return this.http.get<Expenses>(url).pipe(
+  getExpensesByUnitCode(unitCode: string): Observable<Expenses[]> {
+    const url = `${apiUrl}/expenses?unitCode=${unitCode}`;
+    return this.http.get<Expenses[]>(url).pipe(
       tap((_) => console.log(`Fetched Expenses unitCode=${unitCode}`)),
       catchError(
-        this.handleError<Expenses>(
+        this.handleError<Expenses[]>(
           `getExpensesByUnitCode unitCode=${unitCode}`,
         ),
       ),
@@ -116,7 +117,7 @@ export class ApiService {
   }
 
   getExpensesById(id: string): Observable<Expenses> {
-    const url = `${apiUrl}/expenses/id/${id}`;
+    const url = `${apiUrl}/expenses/${id}`;
     return this.http.get<Expenses>(url).pipe(
       tap((_) => console.log(`Fetched Expenses id=${id}`)),
       catchError(this.handleError<Expenses>(`getExpensesById id=${id}`)),

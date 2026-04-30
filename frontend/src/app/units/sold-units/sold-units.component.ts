@@ -40,7 +40,8 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./sold-units.component.scss'],
 })
 export class SoldUnitsComponent {
-  socket = io(environment.apiUrl);
+  // socket = io(environment.apiUrl);
+  socket = { on: () => {}, emit: () => {} } as any;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;

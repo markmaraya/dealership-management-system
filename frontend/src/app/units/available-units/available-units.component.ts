@@ -44,7 +44,8 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   providers: [UpperCasePipe],
 })
 export class AvailableUnitsComponent implements OnInit {
-  socket = io(environment.apiUrl);
+  // socket = io(environment.apiUrl);
+  socket = { on: () => {}, emit: () => {} } as any;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;

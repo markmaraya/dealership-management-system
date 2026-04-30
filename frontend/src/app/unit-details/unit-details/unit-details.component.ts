@@ -21,7 +21,8 @@ import { EditExpensesComponent } from '../../expenses/edit-expenses/edit-expense
   styleUrls: ['./unit-details.component.scss'],
 })
 export class UnitDetailsComponent implements OnInit {
-  socket = io(environment.apiUrl);
+  // socket = io(environment.apiUrl);
+  socket = { on: () => {}, emit: () => {} } as any;
 
   _id: any;
   gallery: Gallery = { id: '', imageUrl: '', uploaded: null, unitCode: '' };
@@ -49,7 +50,7 @@ export class UnitDetailsComponent implements OnInit {
     'dateEncoded',
   ];
   isLoadingResults = true;
-  showExpenses = 0;
+  showExpenses = false;
   total = 0;
   environmentApiUrl = environment.apiUrl;
 
@@ -83,7 +84,7 @@ export class UnitDetailsComponent implements OnInit {
   getUnitsDetails(id: string, imgId?: string) {
     this.api.getUnitsById(id, imgId).subscribe((data: any) => {
       this.units = data;
-      this.getExpenses(id);
+      this.getExpenses(data.unitCode);
       this.isLoadingResults = false;
     });
   }
@@ -112,17 +113,17 @@ export class UnitDetailsComponent implements OnInit {
     );
   }
 
-  getExpenses(id: string) {
-    this.api.getExpensesByUnitCode(id).subscribe(
+  getExpenses(unitCode: string) {
+    this.api.getExpensesByUnitCode(unitCode).subscribe(
       (res: any) => {
         this.units.expenses = res;
-        this.showExpenses = this.units.expenses.length;
+        this.showExpenses = this.units.expenses.length > 0;
         this.calculateTotal();
       },
       (err) => {
         console.log(err);
         this.isLoadingResults = false;
-        this.showExpenses = 0;
+        this.showExpenses = false;
       },
     );
   }
@@ -222,9 +223,11 @@ export class UnitDetailsComponent implements OnInit {
   }
 
   private calculateTotal() {
-    var amounts = this.units.expenses.map((x) => {
-      return Number(x.amount);
-    });
+    const expensesArray = Array.isArray(this.units.expenses)
+      ? this.units.expenses
+      : [];
+
+    const amounts = expensesArray.map((x) => Number(x.amount));
     this.total = amounts.reduce((accum, curr) => accum + curr, 0);
   }
 }

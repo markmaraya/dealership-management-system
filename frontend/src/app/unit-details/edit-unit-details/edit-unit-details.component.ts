@@ -37,7 +37,8 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./edit-unit-details.component.scss'],
 })
 export class EditUnitDetailsComponent implements OnInit {
-  socket = io(environment.apiUrl);
+  // socket = io(environment.apiUrl);
+  socket = { on: () => {}, emit: () => {} } as any;
 
   salesForm: UntypedFormGroup;
   _id = '';
