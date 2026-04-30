@@ -24,7 +24,13 @@ This application streamlines dealership operations, including inventory manageme
 ---
 
 ## 📂 Project Structure
+```
 dealership-management-system/
 ├── backend/        # Node.js + Express API
+│   ├── models/     # Mongoose schemas
+│   ├── routes/     # Express routes
+│   └── app.js      # Entry point
 ├── frontend/       # Angular application
+│   └── src/        # Angular components
 ├── README.md
+```
