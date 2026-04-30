@@ -3,11 +3,11 @@ require('dotenv').config();
 const express = require("express");
 const http = require("http");
 const socketIO = require("socket.io");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
-var mongoose = require("mongoose");
-var cors = require("cors");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
+const mongoose = require("mongoose");
+const cors = require("cors");
 
 mongoose
   .connect("mongodb://localhost/units-report", {
@@ -19,10 +19,10 @@ mongoose
   .then(() => console.log("connection successful"))
   .catch((err) => console.error(err));
 
-var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
+const indexRouter = require("./routes/index");
+const usersRouter = require("./routes/users");
 const salesRouter = require("./routes/sales");
-var galleryRouter = require("./routes/gallery");
+const galleryRouter = require("./routes/gallery");
 
 const app = express();
 const server = http.createServer(app);
