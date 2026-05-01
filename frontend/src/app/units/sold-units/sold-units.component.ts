@@ -122,36 +122,33 @@ export class SoldUnitsComponent {
   }
 
   applyFilter(filterValue: string, searchBy?: any) {
-    this.data.filterPredicate = (data: any, filter: string) => {
-      switch (searchBy) {
-        case 'unitCode':
-          return data.unitCode.indexOf(filter) != -1;
-          break;
-        case 'makeAndModel':
-          return data.makeAndModel.indexOf(filter) != -1;
-          break;
-        case 'bodyType':
-          return data.bodyType.indexOf(filter) != -1;
-          break;
-        case 'chasisCode':
-          return data.chasisCode.indexOf(filter) != -1;
-          break;
+    filterValue = (filterValue || '').trim().toLowerCase();
 
-        default:
-          if (data.unitCode.indexOf(filter) != -1) {
-            return data.unitCode.indexOf(filter) != -1;
-          } else if (data.makeAndModel.indexOf(filter) != -1) {
-            return data.makeAndModel.indexOf(filter) != -1;
-          } else if (data.bodyType.indexOf(filter) != -1) {
-            return data.bodyType.indexOf(filter) != -1;
-          } else if (data.chasisCode.indexOf(filter) != -1) {
-            return data.chasisCode.indexOf(filter) != -1;
-          }
-          break;
-      }
+    this.data.filterPredicate = (data: any, filter: string) => {
+      const searchTerms = filter.split(/\s+/);
+
+      return searchTerms.every((term) => {
+        switch (searchBy) {
+          case 'unitCode':
+            return data.unitCode.toLowerCase().includes(term);
+          case 'makeAndModel':
+            return data.makeAndModel.toLowerCase().includes(term);
+          case 'bodyType':
+            return data.bodyType.toLowerCase().includes(term);
+          case 'chasisCode':
+            return data.chasisCode.toLowerCase().includes(term);
+
+          default:
+            return (
+              data.unitCode.toLowerCase().includes(term) ||
+              data.makeAndModel.toLowerCase().includes(term) ||
+              data.bodyType.toLowerCase().includes(term) ||
+              data.chasisCode.toLowerCase().includes(term)
+            );
+        }
+      });
     };
-    filterValue = filterValue.trim();
-    filterValue = filterValue.toLowerCase();
+
     this.data.filter = filterValue;
   }
 
