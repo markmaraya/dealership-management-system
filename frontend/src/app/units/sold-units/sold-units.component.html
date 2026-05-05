@@ -7,76 +7,77 @@
   </div>
 
   <div class="table-container">
-    <div class="button-row">
+    <div class="toolbar">
       <form
         [formGroup]="salesForm"
         (ngSubmit)="onFormSubmit()"
         class="sales-form"
       >
-        <mat-form-field
-          appearance="outline"
-          [floatLabel]="floatLabelControl.value"
-        >
-          <mat-label>Search Units</mat-label>
-          <input
-            matInput
-            placeholder="Input Search Word"
-            formControlName="searchWord"
-            [errorStateMatcher]="matcher"
-            required
-          />
-          <mat-error>
-            <span
-              *ngIf="
-                !salesForm.get('searchWord').valid &&
-                salesForm.get('searchWord').touched
-              "
-              >Please enter Search Word</span
+        <div class="form-fields">
+          <mat-form-field
+            appearance="outline"
+            [floatLabel]="floatLabelControl.value"
+          >
+            <mat-label>Search Units</mat-label>
+            <input
+              matInput
+              placeholder="Input Search Word"
+              formControlName="searchWord"
+              [errorStateMatcher]="matcher"
+              required
+            />
+            <mat-error>
+              <span
+                *ngIf="
+                  !salesForm.get('searchWord').valid &&
+                  salesForm.get('searchWord').touched
+                "
+                >Please enter Search Word</span
+              >
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field
+            appearance="outline"
+            [hideRequiredMarker]="hideRequiredControl.value"
+            [floatLabel]="floatLabelControl.value"
+          >
+            <mat-select
+              formControlName="searchBy"
+              [errorStateMatcher]="matcher"
             >
-          </mat-error>
-        </mat-form-field>
+              <mat-option>-- None --</mat-option>
+              <mat-option value="unitCode">Unit Code</mat-option>
+              <mat-option value="makeAndModel">Make and Model</mat-option>
+              <mat-option value="bodyType">Body Type</mat-option>
+              <mat-option value="chasisCode">Chasis Code</mat-option>
+            </mat-select>
+            <mat-error>
+              <span
+                *ngIf="
+                  !salesForm.get('searchBy').valid &&
+                  salesForm.get('searchBy').touched
+                "
+                >Please enter Search By</span
+              >
+            </mat-error>
+            <mat-label>Search By</mat-label>
+          </mat-form-field>
+        </div>
 
-        <mat-form-field
-          appearance="outline"
-          [hideRequiredMarker]="hideRequiredControl.value"
-          [floatLabel]="floatLabelControl.value"
-        >
-          <mat-select formControlName="searchBy" [errorStateMatcher]="matcher">
-            <mat-option>-- None --</mat-option>
-            <mat-option value="unitCode">Unit Code</mat-option>
-            <mat-option value="makeAndModel">Make and Model</mat-option>
-            <mat-option value="bodyType">Body Type</mat-option>
-            <mat-option value="chasisCode">Chasis Code</mat-option>
-          </mat-select>
-          <mat-error>
-            <span
-              *ngIf="
-                !salesForm.get('searchBy').valid &&
-                salesForm.get('searchBy').touched
-              "
-              >Please enter Search By</span
-            >
-          </mat-error>
-          <mat-label>Search By</mat-label>
-        </mat-form-field>
-
-        <button
-          class="square-button"
-          mat-fab
-          color="primary"
-          type="submit"
-          [disabled]="!salesForm.valid"
-        >
-          <mat-icon>search</mat-icon>
-        </button>
-
-        <button
-          class="square-button"
-          mat-fab
-          (click)="clearSearch()"
-        >
-          <mat-icon>clear</mat-icon>
-        </button>
+        <div class="form-buttons">
+          <button
+            class="square-button"
+            mat-fab
+            color="primary"
+            type="submit"
+            [disabled]="!salesForm.valid"
+          >
+            <mat-icon>search</mat-icon>
+          </button>
+          <button class="square-button" mat-fab (click)="clearSearch()">
+            <mat-icon>clear</mat-icon>
+          </button>
+        </div>
       </form>
     </div>
 
