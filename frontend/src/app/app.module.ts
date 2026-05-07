@@ -28,6 +28,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatMenuModule } from '@angular/material/menu';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { NgxPrintModule } from 'ngx-print';
@@ -81,6 +82,7 @@ import { ImagePreviewDialogComponent } from './dialog/image-preview-dialog/image
     MatToolbarModule,
     MatListModule,
     MatSnackBarModule,
+    MatMenuModule,
     BrowserAnimationsModule,
     ClipboardModule,
     NgxPrintModule,

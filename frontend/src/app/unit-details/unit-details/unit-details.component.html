@@ -6,7 +6,7 @@
           <mat-card-title>Unit Details</mat-card-title>
 
           <div class="unit-details-grid">
-            <div class="py-16">
+            <div class="unit-details-grid-col">
               <div class="mb-16">
                 <span class="text-neutral">Unit Code: </span
                 ><strong>{{ units.unitCode }}</strong>
@@ -25,7 +25,7 @@
               </div>
             </div>
 
-            <div class="py-16">
+            <div class="unit-details-grid-col">
               <span class="text-neutral">Status: </span
               ><strong>{{ units.status }}</strong>
             </div>
@@ -55,57 +55,115 @@
   </div>
 
   <div class="table-container">
-    <div class="button-row">
+    <div class="toolbar">
       <mat-toolbar>
         <span>Expenses</span>
 
         <span class="spacer"></span>
 
         <button
+          class="add-expenses-button"
           mat-raised-button
           color="primary"
           (click)="openAddExpensesDialog(_id, units.unitCode)"
         >
-          <mat-icon>add</mat-icon> Add Expenses
+          <mat-icon>add</mat-icon><span>Add Expenses</span>
         </button>
-        <button
-          mat-icon-button
-          color="primary"
-          [useExistingCss]="true"
-          printSectionId="print-section"
-          ngxPrint
-          matTooltip="Print Expenses"
-          [disabled]="showExpenses === 0"
-        >
-          <mat-icon>print</mat-icon>
-        </button>
-        <button
-          mat-icon-button
-          color="primary"
-          (click)="openEditUnitDialog(_id)"
-          matTooltip="Edit Unit"
-        >
-          <mat-icon>edit</mat-icon>
-        </button>
-        <button
-          mat-icon-button
-          color="warn"
-          (click)="openDeleteUnitDialog(_id)"
-          matTooltip="Delete Unit"
-        >
-          <mat-icon>delete</mat-icon>
-        </button>
-        <button
-          mat-button
-          [routerLink]="
-            units.status?.toLowerCase() === 'sold'
-              ? ['/units/sold-units']
-              : ['/units/available-units']
-          "
-          [state]="{ status: units.status }"
-        >
-          Back
-        </button>
+
+        <div class="icon-buttons">
+          <ng-container *ngTemplateOutlet="iconButtons"></ng-container>
+        </div>
+
+        <div class="menu">
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <ng-container *ngTemplateOutlet="iconButtonsMenu"></ng-container>
+          </mat-menu>
+        </div>
+
+        <ng-template #iconButtons>
+          <button
+            mat-icon-button
+            color="primary"
+            [useExistingCss]="true"
+            printSectionId="print-section"
+            ngxPrint
+            matTooltip="Print Expenses"
+            [disabled]="showExpenses === 0"
+          >
+            <mat-icon>print</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            color="primary"
+            (click)="openEditUnitDialog(_id)"
+            matTooltip="Edit Unit"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            color="warn"
+            (click)="openDeleteUnitDialog(_id)"
+            matTooltip="Delete Unit"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button
+            mat-button
+            [routerLink]="
+              units.status?.toLowerCase() === 'sold'
+                ? ['/units/sold-units']
+                : ['/units/available-units']
+            "
+            [state]="{ status: units.status }"
+          >
+            Back
+          </button>
+        </ng-template>
+
+        <ng-template #iconButtonsMenu>
+          <button
+            mat-icon-button
+            color="primary"
+            [useExistingCss]="true"
+            printSectionId="print-section"
+            ngxPrint
+            matTooltip="Print Expenses"
+            [disabled]="showExpenses === 0"
+          >
+            <mat-icon>print</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            color="primary"
+            (click)="openEditUnitDialog(_id)"
+            matTooltip="Edit Unit"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            color="warn"
+            (click)="openDeleteUnitDialog(_id)"
+            matTooltip="Delete Unit"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            [routerLink]="
+              units.status?.toLowerCase() === 'sold'
+                ? ['/units/sold-units']
+                : ['/units/available-units']
+            "
+            [state]="{ status: units.status }"
+          >
+            <mat-icon>arrow_back</mat-icon>
+          </button>
+        </ng-template>
       </mat-toolbar>
     </div>
 
