@@ -67,49 +67,7 @@
           color="primary"
           (click)="openAddExpensesDialog(_id, units.unitCode)"
         >
-<<<<<<< HEAD
           <mat-icon>add</mat-icon><span>Add Expenses</span>
-=======
-          <mat-icon>add</mat-icon> Add Expenses
-        </button>
-        <button
-          mat-icon-button
-          color="primary"
-          [useExistingCss]="true"
-          printSectionId="print-section"
-          ngxPrint
-          matTooltip="Print Expenses"
-          [disabled]="showExpenses"
-        >
-          <mat-icon>print</mat-icon>
-        </button>
-        <button
-          mat-icon-button
-          color="primary"
-          (click)="openEditUnitDialog(_id)"
-          matTooltip="Edit Unit"
-        >
-          <mat-icon>edit</mat-icon>
-        </button>
-        <button
-          mat-icon-button
-          color="warn"
-          (click)="openDeleteUnitDialog(_id)"
-          matTooltip="Delete Unit"
-        >
-          <mat-icon>delete</mat-icon>
-        </button>
-        <button
-          mat-button
-          [routerLink]="
-            units.status?.toLowerCase() === 'sold'
-              ? ['/units/sold-units']
-              : ['/units/available-units']
-          "
-          [state]="{ status: units.status }"
-        >
-          Back
->>>>>>> 67be474 (feat: demo app with mock data)
         </button>
 
         <div class="icon-buttons">
