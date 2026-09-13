@@ -1,13 +1,23 @@
 import { environment } from '../../../environments/environment';
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { ApiService } from '../../api.service';
 import { Gallery } from '../../models/gallery';
+import { NgIf } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'app-image-preview-dialog',
-  templateUrl: './image-preview-dialog.component.html',
-  styleUrls: ['./image-preview-dialog.component.scss'],
+    selector: 'app-image-preview-dialog',
+    templateUrl: './image-preview-dialog.component.html',
+    styleUrls: ['./image-preview-dialog.component.scss'],
+    standalone: true,
+    imports: [
+        MatButtonModule,
+        MatDialogModule,
+        MatIconModule,
+        NgIf,
+    ],
 })
 export class ImagePreviewDialogComponent implements OnInit {
   _id!: string;

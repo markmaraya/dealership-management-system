@@ -86,6 +86,7 @@
         <table
           mat-table
           [dataSource]="data"
+          *ngIf="data"
           class="units-sold-table"
           matSort
           matSortActive="unitCode"

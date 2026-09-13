@@ -10,10 +10,21 @@ import {
   UntypedFormGroup,
   NgForm,
   Validators,
+  FormsModule,
+  ReactiveFormsModule,
 } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+  MatDialogModule,
+} from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -34,17 +45,28 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   selector: 'app-add-expenses',
   templateUrl: './add-expenses.component.html',
   styleUrls: ['./add-expenses.component.scss'],
+  standalone: true,
+  imports: [
+    CommonModule,
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+  ],
 })
 export class AddExpensesComponent implements OnInit {
   socket = io(environment.apiUrl);
 
-  salesForm: UntypedFormGroup;
+  salesForm!: UntypedFormGroup;
   _id = '';
   _unitCode = '';
   amount = '';
   description = '';
   encodedBy = '';
-  dateEncoded: Date;
+  dateEncoded!: Date;
   isLoadingResults = false;
   matcher = new MyErrorStateMatcher();
 
@@ -85,7 +107,9 @@ export class AddExpensesComponent implements OnInit {
         this.isLoadingResults = false;
         this.socket.emit('updatedata', res);
         this.dialogRef.close();
-        this.snackBar.open('Expenses added successfully', 'Close', { duration: 5000 });
+        this.snackBar.open('Expenses added successfully', 'Close', {
+          duration: 5000,
+        });
         this.router
           .navigateByUrl('/', { skipLocationChange: true })
           .then(() => {
@@ -95,7 +119,9 @@ export class AddExpensesComponent implements OnInit {
       (err: any) => {
         console.log(err);
         this.isLoadingResults = false;
-        this.snackBar.open('Error adding expenses', 'Close', { duration: 3000 });
+        this.snackBar.open('Error adding expenses', 'Close', {
+          duration: 3000,
+        });
       },
     );
   }

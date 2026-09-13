@@ -1,5 +1,4 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes } from '@angular/router';
 import { AvailableUnitsComponent } from './units/available-units/available-units.component';
 import { SoldUnitsComponent } from './units/sold-units/sold-units.component';
 import { UnitDetailsComponent } from './unit-details/unit-details/unit-details.component';
@@ -8,7 +7,7 @@ import { EditUnitDetailsComponent } from './unit-details/edit-unit-details/edit-
 import { AddExpensesComponent } from './expenses/add-expenses/add-expenses.component';
 import { EditExpensesComponent } from './expenses/edit-expenses/edit-expenses.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: 'units/available-units',
     component: AvailableUnitsComponent,
@@ -46,9 +45,3 @@ const routes: Routes = [
   },
   { path: '', redirectTo: 'units/available-units', pathMatch: 'full' },
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {}

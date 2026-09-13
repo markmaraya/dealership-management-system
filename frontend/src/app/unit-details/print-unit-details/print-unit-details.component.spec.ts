@@ -8,8 +8,8 @@ describe('PrintUnitDetailsComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PrintUnitDetailsComponent]
-    });
+    imports: [PrintUnitDetailsComponent]
+});
     fixture = TestBed.createComponent(PrintUnitDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

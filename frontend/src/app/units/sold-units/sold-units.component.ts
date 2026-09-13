@@ -1,5 +1,5 @@
 import { environment } from '../../../environments/environment';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import {
   UntypedFormControl,
   FormGroupDirective,
@@ -7,17 +7,25 @@ import {
   UntypedFormGroup,
   NgForm,
   Validators,
+  FormsModule,
+  ReactiveFormsModule,
 } from '@angular/forms';
-import { Location } from '@angular/common';
-import { Router } from '@angular/router';
+import { Location, CommonModule } from '@angular/common';
+import { Router, RouterLink } from '@angular/router';
 import { io } from 'socket.io-client';
 import { ApiService } from '../../api.service';
 import { Units } from '../../models/units';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatSort } from '@angular/material/sort';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
-import { ErrorStateMatcher } from '@angular/material/core';
+import { ErrorStateMatcher, MatOptionModule } from '@angular/material/core';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -38,15 +46,32 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   selector: 'app-sold-units',
   templateUrl: './sold-units.component.html',
   styleUrls: ['./sold-units.component.scss'],
+  standalone: true,
+  imports: [
+    CommonModule,
+    MatProgressSpinnerModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTableModule,
+    MatSortModule,
+    RouterLink,
+    MatPaginatorModule,
+  ],
 })
-export class SoldUnitsComponent {
+export class SoldUnitsComponent implements OnInit, AfterViewInit {
   socket = io(environment.apiUrl);
 
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
-  salesForm: UntypedFormGroup;
-  unitsForm: UntypedFormGroup;
+  salesForm!: UntypedFormGroup;
+  unitsForm!: UntypedFormGroup;
   matcher = new MyErrorStateMatcher();
   displayedColumns: string[] = [
     'unitCode',
@@ -80,21 +105,26 @@ export class SoldUnitsComponent {
   ngOnInit(): void {
     this.getUnits();
 
-    this.socket.on(
-      'update-data',
-      function (data: any) {
-        this.getUnits();
-      }.bind(this),
-    );
+    this.socket.on('update-data', (data: any) => {
+      this.getUnits();
+    });
 
     this.initForm();
+  }
+
+  ngAfterViewInit(): void {
+    if (this.data && this.paginator && this.sort) {
+      this.data.paginator = this.paginator;
+      this.data.sort = this.sort;
+    }
   }
 
   getUnits() {
     this.api.getUnits().subscribe(
       (res: any) => {
-        let getFilteredUnits = (res) => res.status.toLowerCase() == 'sold';
-        let filteredRes: Units[] = res.filter(getFilteredUnits);
+        const filteredRes: Units[] = res.filter(
+          (item: Units) => item.status?.toLowerCase() === 'sold',
+        );
 
         this.data = new MatTableDataSource<Units>(filteredRes);
         this.data.paginator = this.paginator;

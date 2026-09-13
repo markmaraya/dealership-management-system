@@ -11,10 +11,22 @@ import {
   NgForm,
   Validators,
   AbstractControl,
+  FormsModule,
+  ReactiveFormsModule,
 } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ErrorStateMatcher, MatOptionModule } from '@angular/material/core';
+import {
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+  MatDialogModule,
+} from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
+import { CommonModule } from '@angular/common';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -35,11 +47,24 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   selector: 'app-edit-unit-details',
   templateUrl: './edit-unit-details.component.html',
   styleUrls: ['./edit-unit-details.component.scss'],
+  standalone: true,
+  imports: [
+    CommonModule,
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatIconModule,
+    MatButtonModule,
+  ],
 })
 export class EditUnitDetailsComponent implements OnInit {
   socket = io(environment.apiUrl);
 
-  salesForm: UntypedFormGroup;
+  salesForm!: UntypedFormGroup;
   _id = '';
   unitCode = '';
   makeAndModel = '';
@@ -47,7 +72,7 @@ export class EditUnitDetailsComponent implements OnInit {
   chasisCode = '';
   status = '';
   expenses = null;
-  unitCodeExist;
+  unitCodeExist: boolean = false;
   isLoadingResults = false;
   matcher = new MyErrorStateMatcher();
 

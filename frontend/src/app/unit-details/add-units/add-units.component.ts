@@ -12,12 +12,19 @@ import {
   Validators,
   AbstractControl,
   ValidationErrors,
+  FormsModule,
+  ReactiveFormsModule,
 } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Expenses } from '../../models/expenses';
 import { Gallery } from '../../models/gallery';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -38,11 +45,22 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   selector: 'app-add-units',
   templateUrl: './add-units.component.html',
   styleUrls: ['./add-units.component.scss'],
+  standalone: true,
+  imports: [
+    CommonModule,
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule,
+  ],
 })
 export class AddUnitsComponent implements OnInit {
   socket = io(environment.apiUrl);
 
-  salesForm: UntypedFormGroup;
+  salesForm!: UntypedFormGroup;
   unitCode = '';
   makeAndModel = '';
   bodyType = '';
@@ -89,7 +107,7 @@ export class AddUnitsComponent implements OnInit {
   onFileSelected(event: Event) {
     const input = event.target as HTMLInputElement;
     const file = input.files?.[0];
-    
+
     this.salesForm.patchValue({ imageFile: file ?? null });
   }
 

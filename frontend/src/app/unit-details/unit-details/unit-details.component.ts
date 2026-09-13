@@ -1,11 +1,16 @@
 import { environment } from '../../../environments/environment';
 import { Component, OnInit } from '@angular/core';
 import { io } from 'socket.io-client';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Clipboard } from '@angular/cdk/clipboard';
-import { DatePipe } from '@angular/common';
+import {
+  DatePipe,
+  CommonModule,
+  NgTemplateOutlet,
+  DecimalPipe,
+} from '@angular/common';
 import { ApiService } from '../../api.service';
 import { Units } from '../../models/units';
 import { Gallery } from '../../models/gallery';
@@ -14,11 +19,41 @@ import { ConfirmationDialogComponent } from '../../dialog/confirmation-dialog/co
 import { ImagePreviewDialogComponent } from '../../dialog/image-preview-dialog/image-preview-dialog.component';
 import { AddExpensesComponent } from '../../expenses/add-expenses/add-expenses.component';
 import { EditExpensesComponent } from '../../expenses/edit-expenses/edit-expenses.component';
+import { PrintUnitDetailsComponent } from '../print-unit-details/print-unit-details.component';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { NgxPrintDirective } from 'ngx-print';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-unit-details',
   templateUrl: './unit-details.component.html',
   styleUrls: ['./unit-details.component.scss'],
+  standalone: true,
+  imports: [
+    CommonModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    NgTemplateOutlet,
+    MatMenuModule,
+    NgxPrintDirective,
+    MatTooltipModule,
+    RouterLink,
+    MatTableModule,
+    MatSortModule,
+    PrintUnitDetailsComponent,
+    DecimalPipe,
+    DatePipe,
+  ],
 })
 export class UnitDetailsComponent implements OnInit {
   socket = io(environment.apiUrl);
@@ -68,16 +103,12 @@ export class UnitDetailsComponent implements OnInit {
 
     this.route.queryParams.subscribe((params) => {
       const imgId = params['imgId'];
-
       this.getUnitsDetails(this._id, imgId);
     });
 
-    this.socket.on(
-      'update-data',
-      function (data: any) {
-        this.getUnitsDetails(this._id);
-      }.bind(this),
-    );
+    this.socket.on('update-data', (data: any) => {
+      this.getUnitsDetails(this._id);
+    });
   }
 
   getUnitsDetails(id: string, imgId?: string) {
@@ -222,9 +253,12 @@ export class UnitDetailsComponent implements OnInit {
   }
 
   private calculateTotal() {
-    var amounts = this.units.expenses.map((x) => {
+    const amounts = this.units.expenses.map((x: any) => {
       return Number(x.amount);
     });
-    this.total = amounts.reduce((accum, curr) => accum + curr, 0);
+    this.total = amounts.reduce(
+      (accum: number, curr: number) => accum + curr,
+      0,
+    );
   }
 }

@@ -10,14 +10,22 @@ import {
   UntypedFormGroup,
   NgForm,
   Validators,
+  FormsModule,
+  ReactiveFormsModule,
 } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import {
   MatDialog,
   MatDialogRef,
   MAT_DIALOG_DATA,
+  MatDialogModule,
 } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -38,13 +46,24 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   selector: 'app-edit-expenses',
   templateUrl: './edit-expenses.component.html',
   styleUrls: ['./edit-expenses.component.scss'],
+  standalone: true,
+  imports: [
+    CommonModule,
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+  ],
 })
 export class EditExpensesComponent implements OnInit {
   socket = io(environment.apiUrl);
 
-  salesForm: UntypedFormGroup;
-  unitId: '';
-  expensesId: '';
+  salesForm!: UntypedFormGroup;
+  unitId: string = '';
+  expensesId: string = '';
   _id = '';
   amount = '';
   description = '';
@@ -96,7 +115,9 @@ export class EditExpensesComponent implements OnInit {
         this.isLoadingResults = false;
         this.socket.emit('updatedata', res);
         this.dialogRef.close();
-        this.snackBar.open('Expenses updated successfully', 'Close', { duration: 5000 });
+        this.snackBar.open('Expenses updated successfully', 'Close', {
+          duration: 5000,
+        });
         this.router
           .navigateByUrl('/', { skipLocationChange: true })
           .then(() => {
@@ -106,7 +127,9 @@ export class EditExpensesComponent implements OnInit {
       (err: any) => {
         console.log(err);
         this.isLoadingResults = false;
-        this.snackBar.open('Error updating expenses', 'Close', { duration: 3000 });
+        this.snackBar.open('Error updating expenses', 'Close', {
+          duration: 3000,
+        });
       },
     );
   }
