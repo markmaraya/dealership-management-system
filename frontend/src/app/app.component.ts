@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 
 @Component({
@@ -27,6 +28,7 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
     MatTooltipModule,
     MatSnackBarModule,
     MatDialogModule,
+    MatButtonModule,
     ClipboardModule,
   ],
   templateUrl: './app.component.html',
