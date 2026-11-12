@@ -10,19 +10,20 @@ import {
   FormsModule,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { UpperCasePipe, Location, CommonModule } from '@angular/common';
+import { UpperCasePipe, CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { io } from 'socket.io-client';
 import { ApiService } from '../../api.service';
 import { Units } from '../../models/units';
+import { ConfirmationDialogComponent } from '../../dialog/confirmation-dialog/confirmation-dialog.component';
+import { AddUnitsComponent } from '../../unit-details/add-units/add-units.component';
+
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { ErrorStateMatcher, MatOptionModule } from '@angular/material/core';
-import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { ConfirmationDialogComponent } from '../../dialog/confirmation-dialog/confirmation-dialog.component';
-import { AddUnitsComponent } from '../../unit-details/add-units/add-units.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
@@ -51,7 +52,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./available-units.component.scss'],
   providers: [UpperCasePipe],
   standalone: true,
-  imports: [    
+  imports: [
     CommonModule,
     MatProgressSpinnerModule,
     FormsModule,
@@ -66,6 +67,8 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     MatSortModule,
     RouterLink,
     MatPaginatorModule,
+    MatDialogModule,
+    MatSnackBarModule,
   ],
 })
 export class AvailableUnitsComponent implements OnInit, AfterViewInit {
@@ -98,9 +101,8 @@ export class AvailableUnitsComponent implements OnInit, AfterViewInit {
     private api: ApiService,
     private fb: UntypedFormBuilder,
     private router: Router,
-    public dialog: MatDialog,
-    private location: Location,
     private uppercasePipe: UpperCasePipe,
+    public dialog: MatDialog,
     public snackBar: MatSnackBar,
   ) {
     this.formOptions = fb.group({
@@ -130,7 +132,9 @@ export class AvailableUnitsComponent implements OnInit, AfterViewInit {
   getUnits() {
     this.api.getUnits().subscribe(
       (res: any) => {
-        const filteredRes: Units[] = res.filter((item: Units) => item.status?.toLowerCase() === 'available');
+        const filteredRes: Units[] = res.filter(
+          (item: Units) => item.status?.toLowerCase() === 'available',
+        );
 
         this.data = new MatTableDataSource<Units>(filteredRes);
         this.data.paginator = this.paginator;

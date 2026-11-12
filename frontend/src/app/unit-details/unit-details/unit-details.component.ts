@@ -2,8 +2,7 @@ import { environment } from '../../../environments/environment';
 import { Component, OnInit } from '@angular/core';
 import { io } from 'socket.io-client';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
+
 import { Clipboard } from '@angular/cdk/clipboard';
 import {
   DatePipe,
@@ -20,16 +19,19 @@ import { ImagePreviewDialogComponent } from '../../dialog/image-preview-dialog/i
 import { AddExpensesComponent } from '../../expenses/add-expenses/add-expenses.component';
 import { EditExpensesComponent } from '../../expenses/edit-expenses/edit-expenses.component';
 import { PrintUnitDetailsComponent } from '../print-unit-details/print-unit-details.component';
+
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { NgxPrintDirective } from 'ngx-print';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
+import { NgxPrintDirective } from 'ngx-print';
 
 @Component({
   selector: 'app-unit-details',
@@ -53,6 +55,8 @@ import { MatCardModule } from '@angular/material/card';
     PrintUnitDetailsComponent,
     DecimalPipe,
     DatePipe,
+    MatDialogModule,
+    MatSnackBarModule,
   ],
 })
 export class UnitDetailsComponent implements OnInit {

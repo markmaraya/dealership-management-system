@@ -28,8 +28,8 @@
         <mat-error>
           <span
             *ngIf="
-              !salesForm.get('makeAndModel').valid &&
-              salesForm.get('makeAndModel').touched
+              !salesForm.get('makeAndModel')?.valid &&
+              salesForm.get('makeAndModel')?.touched
             "
             >Please enter Make and Model</span
           >
@@ -45,8 +45,8 @@
         <mat-error>
           <span
             *ngIf="
-              !salesForm.get('bodyType').valid &&
-              salesForm.get('bodyType').touched
+              !salesForm.get('bodyType')?.valid &&
+              salesForm.get('bodyType')?.touched
             "
             >Please enter Body Type</span
           >
@@ -62,8 +62,8 @@
         <mat-error>
           <span
             *ngIf="
-              !salesForm.get('chasisCode').valid &&
-              salesForm.get('chasisCode').touched
+              !salesForm.get('chasisCode')?.valid &&
+              salesForm.get('chasisCode')?.touched
             "
             >Please enter Chasis Code</span
           >

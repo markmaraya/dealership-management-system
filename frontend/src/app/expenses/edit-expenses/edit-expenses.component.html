@@ -16,7 +16,7 @@
         <mat-error>
           <span
             *ngIf="
-              !salesForm.get('amount').valid && salesForm.get('amount').touched
+              !salesForm.get('amount')?.valid && salesForm.get('amount')?.touched
             "
             >Please enter Amount</span
           >
@@ -32,8 +32,8 @@
         <mat-error>
           <span
             *ngIf="
-              !salesForm.get('description').valid &&
-              salesForm.get('description').touched
+              !salesForm.get('description')?.valid &&
+              salesForm.get('description')?.touched
             "
             >Please enter Description</span
           >
@@ -49,8 +49,8 @@
         <mat-error>
           <span
             *ngIf="
-              !salesForm.get('encodedBy').valid &&
-              salesForm.get('encodedBy').touched
+              !salesForm.get('encodedBy')?.valid &&
+              salesForm.get('encodedBy')?.touched
             "
             >Please enter Encoded By</span
           >

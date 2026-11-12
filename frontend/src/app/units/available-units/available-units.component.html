@@ -29,8 +29,8 @@
             <mat-error>
               <span
                 *ngIf="
-                  !salesForm.get('searchWord').valid &&
-                  salesForm.get('searchWord').touched
+                  !salesForm.get('searchWord')?.valid &&
+                  salesForm.get('searchWord')?.touched
                 "
                 >Please enter Search Word</span
               >
@@ -54,8 +54,8 @@
             <mat-error>
               <span
                 *ngIf="
-                  !salesForm.get('searchBy').valid &&
-                  salesForm.get('searchBy').touched
+                  !salesForm.get('searchBy')?.valid &&
+                  salesForm.get('searchBy')?.touched
                 "
                 >Please enter Search By</span
               >

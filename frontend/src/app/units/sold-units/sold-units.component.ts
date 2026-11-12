@@ -10,15 +10,15 @@ import {
   FormsModule,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { Location, CommonModule } from '@angular/common';
-import { Router, RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { io } from 'socket.io-client';
 import { ApiService } from '../../api.service';
 import { Units } from '../../models/units';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatSort, MatSortModule } from '@angular/material/sort';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ErrorStateMatcher, MatOptionModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -62,6 +62,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     MatSortModule,
     RouterLink,
     MatPaginatorModule,
+    MatDialogModule,
   ],
 })
 export class SoldUnitsComponent implements OnInit, AfterViewInit {
@@ -92,9 +93,7 @@ export class SoldUnitsComponent implements OnInit, AfterViewInit {
   constructor(
     private api: ApiService,
     private fb: UntypedFormBuilder,
-    private router: Router,
     public dialog: MatDialog,
-    private location: Location,
   ) {
     this.formOptions = fb.group({
       hideRequired: this.hideRequiredControl,

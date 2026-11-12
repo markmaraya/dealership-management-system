@@ -1,10 +1,7 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { DatePipe } from '@angular/common';
-import {
-  provideHttpClient,
-  withInterceptorsFromDi,
-} from '@angular/common/http';
+import { provideHttpClient } from '@angular/common/http';
 import {
   ErrorStateMatcher,
   ShowOnDirtyErrorStateMatcher,
@@ -12,13 +9,16 @@ import {
 import { provideRouter } from '@angular/router';
 import { AppComponent } from './app/app.component';
 import { routes } from './app/app.routes';
+import { importProvidersFrom } from '@angular/core';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 
 bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(routes),
-    provideHttpClient(withInterceptorsFromDi()),
-    provideAnimations(),
+    provideHttpClient(),
+    provideAnimationsAsync(),
     DatePipe,
+    importProvidersFrom(ClipboardModule),
     { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher },
   ],
 }).catch((err) => console.error(err));
