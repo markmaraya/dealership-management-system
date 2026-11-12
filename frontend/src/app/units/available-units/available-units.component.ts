@@ -10,7 +10,7 @@ import {
   FormsModule,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { UpperCasePipe, CommonModule } from '@angular/common';
+import { UpperCasePipe } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { io } from 'socket.io-client';
 import { ApiService } from '../../api.service';
@@ -52,23 +52,22 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     styleUrls: ['./available-units.component.scss'],
     providers: [UpperCasePipe],
     imports: [
-        CommonModule,
-        MatProgressSpinnerModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatSelectModule,
-        MatOptionModule,
-        MatButtonModule,
-        MatIconModule,
-        MatTableModule,
-        MatSortModule,
-        RouterLink,
-        MatPaginatorModule,
-        MatDialogModule,
-        MatSnackBarModule,
-    ]
+    MatProgressSpinnerModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTableModule,
+    MatSortModule,
+    RouterLink,
+    MatPaginatorModule,
+    MatDialogModule,
+    MatSnackBarModule
+]
 })
 export class AvailableUnitsComponent implements OnInit, AfterViewInit {
   socket = io(environment.apiUrl);

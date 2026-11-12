@@ -3,7 +3,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { ApiService } from '../../api.service';
 import { Gallery } from '../../models/gallery';
-import { NgIf } from '@angular/common';
+
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
@@ -12,11 +12,10 @@ import { MatButtonModule } from '@angular/material/button';
     templateUrl: './image-preview-dialog.component.html',
     styleUrls: ['./image-preview-dialog.component.scss'],
     imports: [
-        MatButtonModule,
-        MatDialogModule,
-        MatIconModule,
-        NgIf,
-    ]
+    MatButtonModule,
+    MatDialogModule,
+    MatIconModule
+]
 })
 export class ImagePreviewDialogComponent implements OnInit {
   _id!: string;

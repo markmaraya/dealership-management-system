@@ -9,234 +9,242 @@
             <div class="unit-details-grid-col">
               <div class="mb-16">
                 <span class="text-neutral">Unit Code: </span
-                ><strong>{{ units.unitCode }}</strong>
-              </div>
-              <div class="mb-16">
-                <span class="text-neutral">Make and Model: </span
-                ><strong>{{ units.makeAndModel }}</strong>
-              </div>
-              <div class="mb-16">
-                <span class="text-neutral">Body Type: </span
-                ><strong>{{ units.bodyType }}</strong>
-              </div>
-              <div>
-                <span class="text-neutral">Chasis Code: </span
-                ><strong>{{ units.chasisCode }}</strong>
-              </div>
-            </div>
-
-            <div class="unit-details-grid-col">
-              <span class="text-neutral">Status: </span
-              ><strong>{{ units.status }}</strong>
-            </div>
-          </div>
-        </div>
-
-        <div class="unit-image">
-          <img
-            *ngIf="units.imageFile.imageUrl?.length > 0"
-            [src]="environmentApiUrl + units.imageFile.imageUrl"
-            (click)="openImagePreviewDialog(units.imageFile._id)"
-            alt="{{ units.imageFile.id }}"
-          />
-          <div
-            class="image-placeholder"
-            *ngIf="units.imageFile.imageUrl?.length <= 0"
-          >
-            No Image
-          </div>
-        </div>
-      </div>
-    </mat-card>
-  </div>
-
-  <div class="example-loading-shade" *ngIf="isLoadingResults">
-    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
-  </div>
-
-  <div class="table-container">
-    <div class="toolbar">
-      <mat-toolbar>
-        <span>Expenses</span>
-
-        <span class="spacer"></span>
-
-        <button
-          class="add-expenses-button"
-          mat-raised-button
-          color="primary"
-          (click)="openAddExpensesDialog(_id, units.unitCode)"
-        >
-          <mat-icon>add</mat-icon><span>Add Expenses</span>
-        </button>
-
-        <div class="icon-buttons">
-          <ng-container *ngTemplateOutlet="iconButtons"></ng-container>
-        </div>
-
-        <div class="menu">
-          <button mat-icon-button [matMenuTriggerFor]="menu">
-            <mat-icon>more_vert</mat-icon>
-          </button>
-          <mat-menu #menu="matMenu">
-            <ng-container *ngTemplateOutlet="iconButtonsMenu"></ng-container>
-          </mat-menu>
-        </div>
-
-        <ng-template #iconButtons>
-          <button
-            mat-icon-button
-            color="primary"
-            [useExistingCss]="true"
-            printSectionId="print-section"
-            ngxPrint
-            matTooltip="Print Expenses"
-            [disabled]="showExpenses === 0"
-          >
-            <mat-icon>print</mat-icon>
-          </button>
-          <button
-            mat-icon-button
-            color="primary"
-            (click)="openEditUnitDialog(_id)"
-            matTooltip="Edit Unit"
-          >
-            <mat-icon>edit</mat-icon>
-          </button>
-          <button
-            mat-icon-button
-            color="warn"
-            (click)="openDeleteUnitDialog(_id)"
-            matTooltip="Delete Unit"
-          >
-            <mat-icon>delete</mat-icon>
-          </button>
-          <button
-            mat-button
-            [routerLink]="
-              units.status?.toLowerCase() === 'sold'
-                ? ['/units/sold-units']
-                : ['/units/available-units']
-            "
-            [state]="{ status: units.status }"
-          >
-            Back
-          </button>
-        </ng-template>
-
-        <ng-template #iconButtonsMenu>
-          <button
-            mat-icon-button
-            color="primary"
-            [useExistingCss]="true"
-            printSectionId="print-section"
-            ngxPrint
-            matTooltip="Print Expenses"
-            [disabled]="showExpenses === 0"
-          >
-            <mat-icon>print</mat-icon>
-          </button>
-          <button
-            mat-icon-button
-            color="primary"
-            (click)="openEditUnitDialog(_id)"
-            matTooltip="Edit Unit"
-          >
-            <mat-icon>edit</mat-icon>
-          </button>
-          <button
-            mat-icon-button
-            color="warn"
-            (click)="openDeleteUnitDialog(_id)"
-            matTooltip="Delete Unit"
-          >
-            <mat-icon>delete</mat-icon>
-          </button>
-          <button
-            mat-icon-button
-            [routerLink]="
-              units.status?.toLowerCase() === 'sold'
-                ? ['/units/sold-units']
-                : ['/units/available-units']
-            "
-            [state]="{ status: units.status }"
-          >
-            <mat-icon>arrow_back</mat-icon>
-          </button>
-        </ng-template>
-      </mat-toolbar>
-    </div>
-
-    <div class="expenses-table">
-      <div class="table-scroll-wrapper">
-        <mat-table
-          mat-table
-          [dataSource]="units.expenses"
-          class="example-table"
-          matSort
-          matSortActive="dateEncoded"
-          matSortDisableClear
-          matSortDirection="asc"
-        >
-          <ng-container matColumnDef="amount">
-            <mat-header-cell mat-header-cell *matHeaderCellDef
-              >Amount</mat-header-cell
-            >
-            <mat-cell mat-cell *matCellDef="let row"
-              >&#8369; {{ row.amount | number: "1.2-2" }}</mat-cell
-            >
-            <mat-footer-cell *matFooterCellDef>
-              <div class="total-amount-container" *ngIf="showExpenses > 0">
-                <label class="total-amount-label">Total Amount</label>
-                <div class="total-amount-value">
-                  &#8369;<span class="amount">{{
-                    total | number: "1.2-2"
-                  }}</span>
+                  ><strong>{{ units.unitCode }}</strong>
                 </div>
+                <div class="mb-16">
+                  <span class="text-neutral">Make and Model: </span
+                    ><strong>{{ units.makeAndModel }}</strong>
+                  </div>
+                  <div class="mb-16">
+                    <span class="text-neutral">Body Type: </span
+                      ><strong>{{ units.bodyType }}</strong>
+                    </div>
+                    <div>
+                      <span class="text-neutral">Chasis Code: </span
+                        ><strong>{{ units.chasisCode }}</strong>
+                      </div>
+                    </div>
+
+                    <div class="unit-details-grid-col">
+                      <span class="text-neutral">Status: </span
+                        ><strong>{{ units.status }}</strong>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="unit-image">
+                    @if (units.imageFile.imageUrl?.length > 0) {
+                      <img
+                        [src]="environmentApiUrl + units.imageFile.imageUrl"
+                        (click)="openImagePreviewDialog(units.imageFile._id)"
+                        alt="{{ units.imageFile.id }}"
+                        />
+                    }
+                    @if (units.imageFile.imageUrl?.length <= 0) {
+                      <div
+                        class="image-placeholder"
+                        >
+                        No Image
+                      </div>
+                    }
+                  </div>
+                </div>
+              </mat-card>
+            </div>
+
+            @if (isLoadingResults) {
+              <div class="example-loading-shade">
+                @if (isLoadingResults) {
+                  <mat-spinner></mat-spinner>
+                }
               </div>
-            </mat-footer-cell>
-          </ng-container>
+            }
 
-          <ng-container matColumnDef="description">
-            <mat-header-cell mat-header-cell *matHeaderCellDef
-              >Description</mat-header-cell
-            >
-            <mat-cell mat-cell *matCellDef="let row">{{
-              row.description
-            }}</mat-cell>
-            <mat-footer-cell *matFooterCellDef></mat-footer-cell>
-          </ng-container>
+            <div class="table-container">
+              <div class="toolbar">
+                <mat-toolbar>
+                  <span>Expenses</span>
 
-          <ng-container matColumnDef="encodedBy">
-            <mat-header-cell mat-header-cell *matHeaderCellDef
-              >Encoded By</mat-header-cell
-            >
-            <mat-cell mat-cell *matCellDef="let row">{{
-              row.encodedBy
-            }}</mat-cell>
-            <mat-footer-cell *matFooterCellDef></mat-footer-cell>
-          </ng-container>
+                  <span class="spacer"></span>
 
-          <ng-container matColumnDef="dateEncoded">
-            <mat-header-cell mat-header-cell *matHeaderCellDef
-              >Date Encoded</mat-header-cell
-            >
-            <mat-cell mat-cell *matCellDef="let row">{{
-              row.dateEncoded | date: "medium"
-            }}</mat-cell>
-            <mat-footer-cell *matFooterCellDef></mat-footer-cell>
-          </ng-container>
+                  <button
+                    class="add-expenses-button"
+                    mat-raised-button
+                    color="primary"
+                    (click)="openAddExpensesDialog(_id, units.unitCode)"
+                    >
+                    <mat-icon>add</mat-icon><span>Add Expenses</span>
+                  </button>
 
-          <ng-container matColumnDef="actions">
-            <mat-header-cell mat-header-cell *matHeaderCellDef
-              >Actions</mat-header-cell
-            >
-            <mat-cell mat-cell *matCellDef="let row">
-              <button
-                mat-icon-button
-                color="primary"
-                matTooltip="Copy"
-                matTooltipPosition="above"
+                  <div class="icon-buttons">
+                    <ng-container *ngTemplateOutlet="iconButtons"></ng-container>
+                  </div>
+
+                  <div class="menu">
+                    <button mat-icon-button [matMenuTriggerFor]="menu">
+                      <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                      <ng-container *ngTemplateOutlet="iconButtonsMenu"></ng-container>
+                    </mat-menu>
+                  </div>
+
+                  <ng-template #iconButtons>
+                    <button
+                      mat-icon-button
+                      color="primary"
+                      [useExistingCss]="true"
+                      printSectionId="print-section"
+                      ngxPrint
+                      matTooltip="Print Expenses"
+                      [disabled]="showExpenses === 0"
+                      >
+                      <mat-icon>print</mat-icon>
+                    </button>
+                    <button
+                      mat-icon-button
+                      color="primary"
+                      (click)="openEditUnitDialog(_id)"
+                      matTooltip="Edit Unit"
+                      >
+                      <mat-icon>edit</mat-icon>
+                    </button>
+                    <button
+                      mat-icon-button
+                      color="warn"
+                      (click)="openDeleteUnitDialog(_id)"
+                      matTooltip="Delete Unit"
+                      >
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                    <button
+                      mat-button
+            [routerLink]="
+              units.status?.toLowerCase() === 'sold'
+                ? ['/units/sold-units']
+                : ['/units/available-units']
+            "
+                      [state]="{ status: units.status }"
+                      >
+                      Back
+                    </button>
+                  </ng-template>
+
+                  <ng-template #iconButtonsMenu>
+                    <button
+                      mat-icon-button
+                      color="primary"
+                      [useExistingCss]="true"
+                      printSectionId="print-section"
+                      ngxPrint
+                      matTooltip="Print Expenses"
+                      [disabled]="showExpenses === 0"
+                      >
+                      <mat-icon>print</mat-icon>
+                    </button>
+                    <button
+                      mat-icon-button
+                      color="primary"
+                      (click)="openEditUnitDialog(_id)"
+                      matTooltip="Edit Unit"
+                      >
+                      <mat-icon>edit</mat-icon>
+                    </button>
+                    <button
+                      mat-icon-button
+                      color="warn"
+                      (click)="openDeleteUnitDialog(_id)"
+                      matTooltip="Delete Unit"
+                      >
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                    <button
+                      mat-icon-button
+            [routerLink]="
+              units.status?.toLowerCase() === 'sold'
+                ? ['/units/sold-units']
+                : ['/units/available-units']
+            "
+                      [state]="{ status: units.status }"
+                      >
+                      <mat-icon>arrow_back</mat-icon>
+                    </button>
+                  </ng-template>
+                </mat-toolbar>
+              </div>
+
+              <div class="expenses-table">
+                <div class="table-scroll-wrapper">
+                  <mat-table
+                    mat-table
+                    [dataSource]="units.expenses"
+                    class="example-table"
+                    matSort
+                    matSortActive="dateEncoded"
+                    matSortDisableClear
+                    matSortDirection="asc"
+                    >
+                    <ng-container matColumnDef="amount">
+                      <mat-header-cell mat-header-cell *matHeaderCellDef
+                        >Amount</mat-header-cell
+                        >
+                        <mat-cell mat-cell *matCellDef="let row"
+                          >&#8369; {{ row.amount | number: "1.2-2" }}</mat-cell
+                          >
+                          <mat-footer-cell *matFooterCellDef>
+                            @if (showExpenses > 0) {
+                              <div class="total-amount-container">
+                                <label class="total-amount-label">Total Amount</label>
+                                <div class="total-amount-value">
+                                  &#8369;<span class="amount">{{
+                                  total | number: "1.2-2"
+                                }}</span>
+                              </div>
+                            </div>
+                          }
+                        </mat-footer-cell>
+                      </ng-container>
+
+                      <ng-container matColumnDef="description">
+                        <mat-header-cell mat-header-cell *matHeaderCellDef
+                          >Description</mat-header-cell
+                          >
+                          <mat-cell mat-cell *matCellDef="let row">{{
+                            row.description
+                          }}</mat-cell>
+                          <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="encodedBy">
+                          <mat-header-cell mat-header-cell *matHeaderCellDef
+                            >Encoded By</mat-header-cell
+                            >
+                            <mat-cell mat-cell *matCellDef="let row">{{
+                              row.encodedBy
+                            }}</mat-cell>
+                            <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+                          </ng-container>
+
+                          <ng-container matColumnDef="dateEncoded">
+                            <mat-header-cell mat-header-cell *matHeaderCellDef
+                              >Date Encoded</mat-header-cell
+                              >
+                              <mat-cell mat-cell *matCellDef="let row">{{
+                                row.dateEncoded | date: "medium"
+                              }}</mat-cell>
+                              <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+                            </ng-container>
+
+                            <ng-container matColumnDef="actions">
+                              <mat-header-cell mat-header-cell *matHeaderCellDef
+                                >Actions</mat-header-cell
+                                >
+                                <mat-cell mat-cell *matCellDef="let row">
+                                  <button
+                                    mat-icon-button
+                                    color="primary"
+                                    matTooltip="Copy"
+                                    matTooltipPosition="above"
                 (click)="
                   copyToClipboard(
                     row.amount,
@@ -245,54 +253,54 @@
                     row.dateEncoded
                   )
                 "
-              >
-                <mat-icon>file_copy</mat-icon>
-              </button>
-              <button
-                mat-icon-button
-                color="primary"
-                matTooltip="Edit"
-                matTooltipPosition="above"
-                (click)="openEditExpensesDialog(_id, row._id)"
-              >
-                <mat-icon>edit</mat-icon>
-              </button>
-              <button
-                mat-icon-button
-                color="warn"
-                matTooltip="Delete"
-                matTooltipPosition="above"
-                (click)="openDialogDeleteExpenses(row._id)"
-              >
-                <mat-icon>delete</mat-icon>
-              </button>
-            </mat-cell>
-            <mat-footer-cell *matFooterCellDef></mat-footer-cell>
-          </ng-container>
+                                    >
+                                    <mat-icon>file_copy</mat-icon>
+                                  </button>
+                                  <button
+                                    mat-icon-button
+                                    color="primary"
+                                    matTooltip="Edit"
+                                    matTooltipPosition="above"
+                                    (click)="openEditExpensesDialog(_id, row._id)"
+                                    >
+                                    <mat-icon>edit</mat-icon>
+                                  </button>
+                                  <button
+                                    mat-icon-button
+                                    color="warn"
+                                    matTooltip="Delete"
+                                    matTooltipPosition="above"
+                                    (click)="openDialogDeleteExpenses(row._id)"
+                                    >
+                                    <mat-icon>delete</mat-icon>
+                                  </button>
+                                </mat-cell>
+                                <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+                              </ng-container>
 
-          <mat-header-row
-            mat-header-row
-            *matHeaderRowDef="displayedColumns; sticky: true"
-          ></mat-header-row>
-          <mat-row
-            mat-row
-            *matRowDef="let row; columns: displayedColumns"
-          ></mat-row>
-          <mat-footer-row
-            *matFooterRowDef="displayedColumns; sticky: true"
-          ></mat-footer-row>
+                              <mat-header-row
+                                mat-header-row
+                                *matHeaderRowDef="displayedColumns; sticky: true"
+                              ></mat-header-row>
+                              <mat-row
+                                mat-row
+                                *matRowDef="let row; columns: displayedColumns"
+                              ></mat-row>
+                              <mat-footer-row
+                                *matFooterRowDef="displayedColumns; sticky: true"
+                              ></mat-footer-row>
 
-          <tr class="mat-row no-data-row" *matNoDataRow>
-            <td class="mat-cell">No expenses found</td>
-          </tr>
-        </mat-table>
-      </div>
-    </div>
-  </div>
+                              <tr class="mat-row no-data-row" *matNoDataRow>
+                                <td class="mat-cell">No expenses found</td>
+                              </tr>
+                            </mat-table>
+                          </div>
+                        </div>
+                      </div>
 
-  <app-print-unit-details
-    [units]="units"
-    [showExpenses]="showExpenses"
-    [total]="total"
-  ></app-print-unit-details>
-</div>
+                      <app-print-unit-details
+                        [units]="units"
+                        [showExpenses]="showExpenses"
+                        [total]="total"
+                      ></app-print-unit-details>
+                    </div>

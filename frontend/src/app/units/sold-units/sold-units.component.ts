@@ -10,7 +10,7 @@ import {
   FormsModule,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+
 import { RouterLink } from '@angular/router';
 import { io } from 'socket.io-client';
 import { ApiService } from '../../api.service';
@@ -47,22 +47,21 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     templateUrl: './sold-units.component.html',
     styleUrls: ['./sold-units.component.scss'],
     imports: [
-        CommonModule,
-        MatProgressSpinnerModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatSelectModule,
-        MatOptionModule,
-        MatButtonModule,
-        MatIconModule,
-        MatTableModule,
-        MatSortModule,
-        RouterLink,
-        MatPaginatorModule,
-        MatDialogModule,
-    ]
+    MatProgressSpinnerModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTableModule,
+    MatSortModule,
+    RouterLink,
+    MatPaginatorModule,
+    MatDialogModule
+]
 })
 export class SoldUnitsComponent implements OnInit, AfterViewInit {
   socket = io(environment.apiUrl);

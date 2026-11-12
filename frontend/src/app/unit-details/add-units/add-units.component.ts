@@ -22,7 +22,7 @@ import { Expenses } from '../../models/expenses';
 import { Gallery } from '../../models/gallery';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { CommonModule } from '@angular/common';
+
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
@@ -46,15 +46,14 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     templateUrl: './add-units.component.html',
     styleUrls: ['./add-units.component.scss'],
     imports: [
-        CommonModule,
-        MatDialogModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatIconModule,
-        MatButtonModule,
-    ]
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule
+]
 })
 export class AddUnitsComponent implements OnInit {
   socket = io(environment.apiUrl);

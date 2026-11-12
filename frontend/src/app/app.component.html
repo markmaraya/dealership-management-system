@@ -1,12 +1,17 @@
 <mat-sidenav-container class="app-container">
   <mat-sidenav mode="side" [opened]="!sidenav.opened" class="mini-sidenav">
     <div class="header-title">
-      <img
-        *ngIf="logoPath; else placeholder"
-        class="logo"
-        [src]="logoPath"
-        [alt]="title + ' Logo'"
-      />
+      @if (logoPath) {
+        <img
+          class="logo"
+          [src]="logoPath"
+          [alt]="title + ' Logo'"
+          />
+      } @else {
+        <div class="logo-placeholder">
+          {{ title.charAt(0) }}
+        </div>
+      }
     </div>
     <mat-nav-list>
       <a
@@ -16,66 +21,66 @@
         matTooltip="Available Units"
         matTooltipPosition="right"
         ><mat-icon>local_shipping</mat-icon></a
-      >
-      <a
-        mat-list-item
-        routerLink="/units/sold-units"
-        routerLinkActive="active"
-        matTooltip="Sold Units"
-        matTooltipPosition="right"
-        ><mat-icon class="flip-horizontal">local_shipping</mat-icon></a
-      >
-    </mat-nav-list>
-  </mat-sidenav>
-
-  <mat-sidenav #sidenav mode="side" opened class="app-sidenav">
-    <div class="header-title">
-      <img
-        *ngIf="logoPath; else placeholder"
-        class="logo"
-        [src]="logoPath"
-        [alt]="title + ' Logo'"
-      />
-      <ng-template #placeholder>
-        <div class="logo-placeholder">
-          {{ title.charAt(0) }}
-        </div>
-      </ng-template>
-      <span class="text-dark">{{ title }}</span>
-    </div>
-    <mat-nav-list class="nav-list">
-      <span class="nav-label">Units</span>
-      <a
-        class="nav-item"
-        mat-list-item
-        routerLink="/units/available-units"
-        routerLinkActive="active"
-        ><mat-icon>local_shipping</mat-icon><span>Available Units</span></a
-      >
-      <a
-        class="nav-item"
-        mat-list-item
-        routerLink="/units/sold-units"
-        routerLinkActive="active"
-        ><mat-icon class="flip-horizontal">local_shipping</mat-icon
-        ><span class="nav-text">Sold Units</span></a
-      >
-    </mat-nav-list>
-  </mat-sidenav>
-
-  <mat-sidenav-content>
-    <div class="app-content" [ngClass]="{ 'sidenav-closed': !sidenav.opened }">
-      <div class="header-row">
-        <button
-          mat-icon-button
-          (click)="sidenav.toggle()"
-          [matTooltip]="sidenav.opened ? 'Shrink Menu' : 'Expand Menu'"
-          disableRipple
         >
-          <mat-icon>menu</mat-icon>
-        </button>
-      </div>
-      <router-outlet></router-outlet>
-    </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+        <a
+          mat-list-item
+          routerLink="/units/sold-units"
+          routerLinkActive="active"
+          matTooltip="Sold Units"
+          matTooltipPosition="right"
+          ><mat-icon class="flip-horizontal">local_shipping</mat-icon></a
+          >
+        </mat-nav-list>
+      </mat-sidenav>
+
+      <mat-sidenav #sidenav mode="side" opened class="app-sidenav">
+        <div class="header-title">
+          @if (logoPath) {
+            <img
+              class="logo"
+              [src]="logoPath"
+              [alt]="title + ' Logo'"
+              />
+          } @else {
+            <div class="logo-placeholder">
+              {{ title.charAt(0) }}
+            </div>
+          }
+          <span class="text-dark">{{ title }}</span>
+        </div>
+        <mat-nav-list class="nav-list">
+          <span class="nav-label">Units</span>
+          <a
+            class="nav-item"
+            mat-list-item
+            routerLink="/units/available-units"
+            routerLinkActive="active"
+            ><mat-icon>local_shipping</mat-icon><span>Available Units</span></a
+            >
+            <a
+              class="nav-item"
+              mat-list-item
+              routerLink="/units/sold-units"
+              routerLinkActive="active"
+              ><mat-icon class="flip-horizontal">local_shipping</mat-icon
+              ><span class="nav-text">Sold Units</span></a
+              >
+            </mat-nav-list>
+          </mat-sidenav>
+
+          <mat-sidenav-content>
+            <div class="app-content" [ngClass]="{ 'sidenav-closed': !sidenav.opened }">
+              <div class="header-row">
+                <button
+                  mat-icon-button
+                  (click)="sidenav.toggle()"
+                  [matTooltip]="sidenav.opened ? 'Shrink Menu' : 'Expand Menu'"
+                  disableRipple
+                  >
+                  <mat-icon>menu</mat-icon>
+                </button>
+              </div>
+              <router-outlet></router-outlet>
+            </div>
+          </mat-sidenav-content>
+        </mat-sidenav-container>

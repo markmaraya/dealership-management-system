@@ -4,12 +4,7 @@ import { io } from 'socket.io-client';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 import { Clipboard } from '@angular/cdk/clipboard';
-import {
-  DatePipe,
-  CommonModule,
-  NgTemplateOutlet,
-  DecimalPipe,
-} from '@angular/common';
+import { DatePipe, CommonModule, NgTemplateOutlet, DecimalPipe } from '@angular/common';
 import { ApiService } from '../../api.service';
 import { Units } from '../../models/units';
 import { Gallery } from '../../models/gallery';

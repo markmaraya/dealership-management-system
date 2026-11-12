@@ -22,7 +22,7 @@ import {
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { CommonModule } from '@angular/common';
+
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
@@ -46,15 +46,14 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     templateUrl: './add-expenses.component.html',
     styleUrls: ['./add-expenses.component.scss'],
     imports: [
-        CommonModule,
-        MatDialogModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatButtonModule,
-        MatIconModule,
-    ]
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule
+]
 })
 export class AddExpensesComponent implements OnInit {
   socket = io(environment.apiUrl);

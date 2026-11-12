@@ -24,7 +24,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
-import { CommonModule } from '@angular/common';
+
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
@@ -48,17 +48,16 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     templateUrl: './edit-unit-details.component.html',
     styleUrls: ['./edit-unit-details.component.scss'],
     imports: [
-        CommonModule,
-        MatDialogModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatSelectModule,
-        MatOptionModule,
-        MatIconModule,
-        MatButtonModule,
-    ]
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatIconModule,
+    MatButtonModule
+]
 })
 export class EditUnitDetailsComponent implements OnInit {
   socket = io(environment.apiUrl);
