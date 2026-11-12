@@ -1,5 +1,5 @@
 import { environment } from '../../../environments/environment';
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { ApiService } from '../../api.service';
 import { Gallery } from '../../models/gallery';
@@ -21,10 +21,10 @@ export class ImagePreviewDialogComponent implements OnInit {
   _id!: string;
   gallery: Gallery = { id: '', imageUrl: '', uploaded: null, unitCode: '' };
   environmentApiUrl = environment.apiUrl;
+  public data = inject<any>(MAT_DIALOG_DATA);
 
   constructor(
     public dialogRef: MatDialogRef<ImagePreviewDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
     private api: ApiService,
   ) {}
 

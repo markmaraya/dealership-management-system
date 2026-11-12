@@ -1,5 +1,5 @@
 import { environment } from '../../../environments/environment';
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { io } from 'socket.io-client';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from '../../api.service';
@@ -73,6 +73,7 @@ export class EditUnitDetailsComponent implements OnInit {
   unitCodeExist: boolean = false;
   isLoadingResults = false;
   matcher = new MyErrorStateMatcher();
+  public data = inject<any>(MAT_DIALOG_DATA);
 
   constructor(
     private router: Router,
@@ -81,7 +82,6 @@ export class EditUnitDetailsComponent implements OnInit {
     private formBuilder: UntypedFormBuilder,
     public dialogRef: MatDialogRef<EditUnitDetailsComponent>,
     public snackBar: MatSnackBar,
-    @Inject(MAT_DIALOG_DATA) public data: any,
   ) {}
 
   ngOnInit(): void {

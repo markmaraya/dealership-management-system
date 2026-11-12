@@ -1,5 +1,5 @@
 import { environment } from '../../../environments/environment';
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { io } from 'socket.io-client';
 import { Router } from '@angular/router';
 import { ApiService } from '../../api.service';
@@ -68,6 +68,7 @@ export class EditExpensesComponent implements OnInit {
   encodedBy = '';
   isLoadingResults = false;
   matcher = new MyErrorStateMatcher();
+  public data = inject<any>(MAT_DIALOG_DATA);
 
   constructor(
     private router: Router,
@@ -76,7 +77,6 @@ export class EditExpensesComponent implements OnInit {
     public dialog: MatDialog,
     public dialogRef: MatDialogRef<EditExpensesComponent>,
     public snackBar: MatSnackBar,
-    @Inject(MAT_DIALOG_DATA) public data: any,
   ) {}
 
   ngOnInit(): void {
