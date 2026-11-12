@@ -1,8 +1,6 @@
 require('dotenv').config();
 
 const express = require("express");
-const http = require("http");
-const socketIO = require("socket.io");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
@@ -25,12 +23,6 @@ const salesRouter = require("./routes/sales");
 const galleryRouter = require("./routes/gallery");
 
 const app = express();
-const server = http.createServer(app);
-const io = socketIO(server);
-
-io.on("connection", (socket) => {
-  console.log("A user is connected");
-});
 
 app.use(cors());
 app.use(logger("dev"));
