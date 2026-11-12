@@ -56,18 +56,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "RichAnnApp:build"
+            "buildTarget": "RichAnnApp:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "RichAnnApp:build:production"
+              "buildTarget": "RichAnnApp:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "RichAnnApp:build"
+            "buildTarget": "RichAnnApp:build"
           }
         },
         "test": {
