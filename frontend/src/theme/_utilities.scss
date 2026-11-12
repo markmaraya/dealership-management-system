@@ -1,24 +1,25 @@
-@use "./material" as m;
+@use "sass:map";
+@use '@angular/material' as mat;
 @use "./palettes" as p;
 @use "./variables" as v;
 
 .bg-primary {
-  background-color: m.mat-get-color-from-palette(p.$primary);
+  background-color: mat.m2-get-color-from-palette(p.$primary);
   color: white;
 }
 .bg-accent {
-  background-color: m.mat-get-color-from-palette(p.$accent);
+  background-color: mat.m2-get-color-from-palette(p.$accent);
   color: white;
 }
 .bg-warn {
-  background-color: m.mat-get-color-from-palette(p.$warn);
+  background-color: mat.m2-get-color-from-palette(p.$warn);
   color: white;
 }
 .text-neutral {
-  color: map-get(v.$neutral-colors, mid);
+  color: map.get(v.$neutral-colors, mid);
 }
 .text-dark {
-  color: map-get(v.$neutral-colors, dark);
+  color: map.get(v.$neutral-colors, dark);
 }
 .full-width {
   width: 100%;

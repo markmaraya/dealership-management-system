@@ -1,4 +1,4 @@
-@use "./material" as m;
+@use '@angular/material' as mat;
 @use "./palettes" as p;
 @use "./variables" as v;
 
@@ -22,7 +22,7 @@ input.hide-spin::-webkit-inner-spin-button {
 .mat-mdc-list-item.active,
 .mat-mdc-list-item:hover,
 .mat-mdc-list-item:focus {
-  background-color: m.mat-get-color-from-palette(p.$primary, 500);
+  background-color: mat.m2-get-color-from-palette(p.$primary, 500);
   color: v.$text-color-light;
   cursor: pointer;
 }
@@ -52,7 +52,7 @@ input.hide-spin::-webkit-inner-spin-button {
 }
 
 .mat-mdc-row:hover {
-  background-color: m.mat-get-color-from-palette(p.$primary, 100);
+  background-color: mat.m2-get-color-from-palette(p.$primary, 100);
 }
 
 .mat-mdc-cell {

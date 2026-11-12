@@ -1,4 +1,4 @@
-@use "../../../theme/material" as m;
+@use '@angular/material' as mat;
 @use "../../../theme/palettes" as p;
 
 .example-container {
@@ -242,7 +242,7 @@
     padding: 0;
     margin: 0 0.5em;
     background-color: transparent;
-    color: m.mat-get-color-from-palette(p.$primary, 500);
+    color: mat.m2-get-color-from-palette(p.$primary, 500);
     white-space: nowrap;
   }
 }

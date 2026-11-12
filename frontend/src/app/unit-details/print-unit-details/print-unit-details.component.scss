@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "../../../theme/variables" as v;
 
 .print-section {
@@ -37,6 +38,6 @@
 .print-amount {
   font-size: 20px;
   font-weight: 600;
-  color: map-get(v.$neutral-colors, dark);
+  color: map.get(v.$neutral-colors, dark);
   margin-left: 4px;
 }

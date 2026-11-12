@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "../../../theme/variables" as v;
 
 .example-container {
@@ -25,7 +26,7 @@
 
   & > mat-card {
     border-radius: 0.6em;
-    background-color: map-get(v.$neutral-gray, 200);
+    background-color: map.get(v.$neutral-gray, 200);
   }
 
   .unit-details-container {
@@ -131,7 +132,7 @@
     }
 
     .total-amount-label {
-      color: map-get(v.$neutral-colors, mid);
+      color: map.get(v.$neutral-colors, mid);
       font-size: 12px;
       position: absolute;
       top: 0;
@@ -142,7 +143,7 @@
     }
 
     .amount {
-      color: map-get(v.$neutral-colors, dark);
+      color: map.get(v.$neutral-colors, dark);
       font-size: 16px;
       font-weight: 600;
       margin-left: 4px;
@@ -155,7 +156,7 @@
   height: 64px;
   align-items: center;
   justify-content: center;
-  color: map-get(v.$neutral-colors, mid);
+  color: map.get(v.$neutral-colors, mid);
 }
 
 @media (max-width: 1024px) {

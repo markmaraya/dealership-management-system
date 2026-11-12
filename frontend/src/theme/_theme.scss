@@ -1,21 +1,18 @@
-@use "./material" as m;
+@use "@angular/material" as mat;
 @use "./palettes" as p;
 
-$theme: m.mat-define-light-theme(
+@include mat.core();
+
+$theme: mat.m2-define-light-theme(
   (
     color: (
       primary: p.$primary,
       accent: p.$accent,
       warn: p.$warn,
     ),
-    typography: m.mat-define-typography-config(),
+    typography: mat.m2-define-typography-config(),
     density: 0,
   )
 );
 
-@include m.mat-core();
-@include m.mat-form-field-theme($theme);
-@include m.mat-input-theme($theme);
-@include m.mat-button-theme($theme);
-@include m.mat-toolbar-theme($theme);
-@include m.mat-all-component-themes($theme);
+@include mat.all-component-themes($theme);
