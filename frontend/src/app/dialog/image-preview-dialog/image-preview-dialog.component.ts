@@ -11,13 +11,12 @@ import { MatButtonModule } from '@angular/material/button';
     selector: 'app-image-preview-dialog',
     templateUrl: './image-preview-dialog.component.html',
     styleUrls: ['./image-preview-dialog.component.scss'],
-    standalone: true,
     imports: [
         MatButtonModule,
         MatDialogModule,
         MatIconModule,
         NgIf,
-    ],
+    ]
 })
 export class ImagePreviewDialogComponent implements OnInit {
   _id!: string;

@@ -47,29 +47,28 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 }
 
 @Component({
-  selector: 'app-available-units',
-  templateUrl: './available-units.component.html',
-  styleUrls: ['./available-units.component.scss'],
-  providers: [UpperCasePipe],
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatProgressSpinnerModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatOptionModule,
-    MatButtonModule,
-    MatIconModule,
-    MatTableModule,
-    MatSortModule,
-    RouterLink,
-    MatPaginatorModule,
-    MatDialogModule,
-    MatSnackBarModule,
-  ],
+    selector: 'app-available-units',
+    templateUrl: './available-units.component.html',
+    styleUrls: ['./available-units.component.scss'],
+    providers: [UpperCasePipe],
+    imports: [
+        CommonModule,
+        MatProgressSpinnerModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatOptionModule,
+        MatButtonModule,
+        MatIconModule,
+        MatTableModule,
+        MatSortModule,
+        RouterLink,
+        MatPaginatorModule,
+        MatDialogModule,
+        MatSnackBarModule,
+    ]
 })
 export class AvailableUnitsComponent implements OnInit, AfterViewInit {
   socket = io(environment.apiUrl);

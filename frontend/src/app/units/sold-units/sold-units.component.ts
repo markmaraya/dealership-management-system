@@ -43,27 +43,26 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 }
 
 @Component({
-  selector: 'app-sold-units',
-  templateUrl: './sold-units.component.html',
-  styleUrls: ['./sold-units.component.scss'],
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatProgressSpinnerModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatOptionModule,
-    MatButtonModule,
-    MatIconModule,
-    MatTableModule,
-    MatSortModule,
-    RouterLink,
-    MatPaginatorModule,
-    MatDialogModule,
-  ],
+    selector: 'app-sold-units',
+    templateUrl: './sold-units.component.html',
+    styleUrls: ['./sold-units.component.scss'],
+    imports: [
+        CommonModule,
+        MatProgressSpinnerModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatOptionModule,
+        MatButtonModule,
+        MatIconModule,
+        MatTableModule,
+        MatSortModule,
+        RouterLink,
+        MatPaginatorModule,
+        MatDialogModule,
+    ]
 })
 export class SoldUnitsComponent implements OnInit, AfterViewInit {
   socket = io(environment.apiUrl);

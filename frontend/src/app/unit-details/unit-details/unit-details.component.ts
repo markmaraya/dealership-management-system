@@ -34,30 +34,29 @@ import { MatCardModule } from '@angular/material/card';
 import { NgxPrintDirective } from 'ngx-print';
 
 @Component({
-  selector: 'app-unit-details',
-  templateUrl: './unit-details.component.html',
-  styleUrls: ['./unit-details.component.scss'],
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatCardModule,
-    MatProgressSpinnerModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatIconModule,
-    NgTemplateOutlet,
-    MatMenuModule,
-    NgxPrintDirective,
-    MatTooltipModule,
-    RouterLink,
-    MatTableModule,
-    MatSortModule,
-    PrintUnitDetailsComponent,
-    DecimalPipe,
-    DatePipe,
-    MatDialogModule,
-    MatSnackBarModule,
-  ],
+    selector: 'app-unit-details',
+    templateUrl: './unit-details.component.html',
+    styleUrls: ['./unit-details.component.scss'],
+    imports: [
+        CommonModule,
+        MatCardModule,
+        MatProgressSpinnerModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatIconModule,
+        NgTemplateOutlet,
+        MatMenuModule,
+        NgxPrintDirective,
+        MatTooltipModule,
+        RouterLink,
+        MatTableModule,
+        MatSortModule,
+        PrintUnitDetailsComponent,
+        DecimalPipe,
+        DatePipe,
+        MatDialogModule,
+        MatSnackBarModule,
+    ]
 })
 export class UnitDetailsComponent implements OnInit {
   socket = io(environment.apiUrl);

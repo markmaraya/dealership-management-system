@@ -42,20 +42,19 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 }
 
 @Component({
-  selector: 'app-add-units',
-  templateUrl: './add-units.component.html',
-  styleUrls: ['./add-units.component.scss'],
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatDialogModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MatButtonModule,
-  ],
+    selector: 'app-add-units',
+    templateUrl: './add-units.component.html',
+    styleUrls: ['./add-units.component.scss'],
+    imports: [
+        CommonModule,
+        MatDialogModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatIconModule,
+        MatButtonModule,
+    ]
 })
 export class AddUnitsComponent implements OnInit {
   socket = io(environment.apiUrl);

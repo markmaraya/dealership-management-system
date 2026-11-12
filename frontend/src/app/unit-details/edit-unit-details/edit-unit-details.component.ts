@@ -44,22 +44,21 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 }
 
 @Component({
-  selector: 'app-edit-unit-details',
-  templateUrl: './edit-unit-details.component.html',
-  styleUrls: ['./edit-unit-details.component.scss'],
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatDialogModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatOptionModule,
-    MatIconModule,
-    MatButtonModule,
-  ],
+    selector: 'app-edit-unit-details',
+    templateUrl: './edit-unit-details.component.html',
+    styleUrls: ['./edit-unit-details.component.scss'],
+    imports: [
+        CommonModule,
+        MatDialogModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatOptionModule,
+        MatIconModule,
+        MatButtonModule,
+    ]
 })
 export class EditUnitDetailsComponent implements OnInit {
   socket = io(environment.apiUrl);

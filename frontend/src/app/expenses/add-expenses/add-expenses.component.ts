@@ -42,20 +42,19 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 }
 
 @Component({
-  selector: 'app-add-expenses',
-  templateUrl: './add-expenses.component.html',
-  styleUrls: ['./add-expenses.component.scss'],
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatDialogModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatIconModule,
-  ],
+    selector: 'app-add-expenses',
+    templateUrl: './add-expenses.component.html',
+    styleUrls: ['./add-expenses.component.scss'],
+    imports: [
+        CommonModule,
+        MatDialogModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatIconModule,
+    ]
 })
 export class AddExpensesComponent implements OnInit {
   socket = io(environment.apiUrl);

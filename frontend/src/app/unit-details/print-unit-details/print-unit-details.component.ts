@@ -7,18 +7,17 @@ import { CommonModule, DecimalPipe, DatePipe } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-print-unit-details',
-  templateUrl: './print-unit-details.component.html',
-  styleUrls: ['./print-unit-details.component.scss'],
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatCardModule,
-    MatTableModule,
-    MatSortModule,
-    DecimalPipe,
-    DatePipe,
-  ],
+    selector: 'app-print-unit-details',
+    templateUrl: './print-unit-details.component.html',
+    styleUrls: ['./print-unit-details.component.scss'],
+    imports: [
+        CommonModule,
+        MatCardModule,
+        MatTableModule,
+        MatSortModule,
+        DecimalPipe,
+        DatePipe,
+    ]
 })
 export class PrintUnitDetailsComponent {
   @Input() units!: Units;
