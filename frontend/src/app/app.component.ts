@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { appConfig } from '../config/appConfig';
 
@@ -31,6 +31,7 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
         ClipboardModule,
     ],
     templateUrl: './app.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {

@@ -1,5 +1,5 @@
 import { environment } from '../../../environments/environment';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { io } from 'socket.io-client';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from '../../api.service';
@@ -47,6 +47,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     selector: 'app-edit-unit-details',
     templateUrl: './edit-unit-details.component.html',
     styleUrls: ['./edit-unit-details.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MatDialogModule,
     FormsModule,

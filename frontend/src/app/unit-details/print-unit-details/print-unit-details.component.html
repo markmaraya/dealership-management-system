@@ -33,7 +33,7 @@
         <h3 class="print-expenses-label">Expenses</h3>
         <mat-table
           mat-table
-          [dataSource]="units?.expenses"
+          [dataSource]="$safeNavigationMigration(units?.expenses)"
           matSort
           matSortActive="dateEncoded"
           matSortDisableClear

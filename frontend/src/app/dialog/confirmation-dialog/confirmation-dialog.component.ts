@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 
@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
     selector: 'app-confirmation-dialog',
     templateUrl: './confirmation-dialog.component.html',
     styleUrls: ['./confirmation-dialog.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [MatDialogModule, MatButtonModule]
 })
 export class ConfirmationDialogComponent implements OnInit {

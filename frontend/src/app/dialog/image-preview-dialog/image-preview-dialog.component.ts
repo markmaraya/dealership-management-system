@@ -1,5 +1,5 @@
 import { environment } from '../../../environments/environment';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { ApiService } from '../../api.service';
 import { Gallery } from '../../models/gallery';
@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
     selector: 'app-image-preview-dialog',
     templateUrl: './image-preview-dialog.component.html',
     styleUrls: ['./image-preview-dialog.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MatButtonModule,
     MatDialogModule,

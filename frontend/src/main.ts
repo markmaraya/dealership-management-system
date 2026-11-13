@@ -1,7 +1,7 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { DatePipe } from '@angular/common';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withXhr } from '@angular/common/http';
 import {
   ErrorStateMatcher,
   ShowOnDirtyErrorStateMatcher,
@@ -15,7 +15,7 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
 bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(routes),
-    provideHttpClient(),
+    provideHttpClient(withXhr()),
     provideAnimationsAsync(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     DatePipe,

@@ -1,5 +1,5 @@
 import { environment } from '../../../environments/environment';
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import {
   UntypedFormControl,
   FormGroupDirective,
@@ -46,6 +46,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     selector: 'app-sold-units',
     templateUrl: './sold-units.component.html',
     styleUrls: ['./sold-units.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
     MatProgressSpinnerModule,
     FormsModule,

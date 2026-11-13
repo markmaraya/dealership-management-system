@@ -1,5 +1,5 @@
 import { environment } from '../../../environments/environment';
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Units } from '../../models/units';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
@@ -10,6 +10,7 @@ import { MatCardModule } from '@angular/material/card';
     selector: 'app-print-unit-details',
     templateUrl: './print-unit-details.component.html',
     styleUrls: ['./print-unit-details.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MatCardModule,

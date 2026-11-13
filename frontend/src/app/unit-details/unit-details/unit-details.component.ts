@@ -1,5 +1,5 @@
 import { environment } from '../../../environments/environment';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { io } from 'socket.io-client';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
@@ -32,6 +32,7 @@ import { NgxPrintDirective } from 'ngx-print';
     selector: 'app-unit-details',
     templateUrl: './unit-details.component.html',
     styleUrls: ['./unit-details.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         CommonModule,
         MatCardModule,
