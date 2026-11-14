@@ -1,5 +1,4 @@
 @use "./variables";
-@use "./palettes";
 @use "./theme";
 @use "./fonts";
 @use "./utilities";
@@ -8,6 +7,7 @@
 html,
 body,
 .mat-typography {
+  background: var(--mat-sys-surface);
   color: variables.$text-color;
   font-family: variables.$font-family-jakarta;
 }
