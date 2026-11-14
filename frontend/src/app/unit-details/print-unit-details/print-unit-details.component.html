@@ -19,7 +19,6 @@
         @if (units.imageFile.imageUrl?.length > 0) {
           <img
             [src]="environmentApiUrl + units.imageFile.imageUrl"
-            (click)="openImagePreviewDialog(units.imageFile._id)"
             alt="{{ units.imageFile.id }}"
             />
         }
