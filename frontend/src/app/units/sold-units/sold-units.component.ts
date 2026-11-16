@@ -75,7 +75,6 @@ export class SoldUnitsComponent implements OnInit, AfterViewInit {
   matcher = new MyErrorStateMatcher();
   displayedColumns: string[] = [
     'unitCode',
-    'image',
     'makeAndModel',
     'bodyType',
     'chasisCode',

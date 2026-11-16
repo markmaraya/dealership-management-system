@@ -54,8 +54,15 @@ input.hide-spin::-webkit-inner-spin-button {
   color: v.$text-color-light;
 }
 
-.mat-mdc-row:hover {
-  background-color: var(--mat-sys-primary-container);
+.mat-mdc-row {
+  &:hover {
+    background-color: var(--mat-sys-primary-container);
+  }
+
+  .mat-mdc-cell {
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+  }
 }
 
 .mat-mdc-cell {
