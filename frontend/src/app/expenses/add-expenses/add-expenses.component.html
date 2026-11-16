@@ -1,8 +1,8 @@
-<div class="add-expenses-container">
+<div>
   <h2 mat-dialog-title>Add Expenses</h2>
   <form [formGroup]="salesForm" (ngSubmit)="onFormSubmit()">
     <mat-dialog-content>
-      <mat-form-field class="full-width">
+      <mat-form-field class="full-width" appearance="outline">
         <mat-label>Amount</mat-label>
         <input
           matInput
@@ -11,65 +11,59 @@
           placeholder="0"
           formControlName="amount"
           [errorStateMatcher]="matcher"
-          />
-          <span matTextPrefix>₱&nbsp;</span>
-          <mat-error>
-            @if (
-              !salesForm.get('amount')?.valid && salesForm.get('amount')?.touched
-              ) {
-              <span
-                >Please enter Amount</span
-                >
-            }
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field class="full-width">
-          <mat-label>Description</mat-label>
-          <input
-            matInput
-            formControlName="description"
-            [errorStateMatcher]="matcher"
-            />
-            <mat-error>
-              @if (
-                !salesForm.get('description')?.valid &&
-                salesForm.get('description')?.touched
-                ) {
-                <span
-                  >Please enter Description</span
-                  >
-              }
-            </mat-error>
-          </mat-form-field>
-          <mat-form-field class="full-width">
-            <mat-label>Encoded By</mat-label>
-            <input
-              matInput
-              formControlName="encodedBy"
-              [errorStateMatcher]="matcher"
-              />
-              <mat-error>
-                @if (
-                  !salesForm.get('encodedBy')?.valid &&
-                  salesForm.get('encodedBy')?.touched
-                  ) {
-                  <span
-                    >Please enter Encoded By</span
-                    >
-                }
-              </mat-error>
-            </mat-form-field>
-          </mat-dialog-content>
-          <mat-dialog-actions>
-            <button mat-button mat-dialog-close>Back</button>
-            <button
-              type="submit"
-              [disabled]="!salesForm.valid"
-              mat-flat-button
-              color="primary"
-              >
-              <mat-icon>save</mat-icon> Save
-            </button>
-          </mat-dialog-actions>
-        </form>
-      </div>
+        />
+        <span matTextPrefix>₱&nbsp;</span>
+        <mat-error>
+          @if (
+            !salesForm.get("amount")?.valid && salesForm.get("amount")?.touched
+          ) {
+            <span>Please enter Amount</span>
+          }
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Description</mat-label>
+        <input
+          matInput
+          formControlName="description"
+          [errorStateMatcher]="matcher"
+        />
+        <mat-error>
+          @if (
+            !salesForm.get("description")?.valid &&
+            salesForm.get("description")?.touched
+          ) {
+            <span>Please enter Description</span>
+          }
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Encoded By</mat-label>
+        <input
+          matInput
+          formControlName="encodedBy"
+          [errorStateMatcher]="matcher"
+        />
+        <mat-error>
+          @if (
+            !salesForm.get("encodedBy")?.valid &&
+            salesForm.get("encodedBy")?.touched
+          ) {
+            <span>Please enter Encoded By</span>
+          }
+        </mat-error>
+      </mat-form-field>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button mat-button mat-dialog-close>Back</button>
+      <button
+        type="submit"
+        [disabled]="!salesForm.valid"
+        mat-flat-button
+        color="primary"
+      >
+        <mat-icon>save</mat-icon> Save
+      </button>
+    </mat-dialog-actions>
+  </form>
+</div>

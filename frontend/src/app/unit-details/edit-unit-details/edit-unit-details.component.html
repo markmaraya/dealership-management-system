@@ -1,122 +1,116 @@
-<div class="edit-unit-details-container">
+<div>
   <h2 mat-dialog-title>Edit Unit</h2>
 
   <form [formGroup]="salesForm" (ngSubmit)="onFormSubmit()">
     <mat-dialog-content>
-      <mat-form-field class="full-width">
+      <mat-form-field class="full-width" appearance="outline">
         <mat-label>Unit Code</mat-label>
         <input
           matInput
           formControlName="unitCode"
           [errorStateMatcher]="matcher"
           (focus)="onFocusUnitCode()"
-          />
-          <mat-error>
-            @if (
-              !salesForm.get('unitCode')?.valid &&
-              salesForm.get('unitCode')?.touched
-              ) {
-              <span
-                >Please enter Unit Code</span
-                >
-            }
-          </mat-error>
-          @if (unitCodeExist) {
-            <mat-error> Unit Code already exist </mat-error>
+        />
+        <mat-error>
+          @if (
+            !salesForm.get("unitCode")?.valid &&
+            salesForm.get("unitCode")?.touched
+          ) {
+            <span>Please enter Unit Code</span>
           }
-        </mat-form-field>
-        <mat-form-field class="full-width">
-          <mat-label>Make and Model</mat-label>
-          <input
-            matInput
-            formControlName="makeAndModel"
-            [errorStateMatcher]="matcher"
-            />
-            <mat-error>
-              @if (
-                !salesForm.get('makeAndModel')?.valid &&
-                salesForm.get('makeAndModel')?.touched
-                ) {
-                <span
-                  >Please enter Make and Model</span
-                  >
-              }
-            </mat-error>
-          </mat-form-field>
-          <mat-form-field class="full-width">
-            <mat-label>Body Type</mat-label>
-            <input
-              matInput
-              formControlName="bodyType"
-              [errorStateMatcher]="matcher"
-              />
-              <mat-error>
-                @if (
-                  !salesForm.get('bodyType')?.valid &&
-                  salesForm.get('bodyType')?.touched
-                  ) {
-                  <span
-                    >Please enter Body Type</span
-                    >
-                }
-              </mat-error>
-            </mat-form-field>
-            <mat-form-field class="full-width">
-              <mat-label>Chasis Code</mat-label>
-              <input
-                matInput
-                formControlName="chasisCode"
-                [errorStateMatcher]="matcher"
-                />
-                <mat-error>
-                  @if (
-                    !salesForm.get('chasisCode')?.valid &&
-                    salesForm.get('chasisCode')?.touched
-                    ) {
-                    <span
-                      >Please enter Chasis Code</span
-                      >
-                  }
-                </mat-error>
-              </mat-form-field>
-              <mat-form-field class="full-width">
-                <mat-label>Status</mat-label>
-                <mat-select formControlName="status" [errorStateMatcher]="matcher">
-                  <mat-option value="Available">Available</mat-option>
-                  <mat-option value="Sold">Sold</mat-option>
-                </mat-select>
-                <mat-error>
-                  @if (
-                    !salesForm.get('status')?.valid && salesForm.get('status')?.touched
-                    ) {
-                    <span
-                      >Please enter Status</span
-                      >
-                    }
-                  </mat-error>
-                </mat-form-field>
-                <mat-form-field class="full-width" floatLabel="always">
-                  <mat-label>Select Image</mat-label>
-                  <input
-                    type="file"
-                    matInput
-                    (change)="onFileSelected($event)"
-                    accept="image/png, image/jpeg, image/jpg"
-                    />
-                    <mat-icon matSuffix>folder</mat-icon>
-                  </mat-form-field>
-                </mat-dialog-content>
+        </mat-error>
+        @if (unitCodeExist) {
+          <mat-error> Unit Code already exist </mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Make and Model</mat-label>
+        <input
+          matInput
+          formControlName="makeAndModel"
+          [errorStateMatcher]="matcher"
+        />
+        <mat-error>
+          @if (
+            !salesForm.get("makeAndModel")?.valid &&
+            salesForm.get("makeAndModel")?.touched
+          ) {
+            <span>Please enter Make and Model</span>
+          }
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Body Type</mat-label>
+        <input
+          matInput
+          formControlName="bodyType"
+          [errorStateMatcher]="matcher"
+        />
+        <mat-error>
+          @if (
+            !salesForm.get("bodyType")?.valid &&
+            salesForm.get("bodyType")?.touched
+          ) {
+            <span>Please enter Body Type</span>
+          }
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Chasis Code</mat-label>
+        <input
+          matInput
+          formControlName="chasisCode"
+          [errorStateMatcher]="matcher"
+        />
+        <mat-error>
+          @if (
+            !salesForm.get("chasisCode")?.valid &&
+            salesForm.get("chasisCode")?.touched
+          ) {
+            <span>Please enter Chasis Code</span>
+          }
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status" [errorStateMatcher]="matcher">
+          <mat-option value="Available">Available</mat-option>
+          <mat-option value="Sold">Sold</mat-option>
+        </mat-select>
+        <mat-error>
+          @if (
+            !salesForm.get("status")?.valid && salesForm.get("status")?.touched
+          ) {
+            <span>Please enter Status</span>
+          }
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field
+        class="full-width"
+        floatLabel="always"
+        appearance="outline"
+      >
+        <mat-label>Select Image</mat-label>
+        <input
+          type="file"
+          matInput
+          (change)="onFileSelected($event)"
+          accept="image/png, image/jpeg, image/jpg"
+        />
+        <mat-icon matSuffix>folder</mat-icon>
+      </mat-form-field>
+    </mat-dialog-content>
 
-                <mat-dialog-actions>
-                  <button mat-button mat-dialog-close>Back</button>
-                  <button
-                    type="submit"
-                    [disabled]="salesForm.pristine || salesForm.invalid"
-                    mat-flat-button
-                    color="primary"
-                    >
-                    <mat-icon>save</mat-icon> Save
-                  </button>
-                </mat-dialog-actions>
-              </form>
-            </div>
+    <mat-dialog-actions>
+      <button mat-button mat-dialog-close>Back</button>
+      <button
+        type="submit"
+        [disabled]="salesForm.pristine || salesForm.invalid"
+        mat-flat-button
+        color="primary"
+      >
+        <mat-icon>save</mat-icon> Save
+      </button>
+    </mat-dialog-actions>
+  </form>
+</div>

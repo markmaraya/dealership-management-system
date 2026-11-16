@@ -1,101 +1,94 @@
-<div class="add-unit-container">
+<div>
   <h2 mat-dialog-title>Add New Unit</h2>
   <form [formGroup]="salesForm" (ngSubmit)="onFormSubmit()">
     <mat-dialog-content>
-      <mat-form-field class="full-width mb-16" appearance="fill">
+      <mat-form-field class="full-width mb-16" appearance="outline">
         <mat-label>Unit Code</mat-label>
         <input
           matInput
           formControlName="unitCode"
           [errorStateMatcher]="matcher"
-          />
-          @if (salesForm.get('unitCode')?.hasError('required')) {
-            <mat-error>
-              Please enter Unit Code
-            </mat-error>
+        />
+        @if (salesForm.get("unitCode")?.hasError("required")) {
+          <mat-error> Please enter Unit Code </mat-error>
+        }
+        @if (salesForm.get("unitCode")?.hasError("unitCodeExists")) {
+          <mat-error> Unit Code already exists </mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field class="full-width mb-16" appearance="outline">
+        <mat-label>Make and Model</mat-label>
+        <input
+          matInput
+          formControlName="makeAndModel"
+          [errorStateMatcher]="matcher"
+        />
+        <mat-error>
+          @if (
+            !salesForm.get("makeAndModel")?.valid &&
+            salesForm.get("makeAndModel")?.touched
+          ) {
+            <span>Please enter Make and Model</span>
           }
-          @if (salesForm.get('unitCode')?.hasError('unitCodeExists')) {
-            <mat-error
-              >
-              Unit Code already exists
-            </mat-error>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width mb-16" appearance="outline">
+        <mat-label>Body Type</mat-label>
+        <input
+          matInput
+          formControlName="bodyType"
+          [errorStateMatcher]="matcher"
+        />
+        <mat-error>
+          @if (
+            !salesForm.get("bodyType")?.valid &&
+            salesForm.get("bodyType")?.touched
+          ) {
+            <span>Please enter Body Type</span>
           }
-        </mat-form-field>
-        <mat-form-field class="full-width mb-16" appearance="fill">
-          <mat-label>Make and Model</mat-label>
-          <input
-            matInput
-            formControlName="makeAndModel"
-            [errorStateMatcher]="matcher"
-            />
-            <mat-error>
-              @if (
-                !salesForm.get('makeAndModel')?.valid &&
-                salesForm.get('makeAndModel')?.touched
-                ) {
-                <span
-                  >Please enter Make and Model</span
-                  >
-              }
-            </mat-error>
-          </mat-form-field>
-          <mat-form-field class="full-width mb-16" appearance="fill">
-            <mat-label>Body Type</mat-label>
-            <input
-              matInput
-              formControlName="bodyType"
-              [errorStateMatcher]="matcher"
-              />
-              <mat-error>
-                @if (
-                  !salesForm.get('bodyType')?.valid &&
-                  salesForm.get('bodyType')?.touched
-                  ) {
-                  <span
-                    >Please enter Body Type</span
-                    >
-                }
-              </mat-error>
-            </mat-form-field>
-            <mat-form-field class="full-width mb-16" appearance="fill">
-              <mat-label>Chasis Code</mat-label>
-              <input
-                matInput
-                formControlName="chasisCode"
-                [errorStateMatcher]="matcher"
-                />
-                <mat-error>
-                  @if (
-                    !salesForm.get('chasisCode')?.valid &&
-                    salesForm.get('chasisCode')?.touched
-                    ) {
-                    <span
-                      >Please enter Chasis Code</span
-                      >
-                  }
-                </mat-error>
-              </mat-form-field>
-              <mat-form-field class="full-width" floatLabel="always">
-                <mat-label>Select Image</mat-label>
-                <input
-                  type="file"
-                  matInput
-                  (change)="onFileSelected($event)"
-                  accept="image/png, image/jpeg, image/jpg"
-                  />
-                  <mat-icon matSuffix>folder</mat-icon>
-                </mat-form-field>
-              </mat-dialog-content>
-              <mat-dialog-actions>
-                <button mat-button mat-dialog-close>Back</button>
-                <button
-                  type="submit"
-                  [disabled]="!salesForm.valid"
-                  mat-flat-button
-                  color="primary"
-                  >
-                  <mat-icon>save</mat-icon> Save
-                </button>
-              </mat-dialog-actions>
-            </form>
-          </div>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width mb-16" appearance="outline">
+        <mat-label>Chasis Code</mat-label>
+        <input
+          matInput
+          formControlName="chasisCode"
+          [errorStateMatcher]="matcher"
+        />
+        <mat-error>
+          @if (
+            !salesForm.get("chasisCode")?.valid &&
+            salesForm.get("chasisCode")?.touched
+          ) {
+            <span>Please enter Chasis Code</span>
+          }
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field
+        class="full-width"
+        floatLabel="always"
+        appearance="outline"
+      >
+        <mat-label>Select Image</mat-label>
+        <input
+          type="file"
+          matInput
+          (change)="onFileSelected($event)"
+          accept="image/png, image/jpeg, image/jpg"
+        />
+        <mat-icon matSuffix>folder</mat-icon>
+      </mat-form-field>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button mat-button mat-dialog-close>Back</button>
+      <button
+        type="submit"
+        [disabled]="!salesForm.valid"
+        mat-flat-button
+        color="primary"
+      >
+        <mat-icon>save</mat-icon> Save
+      </button>
+    </mat-dialog-actions>
+  </form>
+</div>
