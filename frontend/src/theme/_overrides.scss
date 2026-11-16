@@ -1,5 +1,9 @@
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 @use "./variables" as v;
+
+html {
+  @include mat.form-field-density(-3);
+}
 
 input.hide-spin::-webkit-outer-spin-button,
 input.hide-spin::-webkit-inner-spin-button {
