@@ -1,5 +1,4 @@
 @use "sass:map";
-@use "../theme/palettes" as p;
 
 .app-container {
   height: 100vh;
@@ -17,7 +16,7 @@
     height: 48px;
     flex-shrink: 0;
     border-radius: 50%;
-    background-color: map.get(p.$primary, 500);
+    background-color: var(--mat-sys-primary);
     color: #fff;
     display: flex;
     align-items: center;

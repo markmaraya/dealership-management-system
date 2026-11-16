@@ -1,19 +1,18 @@
 @use "sass:map";
-@use '@angular/material' as mat;
-@use "./palettes" as p;
+@use "@angular/material" as mat;
 @use "./variables" as v;
 
 .bg-primary {
-  background-color: mat.m2-get-color-from-palette(p.$primary);
-  color: white;
+  background-color: var(--mat-sys-primary);
+  color: var(--mat-sys-on-primary);
 }
 .bg-accent {
-  background-color: mat.m2-get-color-from-palette(p.$accent);
-  color: white;
+  background-color: var(--mat-sys-secondary);
+  color: var(--mat-sys-on-secondary);
 }
 .bg-warn {
-  background-color: mat.m2-get-color-from-palette(p.$warn);
-  color: white;
+  background-color: var(--mat-sys-error);
+  color: var(--mat-sys-on-error);
 }
 .text-neutral {
   color: map.get(v.$neutral-colors, mid);
