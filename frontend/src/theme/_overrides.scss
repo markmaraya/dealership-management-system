@@ -3,6 +3,29 @@
 
 html {
   @include mat.form-field-density(-3);
+
+  @include mat.button-overrides(
+    (
+      text-container-shape: 10px,
+      filled-container-shape: 10px,
+      outlined-container-shape: 10px,
+      protected-container-shape: 10px,
+      tonal-container-shape: 10px,
+    )
+  );
+
+  .mat-mdc-nav-list {
+    @include mat.list-overrides(
+      (
+        list-item-container-shape: 10px,
+      )
+    );
+
+    .mat-mdc-list-item {
+      border-radius: 10px;
+      overflow: hidden;
+    }
+  }
 }
 
 input.hide-spin::-webkit-outer-spin-button,

@@ -2,7 +2,6 @@
 
 .app-container {
   height: 100vh;
-  background-color: #ffffff;
 }
 
 .header-title {
@@ -33,6 +32,9 @@
 
 .app-sidenav {
   width: 260px;
+  background-color: var(--mat-sys-surface-container-low);
+  color: var(--mat-sys-on-surface);
+  border-right: 1px solid var(--mat-sys-outline-variant);
 
   .header-title {
     padding: 0.8em 1em;
@@ -71,8 +73,6 @@
 }
 
 .nav-item {
-  border-radius: 0.4em;
-
   &.mdc-list-item.mdc-list-item--with-one-line {
     height: 2.8125em;
   }
