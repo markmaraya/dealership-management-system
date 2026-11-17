@@ -35,15 +35,6 @@ html {
       )
     );
   }
-
-  .warn-icon-btn {
-    @include mat.icon-button-overrides(
-      (
-        icon-color: var(--mat-sys-error),
-        state-layer-color: var(--mat-sys-error),
-      )
-    );
-  }
 }
 
 input.hide-spin::-webkit-outer-spin-button,
