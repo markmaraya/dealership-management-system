@@ -133,15 +133,9 @@
 }
 
 .sold-button {
-  color: #e63513;
   position: absolute;
   left: calc(50% - 68px);
   top: calc(50% - 18px);
-}
-
-.sold-button:hover {
-  background: #e63513;
-  color: #fff;
 }
 
 .no-data-row {
